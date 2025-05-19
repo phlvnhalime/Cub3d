@@ -7,9 +7,6 @@ RM_DIR      = rm -rf
 LIBFTDIR    = libft
 LIBFT       = $(LIBFTDIR)/libft.a
 
-FT_PRINTF_DIR   = ft_printf
-FT_PRINTF       = $(FT_PRINTF_DIR)/libftprintf.a
-
 MLX42_DIR   = MLX42
 MLX42_LIB   = $(MLX42_DIR)/build/libmlx42.a
 
@@ -17,7 +14,8 @@ INCLUDE     = -I$(MLX42_DIR)/include -I header -I libft
 LDINCLUDE   = -L$(MLX42_DIR)/build -lmlx42 -L$(LIBFTDIR) -lft -L$(FT_PRINTF_DIR) -lftprintf -lglfw -framework Cocoa -framework OpenGL -framework IOKit
 CFLAGS      = -Wextra -Wall -Werror -g $(INCLUDE)
 
-SRCS = 
+SRCS = main.c \
+
 OBJS = $(SRCS:.c=.o)
 
 all:    $(NAME)
