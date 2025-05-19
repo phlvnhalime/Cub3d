@@ -11,7 +11,7 @@ MLX42_DIR   = MLX42
 MLX42_LIB   = $(MLX42_DIR)/build/libmlx42.a
 
 INCLUDE     = -I$(MLX42_DIR)/include -I header -I libft
-LDINCLUDE   = -L$(MLX42_DIR)/build -lmlx42 -L$(LIBFTDIR) -lft -L$(FT_PRINTF_DIR) -lftprintf -lglfw -framework Cocoa -framework OpenGL -framework IOKit
+LDINCLUDE   = -L$(MLX42_DIR)/build -lmlx42 -L$(LIBFTDIR) -lft -lglfw -framework Cocoa -framework OpenGL -framework IOKit
 CFLAGS      = -Wextra -Wall -Werror -g $(INCLUDE)
 
 SRCS = main.c \
@@ -26,12 +26,12 @@ $(LIBFT):
 
 # Compile ft_printf
 $(FT_PRINTF):
-	make -C $(FT_PRINTF_DIR) && make clean -C $(FT_PRINTF_DIR)
+	make -C $(FT_PRINTF_DIR) && make clean -C
 
 # Final target to build the executable
-$(NAME):    $(MLX42_LIB) $(LIBFT) $(FT_PRINTF) $(OBJS)
+$(NAME):    $(MLX42_LIB) $(LIBFT) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LDINCLUDE) -o $(NAME)
-	echo "\033[1;32m So_long and MLX compiled successfully!\033[0m"
+	echo "\033[1;32m Cub3D and MLX compiled successfully!\033[0m"
 
 # Compile each source file to an object
 %.o: %.c
@@ -46,7 +46,6 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 	make fclean -C $(LIBFTDIR)
-	make fclean -C $(FT_PRINTF_DIR)
 	echo "\033[1;32m All files cleaned successfully!\033[0m"
 
 # Rebuild everything
