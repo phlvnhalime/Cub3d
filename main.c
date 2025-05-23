@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 13:59:46 by julcalde          #+#    #+#             */
-/*   Updated: 2025/05/23 14:33:10 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/05/23 14:50:57 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,23 @@
 
 int	main(int argc, char **argv)
 {
-	(void)argv;
-	if (argc != 2)
-		ft_error_exit("Usage: './cub3d <cub_file>'");
+	// t_game	*game;
+
+	verify_args(argc, argv[1]);
 	return (0);
 }
 
-int	ft_error_exit(char *msg)
+void	ft_error_exit(char *msg)
 {
 	printf(RED "Error\n" RESET);
 	printf("%s\n", msg);
-	return (EXIT_FAILURE);
+	exit(EXIT_FAILURE);
+}
+
+void	verify_args(int argc, char *argv)
+{
+	if (argc != 2)
+		ft_error_exit(YELLOW "Usage: './cub3d <cub_file>'" RESET);
+	if (ft_strnstr(&argv[1], ".cub", ft_strlen(&argv[1])) == NULL)
+		ft_error_exit(YELLOW "Usage: [file] with [.cub] extention" RESET);
 }

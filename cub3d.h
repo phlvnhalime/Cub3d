@@ -29,6 +29,7 @@
 # define MAGENTA    "\033[35m"
 # define CYAN       "\033[36m"
 
-int	ft_error_exit(char *msg);
+void	ft_error_exit(char *msg);
+void	verify_args(int argc, char *argv);
 
 #endif
