@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 13:59:46 by julcalde          #+#    #+#             */
-/*   Updated: 2025/05/23 14:28:28 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/05/23 14:33:10 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
 
 int	main(int argc, char **argv)
 {
+	(void)argv;
 	if (argc != 2)
 		ft_error_exit("Usage: './cub3d <cub_file>'");
 	return (0);
