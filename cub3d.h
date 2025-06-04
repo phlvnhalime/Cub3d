@@ -19,7 +19,8 @@
     # define DEBUG_PRINT(fmt, ...) do {} while(0) // Dont do anything when the debug closed
 #endif
 
-/* ASCII Color Codes */
+/* ----- ASCII Color Codes ----- */
+
 # define RESET      "\033[0m"
 # define BLACK      "\033[30m"
 # define RED        "\033[31m"
@@ -28,6 +29,11 @@
 # define BLUE       "\033[34m"
 # define MAGENTA    "\033[35m"
 # define CYAN       "\033[36m"
+
+/* ----- Struct ----- */
+
+
+/* ----- Functions ----- */
 
 void	ft_error_exit(char *msg);
 void	verify_args(int argc, char *argv);
