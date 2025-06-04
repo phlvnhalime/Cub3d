@@ -1,6 +1,6 @@
 .SILENT:
 
-NAME        = cub3d
+NAME        = cub3D
 RM          = rm -f
 RM_DIR      = rm -rf
 
