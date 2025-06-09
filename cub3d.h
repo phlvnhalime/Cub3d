@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.de  +#+  +:+       +#+        */
+/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:36 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/06/09 11:49:37 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/06/09 23:13:48 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,20 @@ enum			e_keycode
 
 };
 
-
 typedef struct s_player
 {
-    mlx_t *mlx;
+    /*Player directories*/
+    
 } t_player;
+
+
+typedef struct s_game
+{
+    mlx_t *mlx;
+    mlx_image_t *img;
+    /*Add maps*/
+    t_player player;
+} t_game;
 
 
 

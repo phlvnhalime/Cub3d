@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.de  +#+  +:+       +#+        */
+/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/06/09 11:49:14 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/06/09 23:19:49 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,70 +122,141 @@ side the wall is facing (North, South, East, West).
 
 */
 
-// Simple key handler function
-void key_handler(mlx_key_data_t keydata, void* param)
-{
-    mlx_t* mlx = (mlx_t*)param;
+// // Simple key handler function
+// void key_handler(mlx_key_data_t keydata, void* param)
+// {
+//     mlx_t* mlx = (mlx_t*)param;
     
-    // Close window when ESC is pressed
-    if (keydata.key == ESC && keydata.action == PRESS)
+//     // Close window when ESC is pressed
+//     if (keydata.key == ESC && keydata.action == PRESS)
+//     {
+//         mlx_close_window(mlx);
+//     }
+// }
+
+
+// // Close handler for the red X button
+// void close_handler(void* param)
+// {
+//     mlx_t* mlx = (mlx_t*)param;
+//     mlx_close_window(mlx);
+// }
+
+
+// int main(void)
+// {
+//     //initialized MLX42
+//     mlx_t *mlx = mlx_init(WIDTH, HEIGHT, "Simple wolfenstein 3D", true);
+//     if(!mlx)
+//     {
+//         fprintf(stderr, "Error: Failed to initialized MLX42\n");
+//         return (EXIT_FAILURE);
+//     }
+//     // Create a simple image to display
+//     mlx_image_t *img = mlx_new_image(mlx, 300, 300);
+//     if(!img)
+//     {
+//         fprintf(stderr, "Error: Failed to create image\n");
+//         mlx_terminate(mlx);
+//         return (EXIT_FAILURE);
+//     }
+//     // Fill the image with a red colour (RGBA!)
+//     for(uint32_t y = 0; y < img->height; y++)
+//     {
+//         for(uint32_t x = 0;  x < img->width; x++)
+//             mlx_put_pixel(img, x, y,0xFF0000FF); // Red
+        
+//     }
+//     // Position of the images
+//     if(mlx_image_to_window(mlx, img, 300, 300) < 0)
+//     {
+//         fprintf(stderr, "Error: Failed to display image\n");
+//         mlx_delete_image(mlx, img);
+//         mlx_terminate(mlx);
+//         return (EXIT_FAILURE);
+//     }
+
+//     // Set up event handlers
+//     mlx_key_hook(mlx, key_handler, mlx);        // Handle key presses
+//     mlx_close_hook(mlx, close_handler, mlx);    // Handle window close
+
+//     // Start the main loop (this will block until window is closed)
+//     mlx_loop(mlx);
+
+//     // Clean up
+//     mlx_delete_image(mlx, img);
+//     mlx_terminate(mlx);
+
+//     return (EXIT_SUCCESS);
+// }
+
+int validate_args(int ac, char **av)
+{
+    int len;
+
+    if(ac != 2)
     {
-        mlx_close_window(mlx);
+        printf("Usage: %s <map_file.cub>\n", av[0]);
+        return (0);
     }
+    len = strlen(av[1]);
+    if(len < 5 || strcmp(av[1] + len - 4, ".cub") != 0)
+    {
+        printf("Error: Map file must have '.cub' \n");
+        return (0);
+    }
+    return (1);
+    
 }
 
-
-// Close handler for the red X button
-void close_handler(void* param)
+void error_exit(char *msg)
 {
-    mlx_t* mlx = (mlx_t*)param;
-    mlx_close_window(mlx);
+    fprintf(stderr, "Error\n %s\n",msg); // changed this func.
+    exit(EXIT_FAILURE);
 }
 
-
-int main(void)
+int parse_file(t_game *game, char file)
 {
-    //initialized MLX42
-    mlx_t *mlx = mlx_init(WIDTH, HEIGHT, "Simple wolfenstein 3D", true);
-    if(!mlx)
+    int fd;
+    char *line;
+    int nbr_element;
+
+    nbr_element = 0;
+    fd = open(file, O_RDONLY);
+    if(fd < 0)
+        return 0;
+    while((line = get_next_line(fd)) && nbr_element < 6)
     {
-        fprintf(stderr, "Error: Failed to initialized MLX42\n");
-        return (EXIT_FAILURE);
-    }
-    // Create a simple image to display
-    mlx_image_t *img = mlx_new_image(mlx, 300, 300);
-    if(!img)
-    {
-        fprintf(stderr, "Error: Failed to create image\n");
-        mlx_terminate(mlx);
-        return (EXIT_FAILURE);
-    }
-    // Fill the image with a red colour (RGBA!)
-    for(uint32_t y = 0; y < img->height; y++)
-    {
-        for(uint32_t x = 0;  x < img->width; x++)
-            mlx_put_pixel(img, x, y,0xFF0000FF); // Red
+        if(line[0] == '\n')
+        {
+            free(line);
+            continue;
+        }
+        //TODO Add textures and colors and increase elements.
+        free(line);
         
     }
-    // Position of the images
-    if(mlx_image_to_window(mlx, img, 300, 300) < 0)
-    {
-        fprintf(stderr, "Error: Failed to display image\n");
-        mlx_delete_image(mlx, img);
-        mlx_terminate(mlx);
+    if(nbr_element != 6)
+        return (close(fd),0);
+    // TODO Add map for parsing part
+    
+    close(fd);
+    return (1);
+}
+/*Start again*/
+
+int main(int ac, char **av)
+{
+    t_player game;
+    if(!validate_args(ac,av))
         return (EXIT_FAILURE);
+
+    /*TODO*/
+    // Initialized game:
+    
+    /*Parse arguments and set up game*/
+    if(!parse_file(&game, av[1]))
+    {
+        error_exit("Failed to parse .cub file");
     }
-
-    // Set up event handlers
-    mlx_key_hook(mlx, key_handler, mlx);        // Handle key presses
-    mlx_close_hook(mlx, close_handler, mlx);    // Handle window close
-
-    // Start the main loop (this will block until window is closed)
-    mlx_loop(mlx);
-
-    // Clean up
-    mlx_delete_image(mlx, img);
-    mlx_terminate(mlx);
-
-    return (EXIT_SUCCESS);
 }
