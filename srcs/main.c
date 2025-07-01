@@ -6,13 +6,11 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/06/09 23:19:49 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/01 14:39:12 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include "MLX42/include/MLX42/MLX42.h"
-
+#include "../include/cub3d.h"
 
 /*
     * Arguments:
@@ -222,7 +220,7 @@ int parse_file(t_game *game, char file)
     int nbr_element;
 
     nbr_element = 0;
-    fd = open(file, O_RDONLY);
+    fd = open(&file, O_RDONLY);
     if(fd < 0)
         return 0;
     while((line = get_next_line(fd)) && nbr_element < 6)
@@ -255,7 +253,7 @@ int main(int ac, char **av)
     // Initialized game:
     
     /*Parse arguments and set up game*/
-    if(!parse_file(&game, av[1]))
+    if(!parse_file(&game, *av[1]))
     {
         error_exit("Failed to parse .cub file");
     }
