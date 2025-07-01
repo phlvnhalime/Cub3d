@@ -29,23 +29,17 @@
 #define HALF_FOV (FOV / 2.0f) // Half field of view in degrees
 
 
-// Define the code I can use with shortcuts
-#define mlx_texture_t texture_t
-#define mlx_image_t image_t
-#define mlx_key_data_t key_data_t
-
 // Define the key codes for easier reference
 enum e_keycode
 {
-    KEY_UP = 87,
-    KEY_DOWN = 83,
-    KEY_LEFT = 65,
-    KEY_RIGHT = 68,
-    RESET = 15,
-    ESC = 256,
-    RELEASE = 0,
+    KEY_W = MLX_KEY_W,
+    KEY_A = MLX_KEY_A,
+    KEY_S = MLX_KEY_S,
+    KEY_D = MLX_KEY_D,
+    KEY_LEFT = MLX_KEY_LEFT,
+    KEY_RIGHT = MLX_KEY_RIGHT,
+    KEY_ESC = MLX_KEY_ESCAPE,
 };
-
 
 
 
