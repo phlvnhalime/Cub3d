@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:36 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/02 21:17:02 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/02 22:25:24 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,10 +158,16 @@ int texture_identifier(char *line);
 int is_color_identifier(char *line);
 int is_valid_map_character(char c);
 void check_color_format(char *line);
+int get_texture_count(char *line);
 int parse_texture(t_game *game, char *line);
 int valid_rgb_format(int r, int g, int b);
-void set_color_values(t_game *game, t_color *color, char identifier);
+void set_color_values(t_game *game, char identifier, int rgb_arr[3]);
 int parse_color(t_game *game, char *line);
+
+/*
+	UTILITY FUNCTIONS
+*/
+void	ft_free_split(char **split);
 
 
 #endif

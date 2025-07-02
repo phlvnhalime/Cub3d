@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/02 21:29:32 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/02 22:29:29 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,24 +153,31 @@ int	parse_file(t_game *game, char *file)
 	int		nbr_element;
 
 	nbr_element = 0;
-	fd = open(&file, O_RDONLY);
+	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (0);
 	while ((line = get_next_line(fd)) && nbr_element < 6)
 	{
-		if (line[0] == '\n')
+		if(is_empty_line(line))
 		{
 			free(line);
-			continue ;
+			continue; // Skip empty lines
 		}
-		// TODO Add textures and colors and increase elements.
+		if (texture_identifier(line))
+		{
+			if (parse_texture(game, line))
+			    nbr_element++;
+		}
+		else if(is_color_identifier(line))
+		{
+			if (parse_color(game, line))
+                nbr_element++;
+		}
 		free(line);
 	}
-	if (nbr_element != 6)
-		return (close(fd), 0);
-	// TODO Add map for parsing part
+	//TODO: Add map parsing here
 	close(fd);
-	return (1);
+	return (nbr_element == 6); // Return true if all elements are parsed
 }
 /*Start again*/
 
@@ -181,7 +188,7 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 
 	/*TODO*/
-    
+    init_game(&game); // Initialize game structure
 
 	/*Parse arguments and set up game*/
 	if (!parse_file(&game, av[1]))
