@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/02 22:31:27 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/02 22:35:38 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,12 @@ int	parse_file(t_game *game, char *file)
 		free(line);
 	}
 	//TODO: Add map parsing here
+	/*
+		1. Map lines detection
+		2. Player position finding (N,S,E,W)
+		3. Map validation (walls around)
+		4. Grid structure creation
+	*/
 	close(fd);
 	return (nbr_element == 6); // Return true if all elements are parsed
 }
