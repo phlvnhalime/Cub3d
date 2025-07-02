@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/02 13:55:52 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/02 21:29:32 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,72 +122,6 @@ side the wall is facing (North, South, East, West).
 
 */
 
-// // Simple key handler function
-// void key_handler(mlx_key_data_t keydata, void* param)
-// {
-//     mlx_t* mlx = (mlx_t*)param;
-
-//     // Close window when ESC is pressed
-//     if (keydata.key == ESC && keydata.action == PRESS)
-//     {
-//         mlx_close_window(mlx);
-//     }
-// }
-
-// // Close handler for the red X button
-// void close_handler(void* param)
-// {
-//     mlx_t* mlx = (mlx_t*)param;
-//     mlx_close_window(mlx);
-// }
-
-// int main(void)
-// {
-//     //initialized MLX42
-//     mlx_t *mlx = mlx_init(WIDTH, HEIGHT, "Simple wolfenstein 3D", true);
-//     if(!mlx)
-//     {
-//         fprintf(stderr, "Error: Failed to initialized MLX42\n");
-//         return (EXIT_FAILURE);
-//     }
-//     // Create a simple image to display
-//     mlx_image_t *img = mlx_new_image(mlx, 300, 300);
-//     if(!img)
-//     {
-//         fprintf(stderr, "Error: Failed to create image\n");
-//         mlx_terminate(mlx);
-//         return (EXIT_FAILURE);
-//     }
-//     // Fill the image with a red colour (RGBA!)
-//     for(uint32_t y = 0; y < img->height; y++)
-//     {
-//         for(uint32_t x = 0;  x < img->width; x++)
-//             mlx_put_pixel(img, x, y,0xFF0000FF); // Red
-
-//     }
-//     // Position of the images
-//     if(mlx_image_to_window(mlx, img, 300, 300) < 0)
-//     {
-//         fprintf(stderr, "Error: Failed to display image\n");
-//         mlx_delete_image(mlx, img);
-//         mlx_terminate(mlx);
-//         return (EXIT_FAILURE);
-//     }
-
-//     // Set up event handlers
-//     mlx_key_hook(mlx, key_handler, mlx);        // Handle key presses
-//     mlx_close_hook(mlx, close_handler, mlx);    // Handle window close
-
-//     // Start the main loop (this will block until window is closed)
-//     mlx_loop(mlx);
-
-//     // Clean up
-//     mlx_delete_image(mlx, img);
-//     mlx_terminate(mlx);
-
-//     return (EXIT_SUCCESS);
-// }
-
 int	validate_args(int ac, char **av)
 {
 	int	len;
@@ -212,7 +146,7 @@ void	error_exit(char *msg)
 	exit(EXIT_FAILURE);
 }
 
-int	parse_file(t_game *game, char file)
+int	parse_file(t_game *game, char *file)
 {
 	int		fd;
 	char	*line;
@@ -242,16 +176,17 @@ int	parse_file(t_game *game, char file)
 
 int	main(int ac, char **av)
 {
-	t_player game;
+	t_game game;
 	if (!validate_args(ac, av))
 		return (EXIT_FAILURE);
 
 	/*TODO*/
-	// Initialized game:
+    
 
 	/*Parse arguments and set up game*/
-	if (!parse_file(&game, *av[1]))
+	if (!parse_file(&game, av[1]))
 	{
 		error_exit("Failed to parse .cub file");
 	}
 }
+
