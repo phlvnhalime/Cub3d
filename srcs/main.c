@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/02 22:29:29 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/02 22:31:27 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,12 +188,15 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 
 	/*TODO*/
-    init_game(&game); // Initialize game structure
+    init_data(&game); // Initialized data structure
 
 	/*Parse arguments and set up game*/
 	if (!parse_file(&game, av[1]))
 	{
 		error_exit("Failed to parse .cub file");
 	}
+
+	// If is it successful, we can now initialize the game window
+	init_game(&game);
 }
 
