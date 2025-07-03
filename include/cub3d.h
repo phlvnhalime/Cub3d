@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:36 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/02 22:25:24 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/03 14:07:42 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,17 @@ typedef struct s_ray
 	int draw_end;          // End of the wall line to be drawn
 }					t_ray;
 
+typedef struct s_garbco_node
+{
+	void *ptr;
+	struct s_garbco_node *next;
+} t_garbco_node;
+
+typedef struct s_garbco
+{
+	t_garbco_node *head;
+} t_garbco;
+
 typedef struct s_game
 {
 	mlx_t			*mlx;
@@ -167,7 +178,14 @@ int parse_color(t_game *game, char *line);
 /*
 	UTILITY FUNCTIONS
 */
+
 void	ft_free_split(char **split);
 
+/*
+	GARBAGE COLLECTOR FUNCTIONS
+*/
+
+void	garbco_add(t_garbco *garbco, void *ptr);
+void	garbco_clean(t_garbco *garbco);
 
 #endif
