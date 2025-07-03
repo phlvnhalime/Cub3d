@@ -14,8 +14,7 @@ INCLUDE     = -I$(MLX42_DIR)/include -I header -I libft
 LDINCLUDE   = -L$(MLX42_DIR)/build -lmlx42 -L$(LIBFTDIR) -lft -lglfw -framework Cocoa -framework OpenGL -framework IOKit
 CFLAGS      = -Wextra -Wall -Werror -g $(INCLUDE)
 
-SRCS = main.c \
-
+SRCS = main.c parsing.c player.c  init.c\
 OBJS = $(SRCS:.c=.o)
 
 all:    $(NAME)
@@ -24,14 +23,10 @@ all:    $(NAME)
 $(LIBFT):
 	make -C $(LIBFTDIR) && make clean -C $(LIBFTDIR)
 
-# Compile ft_printf
-$(FT_PRINTF):
-	make -C $(FT_PRINTF_DIR) && make clean -C
-
 # Final target to build the executable
 $(NAME):    $(MLX42_LIB) $(LIBFT) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LDINCLUDE) -o $(NAME)
-	echo "\033[1;32m Cub3D and MLX compiled successfully!\033[0m"
+	echo "\033[1;32m Cub3d and MLX compiled successfully!\033[0m"
 
 # Compile each source file to an object
 %.o: %.c
