@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:16:53 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/04 17:05:48 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/04 17:19:42 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,5 +224,28 @@ int parse_map_line(t_game *game, char *line)
     if(line_len > game->map.width)
         game->map.width = line_len; // Update map width if the new line is longer
     DEBUG_PRINT(GRN"Map line added: %s (width: %d, height: %d)\n"RST, line, game->map.width, game->map.height);
+    return 1;
+}
+
+void valid_map(t_game *game)
+{
+    if (game->map.height < 3 || game->map.width < 3)
+    {
+        DEBUG_PRINT(RD"Map is too small (width: %d, height: %d)\n"RST, game->map.width, game->map.height);
+        game->map_valid = 0;
+        return;
+    }
+    if (!find_player_position(game))
+    {
+        DEBUG_PRINT(RD"Player position not found or invalid\n"RST);
+        return;
+    }
+    if (!check_map_walls(game))
+    {
+        DEBUG_PRINT(RD"Map walls are not valid\n"RST);
+        return;
+    }
+    game->map_valid = 1;
+    DEBUG_PRINT(GRN"Map is valid\n"RST);
     return 1;
 }
