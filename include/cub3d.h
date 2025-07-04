@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:36 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/03 14:07:42 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/04 17:05:56 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ typedef struct s_player
 	double plane_x;   // Player camera plane X component
 	double plane_y;   // Player camera plane Y component
 	double spawn_dir; // Player spawn direction in degrees
+	char spawn_char;  // Character representing the player's spawn direction (N, S, E, W)
 }					t_player;
 
 /*
@@ -151,12 +152,14 @@ typedef struct s_game
 	t_texture textures[4]; // Array of textures for walls (N, S, E, W)
 	t_color floor_color;   // Floor color
 	t_color ceiling_color; // Ceiling color
+	t_garbco		garbco; // Garbage collector to manage memory
 
 	int texture_count; // Number of textures loaded
 	int color_count;   // Number of colors loaded
 	int map_started;   // Flag to indicate if the map has started
 	int map_ended;     // Flag to indicate if the map has ended
 	int map_valid;     // Flag to indicate if the map is valid
+	int player_found;  // Flag to indicate if the player position has been found
 }					t_game;
 
 
@@ -181,11 +184,29 @@ int parse_color(t_game *game, char *line);
 
 void	ft_free_split(char **split);
 
+
+/* 
+	Parsing map functions
+*/
+void set_player_direction(t_game *game, char spawn_char);
+int is_map_line(char *line);
+int find_player_position(t_game *game);
+/* It must divide it as 3 function now only one. 
+    |
+   \ /
+*/
+int check_map_walls(t_game *game);// Me
+int parse_map_line(t_game *game, char *line);
+
 /*
 	GARBAGE COLLECTOR FUNCTIONS
 */
 
 void	garbco_add(t_garbco *garbco, void *ptr);
 void	garbco_clean(t_garbco *garbco);
+void	garbco_remove(t_garbco *garbco, void *ptr);
+void	garbco_init(t_garbco *garbco);
+void	*garbco_malloc(t_garbco *garbco, size_t size);
+
 
 #endif

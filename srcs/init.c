@@ -12,7 +12,7 @@ void	init_data(t_game *data)
 	data->player.y = 0.0;
 	data->player.dir_x = 0.0;
 	data->player.dir_y = -1.0;   // Facing down the Y-axis
-	data->player.plane_x = 0.06; // Camera plane X component
+	data->player.plane_x = 0.66; // Camera plane X component
 	data->player.plane_y = 0.0;
 	data->player.spawn_dir = 0.0;
 	// Initialize map
