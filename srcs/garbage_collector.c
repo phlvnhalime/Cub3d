@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 13:55:32 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/04 16:15:00 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/04 17:12:20 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,3 +123,4 @@ void	garbco_clean(t_garbco *garbco)
 	garbco->head = NULL;
 	DEBUG_PRINT(GRN"Garbage collector cleaned %d pointers\n"RST, count);
 }
+
