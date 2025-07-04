@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 13:55:32 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/04 17:12:20 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/04 17:37:58 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,3 +124,38 @@ void	garbco_clean(t_garbco *garbco)
 	DEBUG_PRINT(GRN"Garbage collector cleaned %d pointers\n"RST, count);
 }
 
+void garbco_game(t_game *game)
+{
+	if(!game)
+		return;
+	
+	DEBUG_PRINT(GRN"Cleaning game garbage collector...\n"RST);
+	int i = 0;
+	while(i < 4)
+	{
+		if(game->textures[i].texture)
+		{
+			mlx_delete_texture(game->textures[i].texture);
+			game->textures[i].texture = NULL;
+		}
+		if(game->textures[i].path)
+			game->textures[i].path = NULL;
+		i++;
+		DEBUG_PRINT(GRN"Texture %d cleaned\n"RST, i);
+	}
+	if(game->img)
+	{
+		mlx_delete_image(game->mlx, game->img);
+		game->img = NULL;
+		DEBUG_PRINT(GRN"Image cleaned\n"RST);
+	}
+	if(game->mlx)
+	{
+		mlx_terminate(game->mlx);
+		game->mlx = NULL;
+		DEBUG_PRINT(GRN"MLX cleaned\n"RST);
+	}
+
+	garbco_clean(&game->garbco);
+	DEBUG_PRINT(GRN"Game garbage collector cleaned\n"RST);
+}

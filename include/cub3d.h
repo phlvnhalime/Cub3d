@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:36 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/04 17:05:56 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/04 17:29:35 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,6 +207,7 @@ void	garbco_clean(t_garbco *garbco);
 void	garbco_remove(t_garbco *garbco, void *ptr);
 void	garbco_init(t_garbco *garbco);
 void	*garbco_malloc(t_garbco *garbco, size_t size);
+void	garbco_game(t_game *game);
 
 
 #endif
