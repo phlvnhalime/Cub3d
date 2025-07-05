@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:36 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/04 17:29:35 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/05 13:00:49 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,41 +162,20 @@ typedef struct s_game
 	int player_found;  // Flag to indicate if the player position has been found
 }					t_game;
 
+/*
+	MAIN.C
+*/
+
+int		validate_args(int ac, char **av);
+void	error_exit(char *msg);
+int		parse_file(t_game *game, char *file);
 
 /*
-	PARSE FUNCTIONS
+	INIT.C
 */
 
-int is_empty_line(char *line);
-int texture_identifier(char *line);
-int is_color_identifier(char *line);
-int is_valid_map_character(char c);
-void check_color_format(char *line);
-int get_texture_count(char *line);
-int parse_texture(t_game *game, char *line);
-int valid_rgb_format(int r, int g, int b);
-void set_color_values(t_game *game, char identifier, int rgb_arr[3]);
-int parse_color(t_game *game, char *line);
-
-/*
-	UTILITY FUNCTIONS
-*/
-
-void	ft_free_split(char **split);
-
-
-/* 
-	Parsing map functions
-*/
-void set_player_direction(t_game *game, char spawn_char);
-int is_map_line(char *line);
-int find_player_position(t_game *game);
-/* It must divide it as 3 function now only one. 
-    |
-   \ /
-*/
-int check_map_walls(t_game *game);// Me
-int parse_map_line(t_game *game, char *line);
+void	init_data(t_game *data);
+void	init_game(t_game *data);
 
 /*
 	GARBAGE COLLECTOR FUNCTIONS
@@ -209,5 +188,45 @@ void	garbco_init(t_garbco *garbco);
 void	*garbco_malloc(t_garbco *garbco, size_t size);
 void	garbco_game(t_game *game);
 
+/*
+	MAP_PARSING.C
+*/
+
+int		is_map_line(char *line);
+void	set_player_direction(t_game *game, char spawn_char);
+int		find_player_position(t_game *game);
+/* It must divide it as 3 function now only one. 
+    |
+   \ /
+*/
+int		check_map_walls(t_game *game);
+int		parse_map_line(t_game *game, char *line);
+void	valid_map(t_game *game);
+
+/*
+	PARSING.C
+*/
+
+int		get_texture_count(char *line);
+int		parse_texture(t_game *game, char *line);
+int		valid_rgb_format(int r, int g, int b);
+void	set_color_values(t_game *game, char identifier, int rgb_arr[3]);
+int		parse_color(t_game *game, char *line);
+
+/*
+	UTILS00_PARSING.C
+*/
+
+int		is_empty_line(char *line);
+int		texture_identifier(char *line);
+int		is_color_identifier(char *line);
+int		is_valid_map_character(char c);
+void	check_color_format(char *line);
+
+/*
+	UTILS00_PARSING.C
+*/
+
+void	ft_free_split(char **split);
 
 #endif

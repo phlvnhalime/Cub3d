@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/02 22:35:38 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/05 12:38:23 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@
 
 	- All function of the Minilibx
 
-	* (?) The management of your window must remain smooth: changing to another win-
-dow, minimizing, etc.
-	* (?) Display different wall textures (the choice is yours) that vary depending on which
-side the wall is facing (North, South, East, West).
-	* (?) Your program must be able to set the floor and ceiling colors to two different ones.
-	* (?) The left and right arrow keys of the keyboard must allow you to look left and
-	right in the maze.
+	* (?) The management of your window must remain smooth: changing to another
+	window, minimizing, etc.
+	* (?) Display different wall textures (the choice is yours) that vary
+	depending on which side the wall is facing (North, South, East, West).
+	* (?) Your program must be able to set the floor and ceiling colors to two
+	different ones.
+	* (?) The left and right arrow keys of the keyboard must allow you to look
+	left and right in the maze.
 	◦The W, A, S, and D keys must allow you to move the point of view through
 	the maze.
 	◦Pressing ESC must close the window and quit the program cleanly.
@@ -158,20 +159,20 @@ int	parse_file(t_game *game, char *file)
 		return (0);
 	while ((line = get_next_line(fd)) && nbr_element < 6)
 	{
-		if(is_empty_line(line))
+		if (is_empty_line(line))
 		{
 			free(line);
-			continue; // Skip empty lines
+			continue ; // Skip empty lines
 		}
 		if (texture_identifier(line))
 		{
 			if (parse_texture(game, line))
-			    nbr_element++;
+				nbr_element++;
 		}
-		else if(is_color_identifier(line))
+		else if (is_color_identifier(line))
 		{
 			if (parse_color(game, line))
-                nbr_element++;
+				nbr_element++;
 		}
 		free(line);
 	}
@@ -185,23 +186,21 @@ int	parse_file(t_game *game, char *file)
 	close(fd);
 	return (nbr_element == 6); // Return true if all elements are parsed
 }
+
 /*Start again*/
 
 int	main(int ac, char **av)
 {
-	t_game game;
+	t_game	game;
+
 	if (!validate_args(ac, av))
 		return (EXIT_FAILURE);
-
 	/*TODO*/
     init_data(&game); // Initialized data structure
 
 	/*Parse arguments and set up game*/
 	if (!parse_file(&game, av[1]))
-	{
 		error_exit("Failed to parse .cub file");
-	}
-
 	// If is it successful, we can now initialize the game window
 	init_game(&game);
 }

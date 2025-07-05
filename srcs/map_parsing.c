@@ -3,32 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:16:53 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/04 17:19:42 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/05 12:55:52 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int is_map_line(char *line)
+int	is_map_line(char *line)
 {
-    int i;
-    int has_map_char = 0;
+	int i;
+	int has_map_char;
 
-    if(!line)
-        return 0; // Null line is not a map line
-    i = 0;
-    while(line[i])
-    {
-        if(is_valid_map_character(line[i]))
-            has_map_char = 1;
-        else if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
-            return 0; // Invalid character in map line
-        i++;
-    }
-    return has_map_char;
+	has_map_char = 0;
+	if (!line)
+		return (0); // Null line is not a map line
+	i = 0;
+	while (line[i])
+	{
+		if (is_valid_map_character(line[i]))
+			has_map_char = 1;
+		else if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
+			return (0); // Invalid character in map line
+		i++;
+	}
+	return (has_map_char);
 }
 
 void set_player_direction(t_game *game, char spawn_char)
