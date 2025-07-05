@@ -14,7 +14,12 @@ INCLUDE     = -I$(MLX42_DIR)/include -I header -I libft
 LDINCLUDE   = -L$(MLX42_DIR)/build -lmlx42 -L$(LIBFTDIR) -lft -lglfw -framework Cocoa -framework OpenGL -framework IOKit
 CFLAGS      = -Wextra -Wall -Werror -g $(INCLUDE)
 
-SRCS = main.c parsing.c player.c  init.c\
+SRCS =	main.c \
+		init.c \
+		map_parsing.c \
+		parsing.c \
+		utils00_parsing.c \
+		utils01_parsing.c
 OBJS = $(SRCS:.c=.o)
 
 all:    $(NAME)
