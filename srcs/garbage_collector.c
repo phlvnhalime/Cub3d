@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 13:55:32 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/04 17:37:58 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/06 22:59:09 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ deallocates (using free) their memory. */
 void	garbco_clean(t_garbco *garbco)
 {
 	t_garbco_node	*current;
-	t_garbco		*tmp;
+	t_garbco_node		*tmp;
 	int count;
 
 	if(!garbco)

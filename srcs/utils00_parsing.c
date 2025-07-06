@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 20:35:30 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/02 21:29:34 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/06 23:00:59 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void check_color_format(char *line)
     colors = ft_split(line, ',');
     if (ft_arraylen(colors) != 3)
     {
-        free_array(colors);
+        ft_free_split(colors);
         error_exit("Invalid color format. Expected format: R,G,B");
     }
     r = ft_atoi(colors[0]);
@@ -75,8 +75,8 @@ void check_color_format(char *line)
     b = ft_atoi(colors[2]);
     if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
     {
-        free_array(colors);
+        ft_free_split(colors);
         error_exit("Color values must be in the range [0, 255]");
     }
-    free_array(colors);
+    ft_free_split(colors);
 }

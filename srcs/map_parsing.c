@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:16:53 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/04 17:19:42 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/06 23:00:20 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int find_player_position(t_game *game)
                     return -1; // More than one player position found
                 }
                 player_count++;
-                spawn_char = &game->map.grid[y][x];
+                spawn_char = game->map.grid[y][x];
                 game->player.x = x + 0.5; // Center the player in the tile
                 game->player.y = y + 0.5; // Center the player in the tile
                 game->map.grid[y][x] = '0'; // Replace player character with empty space
@@ -167,7 +167,7 @@ int check_map_walls(t_game *game)
         {
             if(game->map.grid[y][x] == '0')
             {
-                if(x > 0 && game->map.grid[y][x-1] == ' ' || (x < game->map.width - 1 && game->map.grid[y][x+1] == ' ') ||
+                if((x > 0 && game->map.grid[y][x-1] == ' ') || ((x < game->map.width - 1) && game->map.grid[y][x+1] == ' ') ||
                    (y > 0 && game->map.grid[y-1][x] == ' ') || (y < game->map.height - 1 && game->map.grid[y+1][x] == ' '))
                 {
                     DEBUG_PRINT(RD"Map has a hole at (%d, %d)\n"RST, x, y);
@@ -247,5 +247,4 @@ void valid_map(t_game *game)
     }
     game->map_valid = 1;
     DEBUG_PRINT(GRN"Map is valid\n"RST);
-    return 1;
 }

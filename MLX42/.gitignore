@@ -18,6 +18,7 @@
 
 # Libraries
 *.lib
+*.a
 *.la
 *.lo
 
@@ -57,6 +58,11 @@ temp/
 lib/glfw/
 .DS_Store
 
+# Special shader files
+mlx_*_shader.c
+build/
+main.c
+test
 
 # Automatic downloaded deps
 _deps/

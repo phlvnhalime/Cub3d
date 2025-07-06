@@ -11,10 +11,13 @@ MLX42_DIR   = MLX42
 MLX42_LIB   = $(MLX42_DIR)/build/libmlx42.a
 
 INCLUDE     = -I$(MLX42_DIR)/include -I header -I libft
-LDINCLUDE   = -L$(MLX42_DIR)/build -lmlx42 -L$(LIBFTDIR) -lft -lglfw -framework Cocoa -framework OpenGL -framework IOKit
+LDINCLUDE = -L$(MLX42_DIR)/build -lmlx42 -L$(LIBFTDIR) -lft -L/opt/homebrew/lib -lglfw -framework Cocoa -framework OpenGL -framework IOKit
 CFLAGS      = -Wextra -Wall -Werror -g $(INCLUDE)
 
-SRCS = main.c parsing.c player.c  init.c\
+SRCS = srcs/main.c srcs/parsing.c srcs/init.c \
+		srcs/garbage_collector.c srcs/map_parsing.c srcs/utils00_parsing.c \
+		srcs/utils01_parsing.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c 
+
 OBJS = $(SRCS:.c=.o)
 
 all:    $(NAME)
@@ -22,6 +25,9 @@ all:    $(NAME)
 # Compile libft
 $(LIBFT):
 	make -C $(LIBFTDIR) && make clean -C $(LIBFTDIR)
+
+$(MLX42_LIB):
+	make -C $(MLX42_DIR)
 
 # Final target to build the executable
 $(NAME):    $(MLX42_LIB) $(LIBFT) $(OBJS)

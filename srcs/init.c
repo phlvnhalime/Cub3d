@@ -47,7 +47,7 @@ void	init_game(t_game *game)
 	game->mlx = mlx_init(WIDTH, HEIGHT, WIN_TITLE, true);
 	if (!game->mlx)
 	{
-		fd_putstr_fd("Error: MLX42 initialization failed\n", 2);
+		ft_putstr_fd("Error: MLX42 initialization failed\n", 2);
 		garbco_game(game);
 		exit(EXIT_FAILURE);
 	}
@@ -55,13 +55,13 @@ void	init_game(t_game *game)
 	game->img = mlx_new_image(game->mlx, WIDTH, HEIGHT);
 	if (!game->img)
 	{
-		fd_putstr_fd("Error: Image initialization failed\n", 2);
+		ft_putstr_fd("Error: Image initialization failed\n", 2);
 		garbco_game(game);
 		exit(EXIT_FAILURE);
 	}
 	if(mlx_image_to_window(game->mlx, game->img, 0, 0) < 0)
 	{
-		fd_putstr_fd("Error: Failed to display image in window\n", 2);
+		ft_putstr_fd("Error: Failed to display image in window\n", 2);
 		garbco_game(game);
 		exit(EXIT_FAILURE);
 	}
