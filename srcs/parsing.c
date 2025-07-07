@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 20:35:21 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/02 22:29:32 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/07 10:03:47 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int parse_color(t_game *game, char *line)
         return (0); // Invalid color identifier
     }
     split_line = ft_split(line, ' ');
-    if(!split_line || ft_strlen(split_line[0]) < 2)
+    if(!split_line || !split_line[0] || !split_line[1])// This condition must be return true for F
     {
             DEBUG_PRINT("Invalid color format: %s\n", line);
             // free_array(split_line); // It must be garbage collector /* TODO */
