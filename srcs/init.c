@@ -2,6 +2,8 @@
 
 void	init_data(t_game *data)
 {
+	// First i can start with the function garbage
+	garbco_init(&data->garbco);
 	/*
 		initialized img and mlx to NULL
 	*/
@@ -38,6 +40,7 @@ void	init_data(t_game *data)
 	data->map_started = 0; // Flag to indicate if the map has started
 	data->map_ended = 0;   // Flag to indicate if the map has ended
 	data->map_valid = 0;   // Flag to indicate if the map is valid
+	data->player_found = 0; // Flag to indicate
 }
 
 void	init_game(t_game *game)

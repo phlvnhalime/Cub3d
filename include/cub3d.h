@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:36 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/06 23:01:30 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/07 12:00:06 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,6 +199,7 @@ int find_player_position(t_game *game);
 */
 int check_map_walls(t_game *game);// Me
 int parse_map_line(t_game *game, char *line);
+void valid_map(t_game *game);
 
 /*
 	GARBAGE COLLECTOR FUNCTIONS

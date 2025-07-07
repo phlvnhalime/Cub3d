@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:16:53 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/06 23:00:20 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/07 12:34:36 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,25 +117,35 @@ int find_player_position(t_game *game)
     game->player_found = 1;
     return 1;
 }
-
+static char get_char_at(char *line, int position)
+{
+    int len = ft_strlen(line);
+    if(position >= len)
+        return ' ';
+    return line[position];
+}
 
 int check_map_walls(t_game *game)
 {
     int x;
     int y;
+    char top_char;
+    char bottom_char;
 
     // Check top and bottom walls
     x = 0;
     while(x < game->map.width)
     {
-        if(game->map.grid[0][x] != '1' || game->map.grid[game->map.height - 1][x] != '1')
+        top_char = get_char_at(game->map.grid[0], x);
+        if(top_char != '1' && top_char != ' ')
         {
-            DEBUG_PRINT(RD"Map must be surrounded by walls (top/bottom) at x = %d\n"RST, x);
+            DEBUG_PRINT(RD"Map must be surrounded by walls (top) at x = %d\n"RST, x);
             return 0; // Top or bottom wall is not valid
         }
-        if(game->map.grid[0][x] != ' ' || game->map.grid[game->map.height - 1][x] != ' ')
+        bottom_char = get_char_at(game->map.grid[game->map.height - 1], x);
+        if(bottom_char != '1' && bottom_char != ' ')
         {
-            DEBUG_PRINT(RD"Map must be surrounded by walls (top/bottom) at x = %d\n"RST, x);
+            DEBUG_PRINT(RD"Map must be surrounded by walls (bottom) at x = %d\n"RST, x);
             return 0; // Top or bottom wall is not valid
         }
         x++;
@@ -146,13 +156,13 @@ int check_map_walls(t_game *game)
     {
         if (game->map.grid[y][0] != '1' && game->map.grid[y][0] != ' ')
         {
-            DEBUG_PRINT(RD"Map must be surrounded by walls (left/right) at y = %d\n"RST, y);
+            DEBUG_PRINT(RD"Map must be surrounded by walls (left) at y = %d\n"RST, y);
             return 0; // Left or right wall is not valid
         }
         int len = ft_strlen(game->map.grid[y]);
         if (len > 1 && game->map.grid[y][len - 1] != ' ' && game->map.grid[y][len - 1] != '1')
         {
-            DEBUG_PRINT(RD"Map must be surrounded by walls (left/right) at y = %d\n"RST, y);
+            DEBUG_PRINT(RD"Map must be surrounded by walls (right) at y = %d\n"RST, y);
             return 0; // Left or right wall is not valid
         }
         y++;
@@ -238,11 +248,13 @@ void valid_map(t_game *game)
     if (!find_player_position(game))
     {
         DEBUG_PRINT(RD"Player position not found or invalid\n"RST);
+        game->map_valid = 0;
         return;
     }
     if (!check_map_walls(game))
     {
         DEBUG_PRINT(RD"Map walls are not valid\n"RST);
+        game->map_valid = 0;
         return;
     }
     game->map_valid = 1;

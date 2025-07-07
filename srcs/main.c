@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/07 09:27:36 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/07 12:05:31 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,60 @@ int	parse_file(t_game *game, char *file)
 		3. Map validation (walls around)
 		4. Grid structure creation
 	*/
+
+	if(nbr_element != 6)
+	{
+		close(fd);
+		DEBUG_PRINT(RD"Missig textures or colors. Found %d/6\n"RST, nbr_element);
+		return 0;
+	}
+	// Map parsing
+	game->map_started = 1;
+	while((line = get_next_line(fd)))
+	{
+		if(!is_empty_line(line) && is_map_line(line))
+		{
+			if(!parse_map_line(game, line))
+			{
+				free(line);
+				close(fd);
+				DEBUG_PRINT(RD"Failed to map parsing"RST);
+				return 0;
+			}
+		}
+		else if(!is_empty_line(line))
+		{
+			DEBUG_PRINT(RD"Invalid line in map section: %s\n"RST, line);
+			free(line);
+			close(fd);
+			return 0;
+		}
+		free(line);
+	}
+
 	close(fd);
-	return (nbr_element == 6); // Return true if all elements are parsed
+	//Map validation
+	if(game->map.height == 0)
+	{
+		DEBUG_PRINT(RD"No map foud in the file"RST);
+		return 0;
+	}
+	valid_map(game);
+	if(!game->map_valid)
+	{
+		DEBUG_PRINT(RD"MAp validation failed"RST);
+		return 0;
+	}
+	DEBUG_PRINT(GRN"File parsing completed successfully\n"RST);
+	return (1); // Return true if all elements are parsed
 }
+
+void game_loop(t_game *game)
+{
+	mlx_loop(game->mlx); // Open the screen or show the screen
+}
+
+
 /*Start again*/
 
 int	main(int ac, char **av)
@@ -84,15 +135,23 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 
 	/*TODO*/
+	garbco_init(&game.garbco);
+
     init_data(&game); // Initialized data structure
 
 	/*Parse arguments and set up game*/
 	if (!parse_file(&game, av[1]))
 	{
+		garbco_game(&game);
 		error_exit("Failed to parse .cub file");
 	}
 
 	// If is it successful, we can now initialize the game window
 	init_game(&game);
+
+	DEBUG_PRINT(GRN"Starting game loop... \n"RST);
+	game_loop(&game);
+	garbco_game(&game);
+	return (EXIT_SUCCESS);
 }
 
