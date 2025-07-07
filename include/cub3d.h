@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:36 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/07 12:00:06 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/07 17:51:35 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include <math.h>
 
 # define DEBUG 1
 #if DEBUG
@@ -211,6 +212,12 @@ void	garbco_remove(t_garbco *garbco, void *ptr);
 void	garbco_init(t_garbco *garbco);
 void	*garbco_malloc(t_garbco *garbco, size_t size);
 void	garbco_game(t_game *game);
+
+/*
+	RAYCASTING
+*/
+void    raycast(t_game *game);
+void    init_ray(t_game *game, t_ray *ray, int x);
 
 
 #endif
