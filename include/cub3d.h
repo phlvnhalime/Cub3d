@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:36 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/07 12:00:06 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/09 13:34:39 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include <math.h>
 
 # define DEBUG 1
 #if DEBUG
@@ -41,8 +42,6 @@
 # define MAGNT "\033[35m"
 # define CYN "\033[36m"
 
-// Define the code I can use with shortcuts
-# define mlx_key_data_t key_data_t
 
 /*
 	Color structure to represent RGB colors.
@@ -211,6 +210,28 @@ void	garbco_remove(t_garbco *garbco, void *ptr);
 void	garbco_init(t_garbco *garbco);
 void	*garbco_malloc(t_garbco *garbco, size_t size);
 void	garbco_game(t_game *game);
+
+/*
+	RAYCASTING
+*/
+void    raycast(t_game *game);
+void    init_ray(t_game *game, t_ray *ray, int x);
+void calculate_wall_screen(t_ray *ray);
+
+/*
+	HANDLE_KEYS
+*/
+void handle_key(mlx_key_data_t keys, void *frame);
+/*
+	RENDERING
+*/
+void    render_textures_wall(t_game *game, t_ray *ray, int x);
+void draw_floor_ceiling(t_game *game, int x, int wall_start, int wall_end);
+void    draw_vertical_line(t_game *game, int x, int start, int end, uint32_t color);
+uint32_t get_tex_color(mlx_texture_t *texture, int tex_x, int tex_y);
+uint32_t    get_rgba_color(uint8_t r,uint8_t g, uint8_t b, uint8_t a);
+double  get_wall_x(t_game *game, t_ray *ray);
+int get_wall_direction(t_ray *ray);
 
 
 #endif

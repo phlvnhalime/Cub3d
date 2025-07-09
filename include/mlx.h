@@ -30,16 +30,22 @@
 
 
 // Define the key codes for easier reference
-enum e_keycode
-{
-    KEY_W = MLX_KEY_W,
-    KEY_A = MLX_KEY_A,
-    KEY_S = MLX_KEY_S,
-    KEY_D = MLX_KEY_D,
-    KEY_LEFT = MLX_KEY_LEFT,
-    KEY_RIGHT = MLX_KEY_RIGHT,
-    KEY_ESC = MLX_KEY_ESCAPE,
-};
+
+#define    W MLX_KEY_W
+#define    A  MLX_KEY_A
+#define    S  MLX_KEY_S
+#define    D  MLX_KEY_D
+#define    LEFT  MLX_KEY_LEFT
+#define    RIGHT  MLX_KEY_RIGHT
+#define    KEY_ESC  MLX_KEY_ESCAPE
+
+ #define   KEY_RELEASE  MLX_RELEASE
+ #define   KEY_PRESS  MLX_PRESS
+ #define   KEY_REPEAT  MLX_REPEAT
+
+
+
+
 
 
 
