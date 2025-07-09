@@ -39,6 +39,8 @@ enum e_keycode
     KEY_LEFT = MLX_KEY_LEFT,
     KEY_RIGHT = MLX_KEY_RIGHT,
     KEY_ESC = MLX_KEY_ESCAPE,
+    KEY_PRESS = MLX_PRESS,
+    KEY_REPEAT = MLX_REPEAT,
 };
 
 

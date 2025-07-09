@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/07 12:05:31 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/09 10:28:34 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,21 @@ void	error_exit(char *msg)
 {
 	fprintf(stderr, "Error\n %s\n", msg); // changed this func.
 	exit(EXIT_FAILURE);
+}
+
+void	render_frame(void *frame)
+{
+	t_game *game = (t_game *)frame;
+	// Clean the screen for black background
+	// memset(game->img->pixels... )
+	raycast(game);
+	DEBUG_PRINT(GRN"Frame rendered\n"RST);
+}
+void	close_window(void *frame)
+{
+	t_game *game = (t_game *)frame;
+	DEBUG_PRINT(YLW"Window close required\n"RST); 
+	mlx_close_window(game->mlx);
 }
 
 int	parse_file(t_game *game, char *file)
@@ -120,11 +135,18 @@ int	parse_file(t_game *game, char *file)
 	return (1); // Return true if all elements are parsed
 }
 
-void game_loop(t_game *game)
-{
-	mlx_loop(game->mlx); // Open the screen or show the screen
+void	setup_hook(t_game *game){
+	mlx_loop_hook(game->mlx, (render_frame), game);
+	mlx_key_hook(game->mlx, handle_key, game); 
+	mlx_close_hook(game->mlx, close_window, game);
 }
 
+void game_loop(t_game *game)
+{
+	setup_hook(game); // TODO
+	DEBUG_PRINT(GRN"Starting game loop...\n"RST);
+	mlx_loop(game->mlx); // Open the screen or show the screen
+}
 
 /*Start again*/
 
@@ -134,7 +156,6 @@ int	main(int ac, char **av)
 	if (!validate_args(ac, av))
 		return (EXIT_FAILURE);
 
-	/*TODO*/
 	garbco_init(&game.garbco);
 
     init_data(&game); // Initialized data structure
@@ -150,6 +171,7 @@ int	main(int ac, char **av)
 	init_game(&game);
 
 	DEBUG_PRINT(GRN"Starting game loop... \n"RST);
+	raycast(&game);
 	game_loop(&game);
 	garbco_game(&game);
 	return (EXIT_SUCCESS);
