@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:34:24 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/09 10:15:21 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/09 14:37:45 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,11 @@ void perform_dda(t_game *game, t_ray *ray)
             ray->side = 1; // Horizontal
         }
         // check the wall
-        if(game->map.grid[ray->map_y][ray->map_x] == '1')
+        if(ray->map_x < 0 || ray->map_x >= game->map.width || 
+            ray->map_y < 0 || ray->map_y >= game->map.height ){
+                ray->hit = 1;
+        }
+        else if(game->map.grid[ray->map_y][ray->map_x] == '1')
             ray->hit = 1;
     }
     if(ray->side == 0)
@@ -96,7 +100,7 @@ void perform_dda(t_game *game, t_ray *ray)
         ray->perp_wall_dist = (ray->map_y - game->player.y +(1-ray->step_y) / 2) / ray->ray_dir_y;
 }
 
-void calculate_wall_screen(t_game *game, t_ray *ray){
+void calculate_wall_screen(t_ray *ray){
     /*
         - Calculate the height
         - Draw start/end calculation // TODO
@@ -149,9 +153,9 @@ void    raycast(t_game *game)
         // Implement the algorithm dda(Digital differential analyzer)
         perform_dda(game, &ray);
         // calculate wall and screean
-        calculate_wall_screen(game, &ray);
+        calculate_wall_screen(&ray);
         // Rendering textures 
-        render_textures_wall(); // Julio implemented maybe different name.
+        render_textures_wall(game, &ray, x); // Julio implemented maybe different name.
         x++;
    }
 }

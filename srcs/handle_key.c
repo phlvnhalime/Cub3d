@@ -6,12 +6,12 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 08:58:35 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/09 10:14:11 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/09 13:43:31 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
+#include "../include/mlx.h"
 
 void handle_key(mlx_key_data_t keys, void *frame)
 {
@@ -30,7 +30,7 @@ void handle_key(mlx_key_data_t keys, void *frame)
     if(keys.action == KEY_PRESS && keys.action == KEY_REPEAT)
     {
         // Move to goo
-        if(keys.key == KEY_W)
+        if(keys.key == W)
         {
             double i;// x
             double j;// y
@@ -42,10 +42,10 @@ void handle_key(mlx_key_data_t keys, void *frame)
             {
                 game->player.x = i;
                 game->player.y = j;
-                DEBUG_PRINT(YLW"Player position_x: %d \n Player position_y: %d \n"RST, i,j);
+                DEBUG_PRINT(YLW"Player position_x: %f \n Player position_y: %f \n"RST, i,j);
             }
         }
-        else if(keys.key == KEY_S)
+        else if(keys.key == S)
         {
             // It must be go down
             double i;// x
@@ -58,10 +58,10 @@ void handle_key(mlx_key_data_t keys, void *frame)
             {
                 game->player.x = i;
                 game->player.y = j;
-                DEBUG_PRINT(YLW"Player position_x: %d \n Player position_y: %d \n"RST, i,j);
+                DEBUG_PRINT(YLW"Player position_x: %f \n Player position_y: %f \n"RST, i,j);
             }
         }
-        else if(keys.key == KEY_A)
+        else if(keys.key == A)
         {
             // It must be go left
             double i;// x
@@ -74,10 +74,10 @@ void handle_key(mlx_key_data_t keys, void *frame)
             {
                 game->player.x = i;
                 game->player.y = j;
-                DEBUG_PRINT(YLW"Player position_x: %d \n Player position_y: %d \n"RST, i,j);
+                DEBUG_PRINT(YLW"Player position_x: %f \n Player position_y: %f \n"RST, i,j);
             }
         }
-        else if (keys.key == KEY_D)
+        else if (keys.key == D)
         {
             // It must be go right
             double i;// x
@@ -90,10 +90,10 @@ void handle_key(mlx_key_data_t keys, void *frame)
             {
                 game->player.x = i;
                 game->player.y = j;
-                DEBUG_PRINT(YLW"Player position_x: %d \n Player position_y: %d \n"RST, i,j);
+                DEBUG_PRINT(YLW"Player position_x: %f \n Player position_y: %f \n"RST, i,j);
             }
         }
-        else if(keys.key == KEY_LEFT)
+        else if(keys.key == LEFT)
         {
             double old_i = game->player.dir_x;
             game->player.dir_x = game->player.dir_x * cos(-rotation_speed) - game->player.dir_y * sin(-rotation_speed);
@@ -104,7 +104,7 @@ void handle_key(mlx_key_data_t keys, void *frame)
             game->player.plane_y = old_plane_i * sin(-rotation_speed) + game->player.plane_y * cos(-rotation_speed);
 
         }
-         else if(keys.key == KEY_RIGHT)
+         else if(keys.key == RIGHT)
         {
             double old_i = game->player.dir_x;
             game->player.dir_x = game->player.dir_x * cos(-rotation_speed) - game->player.dir_y * sin(-rotation_speed);

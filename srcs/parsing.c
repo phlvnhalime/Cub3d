@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 20:35:21 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/07 12:05:28 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/09 14:59:16 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int    parse_texture(t_game *game, char *line)
     if (!path || ft_strlen(path) == 0)
     {
         DEBUG_PRINT("Invalid texture path: %s\n", line);
-        free(path);
+        if(path)
+            free(path);
         return (0); // Invalid texture path
     }
      /*
@@ -51,19 +52,32 @@ int    parse_texture(t_game *game, char *line)
         2. After loading the texture, assign the path to the texture structure.
     */
     // game->textures[game->texture_count].path = path; // Path to the texture file
+    DEBUG_PRINT(CYN"Attempting to load texture: %s\n"RST, path);
     game->textures[i].texture = mlx_load_png(path);
     if (!game->textures[i].texture)
     {
         DEBUG_PRINT("Failed to load texture: %s\n", path);
-        free(path);
+        // free(path);
         // free(game->textures[game->texture_count].path);
         // game->textures[game->texture_count].path = NULL;
         return (0); // Failed to load texture
     }
+    DEBUG_PRINT(GRN"Texture loaded successfully: %s\n"RST, path);
+    garbco_add(&game->garbco, path);
     game->textures[i].path = path;
     game->texture_count++;
     DEBUG_PRINT(RD"Texture loaded: %s\n"RST, path);
     DEBUG_PRINT(RD"Texture count: %d\n"RST, game->texture_count);
+    if(game->textures[i].texture != NULL)
+    {
+        DEBUG_PRINT(GRN"Texture %d loaded successfully.\n"RST, i);
+    }
+    else
+    {
+        DEBUG_PRINT(RD"Failed to load texture %d.\n"RST, i);
+        // free(path); // It must be garbage collector /* TODO */
+        return (0); // Failed to load texture
+    }
     return (1); // Texture parsed successfully
 }
 int valid_rgb_format(int r, int g, int b)

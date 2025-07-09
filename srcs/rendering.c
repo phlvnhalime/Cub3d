@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:52:07 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/09 12:17:36 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/09 13:14:40 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ uint32_t    get_rgba_color(uint8_t r,uint8_t g, uint8_t b, uint8_t a){
 uint32_t get_tex_color(mlx_texture_t *texture, int tex_x, int tex_y)
 {
     if(!texture || tex_x < 0 || tex_x >= (int)texture->width || tex_y < 0 || tex_y >= (int)texture->height)
-        return 0xFF; // Search it which color you can use! // TODO
+        return 0xFF00FFFF;//(RED) // Search it which color you can use! // TODO
     int pix_index = (tex_y * (int)texture->width + tex_x) * texture->bytes_per_pixel;
     uint8_t *pix = texture->pixels;
 
@@ -105,6 +105,51 @@ void draw_floor_ceiling(t_game *game, int x, int wall_start, int wall_end)
     {
         if(x >= 0 && x < WIDTH && y >= 0)
             mlx_put_pixel(game->img, x, y, floor_color);
+        y++;
+    }
+}
+
+void    render_textures_wall(t_game *game, t_ray *ray, int x)
+{
+    // Determine which wall direction to use
+    int wall_direction = get_wall_direction(ray);
+    mlx_texture_t *tex = game->textures[wall_direction].texture;
+    if(!tex)
+    {
+        DEBUG_PRINT(RD"Texture not found"RST);
+        return;
+    }
+    // Calculate the cordinate on the wall
+    double wall_x = get_wall_x(game, ray);
+    int tex_x = (int)(wall_x * (double)tex->width);
+    if((ray->side == 0 && ray->ray_dir_x > 0) ||(ray->side == 1 && ray->ray_dir_y > 0))
+        tex_x = tex->width - tex_x -1;
+    
+    // parameters
+    double steps = (double)tex->height / (double)ray->line_height;
+    double tex_position = (ray->draw_start - HEIGHT / 2 + ray->line_height / 2) * steps;
+
+    draw_floor_ceiling(game, x, ray->draw_start, ray->draw_end);
+
+    int y = ray->draw_start;
+    while(y <= ray->draw_end && y < HEIGHT)
+    {
+        int tex_y = (int)tex_position;
+        if(tex_y >= 0 && tex_y < (int)tex->height)
+        {
+            uint32_t color = get_tex_color(tex, tex_x, tex_y);
+            if(ray->side ==1)
+            {
+                // darken horizontal walls by %25 
+                uint8_t r = ((color >> 24) & 0xFF) * 0.75;
+                uint8_t g = ((color >> 16) & 0xFF) * 0.75;
+                uint8_t b = ((color >> 8) & 0xFF) * 0.75;
+                uint8_t a = color & 0xFF;
+                color = get_rgba_color(r, g, b, a);
+            }
+            mlx_put_pixel(game->img, x, y, color);
+        }
+        tex_position += steps;
         y++;
     }
 }
