@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:34:24 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/09 14:37:45 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/09 15:52:11 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,9 @@ void perform_dda(t_game *game, t_ray *ray)
         if(ray->map_x < 0 || ray->map_x >= game->map.width || 
             ray->map_y < 0 || ray->map_y >= game->map.height ){
                 ray->hit = 1;
+                break;
         }
-        else if(game->map.grid[ray->map_y][ray->map_x] == '1')
+        if(game->map.grid[ray->map_y] && ray->map_x <(int)ft_strlen(game->map.grid[ray->map_y]) && game->map.grid[ray->map_y][ray->map_x] == '1')
             ray->hit = 1;
     }
     if(ray->side == 0)

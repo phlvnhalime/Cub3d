@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:52:07 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/09 13:14:40 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/09 15:48:39 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ uint32_t get_tex_color(mlx_texture_t *texture, int tex_x, int tex_y)
 
     uint8_t r = pix[pix_index];
     uint8_t g = pix[pix_index + 1];
-    uint8_t b = pix[pix_index]+ 2;
+    uint8_t b = pix[pix_index+ 2];
     uint8_t a;
     if(texture->bytes_per_pixel == 4)
         a = pix[pix_index+3];
@@ -116,7 +116,7 @@ void    render_textures_wall(t_game *game, t_ray *ray, int x)
     mlx_texture_t *tex = game->textures[wall_direction].texture;
     if(!tex)
     {
-        DEBUG_PRINT(RD"Texture not found"RST);
+        DEBUG_PRINT(RD"Texture is not found: %d"RST, wall_direction);
         return;
     }
     // Calculate the cordinate on the wall

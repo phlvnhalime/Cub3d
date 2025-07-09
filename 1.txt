@@ -1,0 +1,133 @@
+ [DEBUG] [36mAttempting to load texture: ./textures/north_wall.png
+[0m [DEBUG] [32mTexture loaded successfully: ./textures/north_wall.png
+[0m [DEBUG] [32mAdded pointer 0x121e046e0 to garbage collector
+[0m [DEBUG] [31mTexture loaded: ./textures/north_wall.png
+[0m [DEBUG] [31mTexture count: 1
+[0m [DEBUG] [32mTexture 0 loaded successfully.
+[0m [DEBUG] [36mAttempting to load texture: ./textures/south_wall.png
+[0m [DEBUG] [32mTexture loaded successfully: ./textures/south_wall.png
+[0m [DEBUG] [32mAdded pointer 0x121e04720 to garbage collector
+[0m [DEBUG] [31mTexture loaded: ./textures/south_wall.png
+[0m [DEBUG] [31mTexture count: 2
+[0m [DEBUG] [32mTexture 1 loaded successfully.
+[0m [DEBUG] [36mAttempting to load texture: ./textures/west_wall.png
+[0m [DEBUG] [32mTexture loaded successfully: ./textures/west_wall.png
+[0m [DEBUG] [32mAdded pointer 0x121e0ea90 to garbage collector
+[0m [DEBUG] [31mTexture loaded: ./textures/west_wall.png
+[0m [DEBUG] [31mTexture count: 3
+[0m [DEBUG] [32mTexture 2 loaded successfully.
+[0m [DEBUG] [36mAttempting to load texture: ./textures/east_wall.png
+[0m [DEBUG] [32mTexture loaded successfully: ./textures/east_wall.png
+[0m [DEBUG] [32mAdded pointer 0x121e0ead0 to garbage collector
+[0m [DEBUG] [31mTexture loaded: ./textures/east_wall.png
+[0m [DEBUG] [31mTexture count: 4
+[0m [DEBUG] [32mTexture 3 loaded successfully.
+[0m [DEBUG] [31mColor set: F 220,100,0
+[0m [DEBUG] [31mColor hex: dc6400
+[0m [DEBUG] [32mCheck color from parsing part is done.
+[0m [DEBUG] [31mColor set: C 225,30,0
+[0m [DEBUG] [31mColor hex: e11e00
+[0m [DEBUG] [32mCheck color from parsing part is done.
+[0m [DEBUG] [32mAdded pointer 0x121e100f0 to garbage collector
+[0m [DEBUG] [32mAllocated 8 bytes at 0x121e100f0
+[0m [DEBUG] [32mAdded pointer 0x121e0eb40 to garbage collector
+[0m [DEBUG] [32mAllocated 35 bytes at 0x121e0eb40
+[0m [DEBUG] [32mMap line added:         1111111111111111111111111 (width: 34, height: 1)
+[0m [DEBUG] [32mAdded pointer 0x121e04740 to garbage collector
+[0m [DEBUG] [32mAllocated 16 bytes at 0x121e04740
+[0m [DEBUG] [32mAdded pointer 0x121e11e90 to garbage collector
+[0m [DEBUG] [32mAllocated 35 bytes at 0x121e11e90
+[0m [DEBUG] [32mRemoved pointer 0x121e100f0 from garbage collector
+[0m [DEBUG] [32mMap line added:         1000000000110000000000001 (width: 34, height: 2)
+[0m [DEBUG] [32mAdded pointer 0x121e046c0 to garbage collector
+[0m [DEBUG] [32mAllocated 24 bytes at 0x121e046c0
+[0m [DEBUG] [32mAdded pointer 0x121e11ec0 to garbage collector
+[0m [DEBUG] [32mAllocated 35 bytes at 0x121e11ec0
+[0m [DEBUG] [32mRemoved pointer 0x121e04740 from garbage collector
+[0m [DEBUG] [32mMap line added:         1011000001110000000000001 (width: 34, height: 3)
+[0m [DEBUG] [32mAdded pointer 0x121e11ef0 to garbage collector
+[0m [DEBUG] [32mAllocated 32 bytes at 0x121e11ef0
+[0m [DEBUG] [32mAdded pointer 0x121e11f10 to garbage collector
+[0m [DEBUG] [32mAllocated 35 bytes at 0x121e11f10
+[0m [DEBUG] [32mRemoved pointer 0x121e046c0 from garbage collector
+[0m [DEBUG] [32mMap line added:         1001000000000000000000001 (width: 34, height: 4)
+[0m [DEBUG] [32mAdded pointer 0x121e11f40 to garbage collector
+[0m [DEBUG] [32mAllocated 40 bytes at 0x121e11f40
+[0m [DEBUG] [32mAdded pointer 0x121e11f70 to garbage collector
+[0m [DEBUG] [32mAllocated 35 bytes at 0x121e11f70
+[0m [DEBUG] [32mRemoved pointer 0x121e11ef0 from garbage collector
+[0m [DEBUG] [32mMap line added: 111111111011000001110000000000001 (width: 34, height: 5)
+[0m [DEBUG] [32mAdded pointer 0x121e11fa0 to garbage collector
+[0m [DEBUG] [32mAllocated 48 bytes at 0x121e11fa0
+[0m [DEBUG] [32mAdded pointer 0x121e11fd0 to garbage collector
+[0m [DEBUG] [32mAllocated 35 bytes at 0x121e11fd0
+[0m [DEBUG] [32mRemoved pointer 0x121e11f40 from garbage collector
+[0m [DEBUG] [32mMap line added: 100000000011000001110111111111111 (width: 34, height: 6)
+[0m [DEBUG] [32mAdded pointer 0x121e12020 to garbage collector
+[0m [DEBUG] [32mAllocated 56 bytes at 0x121e12020
+[0m [DEBUG] [32mAdded pointer 0x121e0eb10 to garbage collector
+[0m [DEBUG] [32mAllocated 31 bytes at 0x121e0eb10
+[0m [DEBUG] [32mRemoved pointer 0x121e11fa0 from garbage collector
+[0m [DEBUG] [32mMap line added: 11110111111111011100000010001 (width: 34, height: 7)
+[0m [DEBUG] [32mAdded pointer 0x121e12060 to garbage collector
+[0m [DEBUG] [32mAllocated 64 bytes at 0x121e12060
+[0m [DEBUG] [32mAdded pointer 0x121e120a0 to garbage collector
+[0m [DEBUG] [32mAllocated 31 bytes at 0x121e120a0
+[0m [DEBUG] [32mRemoved pointer 0x121e12020 from garbage collector
+[0m [DEBUG] [32mMap line added: 11110111111111011101010010001 (width: 34, height: 8)
+[0m [DEBUG] [32mAdded pointer 0x121e120c0 to garbage collector
+[0m [DEBUG] [32mAllocated 72 bytes at 0x121e120c0
+[0m [DEBUG] [32mAdded pointer 0x121e12110 to garbage collector
+[0m [DEBUG] [32mAllocated 31 bytes at 0x121e12110
+[0m [DEBUG] [32mRemoved pointer 0x121e12060 from garbage collector
+[0m [DEBUG] [32mMap line added: 11000000110101011100000010001 (width: 34, height: 9)
+[0m [DEBUG] [32mAdded pointer 0x121e12130 to garbage collector
+[0m [DEBUG] [32mAllocated 80 bytes at 0x121e12130
+[0m [DEBUG] [32mAdded pointer 0x121e12180 to garbage collector
+[0m [DEBUG] [32mAllocated 31 bytes at 0x121e12180
+[0m [DEBUG] [32mRemoved pointer 0x121e120c0 from garbage collector
+[0m [DEBUG] [32mMap line added: 10000000000000001100000010001 (width: 34, height: 10)
+[0m [DEBUG] [32mAdded pointer 0x121e121a0 to garbage collector
+[0m [DEBUG] [32mAllocated 88 bytes at 0x121e121a0
+[0m [DEBUG] [32mAdded pointer 0x121e12200 to garbage collector
+[0m [DEBUG] [32mAllocated 31 bytes at 0x121e12200
+[0m [DEBUG] [32mRemoved pointer 0x121e12130 from garbage collector
+[0m [DEBUG] [32mMap line added: 10000000000000001101010010001 (width: 34, height: 11)
+[0m [DEBUG] [32mAdded pointer 0x121e12250 to garbage collector
+[0m [DEBUG] [32mAllocated 96 bytes at 0x121e12250
+[0m [DEBUG] [32mAdded pointer 0x121e122b0 to garbage collector
+[0m [DEBUG] [32mAllocated 33 bytes at 0x121e122b0
+[0m [DEBUG] [32mRemoved pointer 0x121e121a0 from garbage collector
+[0m [DEBUG] [32mMap line added: 11000001110101011111011110N0111 (width: 34, height: 12)
+[0m [DEBUG] [32mAdded pointer 0x121e122e0 to garbage collector
+[0m [DEBUG] [32mAllocated 104 bytes at 0x121e122e0
+[0m [DEBUG] [32mAdded pointer 0x121e12220 to garbage collector
+[0m [DEBUG] [32mAllocated 31 bytes at 0x121e12220
+[0m [DEBUG] [32mRemoved pointer 0x121e12250 from garbage collector
+[0m [DEBUG] [32mMap line added: 11110111 1110101 101111010001 (width: 34, height: 13)
+[0m [DEBUG] [32mAdded pointer 0x121e12350 to garbage collector
+[0m [DEBUG] [32mAllocated 112 bytes at 0x121e12350
+[0m [DEBUG] [32mAdded pointer 0x121e123c0 to garbage collector
+[0m [DEBUG] [32mAllocated 31 bytes at 0x121e123c0
+[0m [DEBUG] [32mRemoved pointer 0x121e122e0 from garbage collector
+[0m [DEBUG] [32mMap line added: 11111111 1111111 111111111111 (width: 34, height: 14)
+[0m [DEBUG] [32mPlayer found at (26, 11) --> (26.50, 11.50) facing 'N'
+[0m [DEBUG] [32mPlayer direction set to 'N' : dir(0.00, -1.00) plane(0.66, 0.00) spawn_dir(90.00)
+[0m [DEBUG] [32mMap walls are valid
+[0m [DEBUG] [32mMap is valid
+[0m [DEBUG] [32mFile parsing completed successfully
+[0m [DEBUG] [32mGame initialized successfully
+[0m [DEBUG] [32mStarting game loop... 
+[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] Texture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [31mTexture is not found: 0[0m [DEBUG] [32mFrame rendered
+[0m [DEBUG] [31mThe Program is trying to closed
+[0m [DEBUG] [32mCleaning game garbage collector...
+[0m [DEBUG] [32mTexture 1 cleaned
+[0m [DEBUG] [32mTexture 2 cleaned
+[0m [DEBUG] [32mTexture 3 cleaned
+[0m [DEBUG] [32mTexture 4 cleaned
+[0m [DEBUG] [32mImage cleaned
+[0m [DEBUG] [32mMLX cleaned
+[0m [DEBUG] [32mCleaning garbage collector...
+[0m [DEBUG] [32mGarbage collector cleaned 0 pointers
+[0m [DEBUG] [32mGame garbage collector cleaned
+[0m

@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 20:35:21 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/09 14:59:16 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/09 15:35:25 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int    parse_texture(t_game *game, char *line)
     if (!game->textures[i].texture)
     {
         DEBUG_PRINT("Failed to load texture: %s\n", path);
-        // free(path);
+        free(path);
         // free(game->textures[game->texture_count].path);
         // game->textures[game->texture_count].path = NULL;
         return (0); // Failed to load texture
