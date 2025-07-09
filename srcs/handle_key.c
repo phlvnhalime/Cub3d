@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 08:58:35 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/09 13:43:31 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:10:33 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void handle_key(mlx_key_data_t keys, void *frame)
     double move_speed = 0.1;
     double rotation_speed = 0.05;
 
-    if(keys.action == KEY_PRESS && keys.action == KEY_REPEAT)
+    if(keys.action == KEY_PRESS || keys.action == KEY_REPEAT)
     {
         // Move to goo
         if(keys.key == W)

@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:36 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/09 13:34:39 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:10:28 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,6 +217,7 @@ void	garbco_game(t_game *game);
 void    raycast(t_game *game);
 void    init_ray(t_game *game, t_ray *ray, int x);
 void calculate_wall_screen(t_ray *ray);
+void perform_dda(t_game *game, t_ray *ray);
 
 /*
 	HANDLE_KEYS

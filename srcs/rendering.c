@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:52:07 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/09 15:48:39 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:09:34 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ double  get_wall_x(t_game *game, t_ray *ray)
 }
 
 uint32_t    get_rgba_color(uint8_t r,uint8_t g, uint8_t b, uint8_t a){
-    return (r << 24) | (g << 16) |(b << 8) | a;
+    return (r << 24) | (g << 16) | (b << 8) | a;
 }
 
 uint32_t get_tex_color(mlx_texture_t *texture, int tex_x, int tex_y)
@@ -90,7 +90,7 @@ void draw_floor_ceiling(t_game *game, int x, int wall_start, int wall_end)
     y = 0;
     while(y < wall_start && y < HEIGHT)
     {
-        if(x >= 0 && x < WIDTH && y>= 0)
+        if(x >= 0 && x < WIDTH && y >= 0)
             mlx_put_pixel(game->img, x, y, ceiling_color);
         y++;
     }
@@ -112,18 +112,32 @@ void draw_floor_ceiling(t_game *game, int x, int wall_start, int wall_end)
 void    render_textures_wall(t_game *game, t_ray *ray, int x)
 {
     // Determine which wall direction to use
+    if(!ray->hit)
+    {
+        DEBUG_PRINT(RD"Ray hit is not found, cannot render texture\n"RST);
+        return;
+    }
     int wall_direction = get_wall_direction(ray);
+    if(wall_direction < 0 || wall_direction >= 4)
+    {
+        DEBUG_PRINT(RD"Invalid wall direction: %d\n"RST, wall_direction);
+        return;
+    }
     mlx_texture_t *tex = game->textures[wall_direction].texture;
     if(!tex)
     {
         DEBUG_PRINT(RD"Texture is not found: %d"RST, wall_direction);
+        uint32_t error_color = 0xFFFF00FF; // Yellow color for error
+        draw_vertical_line(game, x, ray->draw_start, ray->draw_end, error_color);
+        draw_floor_ceiling(game, x, ray->draw_start, ray->draw_end);
         return;
     }
     // Calculate the cordinate on the wall
     double wall_x = get_wall_x(game, ray);
     int tex_x = (int)(wall_x * (double)tex->width);
-    if((ray->side == 0 && ray->ray_dir_x > 0) ||(ray->side == 1 && ray->ray_dir_y > 0))
-        tex_x = tex->width - tex_x -1;
+    if((ray->side == 0 && ray->ray_dir_x > 0) ||
+        (ray->side == 1 && ray->ray_dir_y > 0))
+        tex_x = tex->width - tex_x - 1;
     
     // parameters
     double steps = (double)tex->height / (double)ray->line_height;

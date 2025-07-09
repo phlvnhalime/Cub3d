@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/09 14:50:11 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:31:20 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,9 @@ void	setup_hook(t_game *game){
 
 void game_loop(t_game *game)
 {
-	setup_hook(game); // TODO
+	setup_hook(game); 
+	memset(game->img->pixels, 0, game->img->width * game->img->height * sizeof(uint32_t));
+	raycast(game); // Raycasting function to render the frame
 	DEBUG_PRINT(GRN"Starting game loop...\n"RST);
 	mlx_loop(game->mlx); // Open the screen or show the screen
 }
@@ -153,12 +155,14 @@ void game_loop(t_game *game)
 int	main(int ac, char **av)
 {
 	t_game game;
+
+	// If is it successful, we can now initialize the game window
+	init_game(&game);
 	if (!validate_args(ac, av))
 		return (EXIT_FAILURE);
 
 	garbco_init(&game.garbco);
 
-    init_data(&game); // Initialized data structure
 
 	/*Parse arguments and set up game*/
 	if (!parse_file(&game, av[1]))
@@ -167,11 +171,8 @@ int	main(int ac, char **av)
 		error_exit("Failed to parse .cub file");
 	}
 
-	// If is it successful, we can now initialize the game window
-	init_game(&game);
 
 	DEBUG_PRINT(GRN"Starting game loop... \n"RST);
-	raycast(&game);
 	game_loop(&game);
 	garbco_game(&game);
 	return (EXIT_SUCCESS);
