@@ -11,8 +11,11 @@ MLX42_DIR   = MLX42
 MLX42_LIB   = $(MLX42_DIR)/build/libmlx42.a
 
 INCLUDE     = -I$(MLX42_DIR)/include -I header -I libft
-LDINCLUDE = -L$(MLX42_DIR)/build -lmlx42 -L$(LIBFTDIR) -lft -L/opt/homebrew/lib -lglfw -framework Cocoa -framework OpenGL -framework IOKit
+# LDINCLUDE   = -L$(MLX42_DIR)/build -lmlx42 -L$(LIBFTDIR) -lft -L$(FT_PRINTF_DIR) -lftprintf -lglfw -framework Cocoa -framework OpenGL -framework IOKit
+LDINCLUDE   = -L$(MLX42_DIR)/build -lmlx42 -L$(LIBFTDIR) -lft -lglfw -framework Cocoa -framework OpenGL -framework IOKit
+# LDINCLUDE	= -L$(MLX42_DIR)/build -lmlx42 -L$(LIBFTDIR) -lft -L/opt/homebrew/lib -lglfw -framework Cocoa -framework OpenGL -framework IOKit
 CFLAGS      = -Wextra -Wall -Werror -g $(INCLUDE)
+
 
 SRCS = srcs/main.c srcs/parsing.c srcs/init.c \
 		srcs/garbage_collector.c srcs/map_parsing.c srcs/utils00_parsing.c \
