@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:36 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/12 01:04:02 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 01:12:48 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 # include <math.h>
 
 # define DEBUG 1
-#if DEBUG
-    # define DEBUG_PRINT(fmt, ...) fprintf(stderr, " [DEBUG] " fmt, ##__VA_ARGS__)
-#else
+# if DEBUG
+#  define DEBUG_PRINT(fmt, ...) fprintf(stderr, " [DEBUG] " fmt, ##__VA_ARGS__)
+# else
     # define DEBUG_PRINT(fmt, ...) do {} while(0)
 	Dont do anything when the debug closed
 #endif
