@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:34:24 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/09 14:37:45 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/11 10:08:34 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ void    init_ray(t_game *game, t_ray *ray, int x){
     ray->map_x = (int)game->player.x;
     ray->map_y = (int)game->player.y;
     if(ray->ray_dir_x == 0)
-    {
         ray->delta_dist_x = 1e30;
-    }
     else
     {
         ray->delta_dist_x = fabs(1/ ray->ray_dir_x);// floating-point absolute value function
@@ -90,8 +88,9 @@ void perform_dda(t_game *game, t_ray *ray)
         if(ray->map_x < 0 || ray->map_x >= game->map.width || 
             ray->map_y < 0 || ray->map_y >= game->map.height ){
                 ray->hit = 1;
+                break;
         }
-        else if(game->map.grid[ray->map_y][ray->map_x] == '1')
+        if(game->map.grid[ray->map_y] && ray->map_x < (int)ft_strlen(game->map.grid[ray->map_y]) && game->map.grid[ray->map_y][ray->map_x] == '1')
             ray->hit = 1;
     }
     if(ray->side == 0)
@@ -107,7 +106,7 @@ void calculate_wall_screen(t_ray *ray){
         - Choose textures // TODO
         - Calculate the texture of cordinate // TODO
     */
-    ray->line_height = HEIGHT / ray->perp_wall_dist;
+    ray->line_height = (int)(HEIGHT / ray->perp_wall_dist);
     ray->draw_start = -ray->line_height / 2 + HEIGHT / 2; // IT's goin to down
     if(ray->draw_start < 0)
         ray->draw_start = 0;

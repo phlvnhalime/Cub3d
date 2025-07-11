@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/09 14:50:11 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/11 16:29:53 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	close_window(void *frame)
 	DEBUG_PRINT(YLW"Window close required\n"RST); 
 	mlx_close_window(game->mlx);
 }
+
+
 
 int	parse_file(t_game *game, char *file)
 {
@@ -131,34 +133,24 @@ int	parse_file(t_game *game, char *file)
 		DEBUG_PRINT(RD"MAp validation failed"RST);
 		return 0;
 	}
+
 	DEBUG_PRINT(GRN"File parsing completed successfully\n"RST);
 	return (1); // Return true if all elements are parsed
 }
 
-void	setup_hook(t_game *game){
-	mlx_loop_hook(game->mlx, (render_frame), game);
-	mlx_key_hook(game->mlx, handle_key, game); 
-	mlx_close_hook(game->mlx, close_window, game);
-}
 
-void game_loop(t_game *game)
-{
-	setup_hook(game); // TODO
-	DEBUG_PRINT(GRN"Starting game loop...\n"RST);
-	mlx_loop(game->mlx); // Open the screen or show the screen
-}
-
-/*Start again*/
 
 int	main(int ac, char **av)
 {
 	t_game game;
+
+	// If is it successful, we can now initialize the game window
+	init_game(&game);
 	if (!validate_args(ac, av))
 		return (EXIT_FAILURE);
 
 	garbco_init(&game.garbco);
 
-    init_data(&game); // Initialized data structure
 
 	/*Parse arguments and set up game*/
 	if (!parse_file(&game, av[1]))
@@ -167,11 +159,8 @@ int	main(int ac, char **av)
 		error_exit("Failed to parse .cub file");
 	}
 
-	// If is it successful, we can now initialize the game window
-	init_game(&game);
 
 	DEBUG_PRINT(GRN"Starting game loop... \n"RST);
-	raycast(&game);
 	game_loop(&game);
 	garbco_game(&game);
 	return (EXIT_SUCCESS);

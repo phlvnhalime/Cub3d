@@ -18,8 +18,8 @@
 #define PLAYER_W 'W'
 
 /* Move speed */
-#define MOVE_SPEED 0.1f
-#define ROTATE_SPEED 0.05f
+// #define MOVE_SPEED 0.1f
+// #define ROTATE_SPEED 0.05f
 
 /* Math constant */
 #define PI 3.14159265359f

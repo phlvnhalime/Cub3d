@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:16:53 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/07 12:34:36 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/11 16:48:46 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int is_map_line(char *line)
     }
     return has_map_char;
 }
+
 
 void set_player_direction(t_game *game, char spawn_char)
 {
@@ -117,10 +118,12 @@ int find_player_position(t_game *game)
     game->player_found = 1;
     return 1;
 }
-static char get_char_at(char *line, int position)
+static char get_char_at(char *line, int position) // change this function as nonstatic
 {
     int len = ft_strlen(line);
-    if(position >= len)
+    if(!line)
+        return ' ';
+    if(position >= len || position < 0)
         return ' ';
     return line[position];
 }
@@ -173,7 +176,8 @@ int check_map_walls(t_game *game)
     while(y < game->map.height - 1)
     {
         x = 1;
-        while(x < game->map.width - 1)
+        int row_len = ft_strlen(game->map.grid[y]); // It is very important to get the row length because with this we cannot get any error messages from the debugger
+        while(x < row_len -1)
         {
             if(game->map.grid[y][x] == '0')
             {
@@ -204,6 +208,14 @@ int parse_map_line(t_game *game, char *line)
         return 0; // Invalid map line
     }
 
+    line_len = ft_strlen(line);
+    if(line_len > 0 && line[line_len - 1] == '\n')
+    {
+        line[line_len - 1] = '\0'; // Remove trailing newline character
+        line_len--;
+    }
+    
+
     new_grind = garbco_malloc(&game->garbco, sizeof(char *) * (game->map.height + 1));
     if(!new_grind)
        return 0;
@@ -217,17 +229,17 @@ int parse_map_line(t_game *game, char *line)
     }
 
     // ADD new "ROWW"
-    line_len = ft_strlen(line);
-    if(line_len > 0 && line[line_len - 1] == '\n')
-        line[line_len - 1] = '\0'; // Remove trailing newline character
     
     // Allocate memory for the new row
     new_grind[game->map.height] = garbco_malloc(&game->garbco, sizeof(char) * (line_len + 1));
     if(!new_grind[game->map.height])
        return 0;
+    
     ft_strlcpy(new_grind[game->map.height], line, line_len + 1);
+
     if(game->map.grid)
         garbco_remove(&game->garbco, game->map.grid);
+        
     game->map.grid = new_grind;
     game->map.height++;
 
