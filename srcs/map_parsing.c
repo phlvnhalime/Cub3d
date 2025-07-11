@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:16:53 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/11 10:07:20 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/11 15:40:10 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int is_map_line(char *line)
     }
     return has_map_char;
 }
+
 
 void set_player_direction(t_game *game, char spawn_char)
 {

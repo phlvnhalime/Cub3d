@@ -27,7 +27,7 @@ CFLAGS      = -Wextra -Wall -Werror -g $(INCLUDE)
 SRCS = srcs/main.c srcs/parsing.c srcs/init.c \
 		srcs/garbage_collector.c srcs/map_parsing.c srcs/utils00_parsing.c \
 		srcs/utils01_parsing.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
-		srcs/raycasting.c srcs/rendering.c srcs/handle_key.c
+		srcs/raycasting.c srcs/rendering.c srcs/handle_key.c srcs/input.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:36 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/11 15:32:11 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/11 15:42:29 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -237,5 +237,13 @@ uint32_t    get_rgba_color(uint8_t r,uint8_t g, uint8_t b, uint8_t a);
 double  get_wall_x(t_game *game, t_ray *ray);
 int get_wall_direction(t_ray *ray);
 
+/*
+	INPUT
+*/
+void input_hook(void *frame);
+void setup_hook(t_game *game);
+void game_loop(t_game *game);
+void	close_window(void *frame);
+void	render_frame(void *frame);
 
 #endif
