@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/11 16:29:53 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/12 00:31:19 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,23 @@ void	error_exit(char *msg)
 
 void	render_frame(void *frame)
 {
-	t_game *game = (t_game *)frame;
+	t_game	*game;
+
+	game = (t_game *)frame;
 	// Clean the screen for black background
 	// memset(game->img->pixels... )
 	raycast(game);
 	DEBUG_PRINT(GRN"Frame rendered\n"RST);
 }
+
 void	close_window(void *frame)
 {
-	t_game *game = (t_game *)frame;
+	t_game	*game;
+
+	game = (t_game *)frame;
 	DEBUG_PRINT(YLW"Window close required\n"RST); 
 	mlx_close_window(game->mlx);
 }
-
-
 
 int	parse_file(t_game *game, char *file)
 {
@@ -65,20 +68,20 @@ int	parse_file(t_game *game, char *file)
 		return (0);
 	while ((line = get_next_line(fd)) && nbr_element < 6)
 	{
-		if(is_empty_line(line))
+		if (is_empty_line(line))
 		{
 			free(line);
-			continue; // Skip empty lines
+			continue ; // Skip empty lines
 		}
 		if (texture_identifier(line))
 		{
 			if (parse_texture(game, line))
-			    nbr_element++;
+				nbr_element++;
 		}
-		else if(is_color_identifier(line))
+		else if (is_color_identifier(line))
 		{
 			if (parse_color(game, line))
-                nbr_element++;
+				nbr_element++;
 		}
 		free(line);
 	}
@@ -90,48 +93,48 @@ int	parse_file(t_game *game, char *file)
 		4. Grid structure creation
 	*/
 
-	if(nbr_element != 6)
+	if (nbr_element != 6)
 	{
 		close(fd);
 		DEBUG_PRINT(RD"Missig textures or colors. Found %d/6\n"RST, nbr_element);
-		return 0;
+		return (0);
 	}
 	// Map parsing
 	game->map_started = 1;
-	while((line = get_next_line(fd)))
+	while ((line = get_next_line(fd)))
 	{
-		if(!is_empty_line(line) && is_map_line(line))
+		if (!is_empty_line(line) && is_map_line(line))
 		{
-			if(!parse_map_line(game, line))
+			if (!parse_map_line(game, line))
 			{
 				free(line);
 				close(fd);
 				DEBUG_PRINT(RD"Failed to map parsing"RST);
-				return 0;
+				return (0);
 			}
 		}
-		else if(!is_empty_line(line))
+		else if (!is_empty_line(line))
 		{
 			DEBUG_PRINT(RD"Invalid line in map section: %s\n"RST, line);
 			free(line);
 			close(fd);
-			return 0;
+			return (0);
 		}
 		free(line);
 	}
 
 	close(fd);
 	//Map validation
-	if(game->map.height == 0)
+	if (game->map.height == 0)
 	{
 		DEBUG_PRINT(RD"No map foud in the file"RST);
-		return 0;
+		return (0);
 	}
 	valid_map(game);
-	if(!game->map_valid)
+	if (!game->map_valid)
 	{
 		DEBUG_PRINT(RD"MAp validation failed"RST);
-		return 0;
+		return (0);
 	}
 
 	DEBUG_PRINT(GRN"File parsing completed successfully\n"RST);
@@ -142,7 +145,7 @@ int	parse_file(t_game *game, char *file)
 
 int	main(int ac, char **av)
 {
-	t_game game;
+	t_game	game;
 
 	// If is it successful, we can now initialize the game window
 	init_game(&game);
@@ -165,4 +168,3 @@ int	main(int ac, char **av)
 	garbco_game(&game);
 	return (EXIT_SUCCESS);
 }
-

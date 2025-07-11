@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   garbage_collector.c                                :+:      :+:    :+:   */
+/*   garbage_collector00.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 13:55:32 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/09 14:59:48 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/12 00:05:52 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,28 @@
 /*
 	Initialize garbage collector.
 */
-
-void garbco_init(t_garbco *garbco)
+void	garbco_init(t_garbco *garbco)
 {
-	if(!garbco)
-		return;
+	if (!garbco)
+		return ;
 	garbco->head = NULL;
 }
 
-/* Registers all allocated memory and creates a new node that is ready to
-register the next pointer. */
+/*
+	Registers all allocated memory and creates a new node that is ready to 
+	register the next pointer.
+*/
 void	garbco_add(t_garbco *garbco, void *ptr)
 {
 	t_garbco_node	*new_node;
 
 	if (!garbco || !ptr)
-		return;
+		return ;
 	new_node = malloc(sizeof(t_garbco_node));
 	if (!new_node)
 	{
 		free(ptr);
-		return;
+		return ;
 	}
 	new_node->ptr = ptr;
 	new_node->next = garbco->head;
@@ -67,13 +68,13 @@ void	*garbco_malloc(t_garbco *garbco, size_t size)
 	Remove specific pointer from the garbage collector.
 */
 
-void garbco_remove(t_garbco *garbco, void *ptr)
+void	garbco_remove(t_garbco *garbco, void *ptr)
 {
 	t_garbco_node	*current;
 	t_garbco_node	*prev;
 
 	if (!garbco || !ptr)
-		return;
+		return ;
 	current = garbco->head;
 	prev = NULL;
 	while (current)
@@ -85,8 +86,9 @@ void garbco_remove(t_garbco *garbco, void *ptr)
 			else
 				garbco->head = current->next;
 			free(current);
-			DEBUG_PRINT(GRN"Removed pointer %p from garbage collector\n"RST, ptr);
-			return;
+			DEBUG_PRINT(GRN"Removed pointer %p from garbage collector\n"
+				RST, ptr);
+			return ;
 		}
 		prev = current;
 		current = current->next;
@@ -100,19 +102,18 @@ deallocates (using free) their memory. */
 void	garbco_clean(t_garbco *garbco)
 {
 	t_garbco_node	*current;
-	t_garbco_node		*tmp;
-	int count;
+	t_garbco_node	*tmp;
+	int				count;
 
-	if(!garbco)
-		return;
+	if (!garbco)
+		return ;
 	DEBUG_PRINT(GRN"Cleaning garbage collector...\n"RST);
 	current = garbco->head;
 	count = 0;
 	while (current)
 	{
 		tmp = current->next;
-		// Sadece NULL olmayan pointer'ları temizle
-		if(current->ptr != NULL)
+		if (current->ptr != NULL)
 		{
 			DEBUG_PRINT(YLW"Pointer %p is NULL, skipping...\n"RST, current->ptr);
 			free(current->ptr);
@@ -125,40 +126,4 @@ void	garbco_clean(t_garbco *garbco)
 	}
 	garbco->head = NULL;
 	DEBUG_PRINT(GRN"Garbage collector cleaned %d pointers\n"RST, count);
-}
-
-void garbco_game(t_game *game)
-{
-	if(!game)
-		return;
-	
-	DEBUG_PRINT(GRN"Cleaning game garbage collector...\n"RST);
-	int i = 0;
-	while(i < 4)
-	{
-		if(game->textures[i].texture)
-		{
-			mlx_delete_texture(game->textures[i].texture);
-			game->textures[i].texture = NULL;
-		}
-		if(game->textures[i].path)
-			game->textures[i].path = NULL;
-		i++;
-		DEBUG_PRINT(GRN"Texture %d cleaned\n"RST, i);
-	}
-	if(game->img)
-	{
-		mlx_delete_image(game->mlx, game->img);
-		game->img = NULL;
-		DEBUG_PRINT(GRN"Image cleaned\n"RST);
-	}
-	if(game->mlx)
-	{
-		mlx_terminate(game->mlx);
-		game->mlx = NULL;
-		DEBUG_PRINT(GRN"MLX cleaned\n"RST);
-	}
-
-	garbco_clean(&game->garbco);
-	DEBUG_PRINT(GRN"Game garbage collector cleaned\n"RST);
 }
