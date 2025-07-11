@@ -11,7 +11,17 @@ MLX42_DIR   = MLX42
 MLX42_LIB   = $(MLX42_DIR)/build/libmlx42.a
 
 INCLUDE     = -I$(MLX42_DIR)/include -I header -I libft
-LDINCLUDE = -L$(MLX42_DIR)/build -lmlx42 -L$(LIBFTDIR) -lft -L/opt/homebrew/lib -lglfw -framework Cocoa -framework OpenGL -framework IOKit
+LDINCLUDE = -L$(MLX42_DIR)/build -lmlx42 -L$(LIBFTDIR) -lft -O3 -L/opt/homebrew/lib -lglfw -framework Cocoa -framework OpenGL -framework IOKit
+PERFORMANCE_FLAGS =	-O3 \
+					-march=native \
+					-mtune=native \
+					-flto \
+					-ffast-math \
+					-funroll-loops \
+					-finline-functions \
+					-fomit-frame-pointer \
+					-fno-stack-protector \
+					-DNDEBUG
 CFLAGS      = -Wextra -Wall -Werror -g $(INCLUDE)
 
 SRCS = srcs/main.c srcs/parsing.c srcs/init.c \
@@ -32,7 +42,7 @@ $(MLX42_LIB):
 
 # Final target to build the executable
 $(NAME):    $(MLX42_LIB) $(LIBFT) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LDINCLUDE) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LDINCLUDE) $(PERFORMANCE_FLAGS) -o $(NAME)
 	echo "\033[1;32m Cub3d and MLX compiled successfully!\033[0m"
 
 # Compile each source file to an object

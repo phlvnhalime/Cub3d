@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/09 17:34:35 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/11 14:59:12 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,9 @@ int	parse_file(t_game *game, char *file)
 	DEBUG_PRINT(GRN"File parsing completed successfully\n"RST);
 	return (1); // Return true if all elements are parsed
 }
+
+
+
 
 void	setup_hook(t_game *game){
 	mlx_loop_hook(game->mlx, (render_frame), game);

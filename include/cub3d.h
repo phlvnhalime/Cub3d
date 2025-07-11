@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:36 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/09 17:10:28 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/11 15:32:11 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,7 +222,10 @@ void perform_dda(t_game *game, t_ray *ray);
 /*
 	HANDLE_KEYS
 */
-void handle_key(mlx_key_data_t keys, void *frame);
+void handle_key(mlx_key_data_t keys, void *frame); // I need to seperated this as a move_player function and rotation function
+void move_player(t_game *game);
+void rotate_player(t_game *game);
+
 /*
 	RENDERING
 */
