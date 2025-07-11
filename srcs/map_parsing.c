@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:16:53 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/11 15:40:10 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/11 16:48:46 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,8 @@ int check_map_walls(t_game *game)
     while(y < game->map.height - 1)
     {
         x = 1;
-        while(x < game->map.width - 1)
+        int row_len = ft_strlen(game->map.grid[y]); // It is very important to get the row length because with this we cannot get any error messages from the debugger
+        while(x < row_len -1)
         {
             if(game->map.grid[y][x] == '0')
             {

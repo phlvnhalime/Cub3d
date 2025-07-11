@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/11 15:45:01 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/11 16:29:53 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	close_window(void *frame)
 	DEBUG_PRINT(YLW"Window close required\n"RST); 
 	mlx_close_window(game->mlx);
 }
+
+
 
 int	parse_file(t_game *game, char *file)
 {
@@ -131,29 +133,12 @@ int	parse_file(t_game *game, char *file)
 		DEBUG_PRINT(RD"MAp validation failed"RST);
 		return 0;
 	}
+
 	DEBUG_PRINT(GRN"File parsing completed successfully\n"RST);
 	return (1); // Return true if all elements are parsed
 }
 
 
-
-
-// void	setup_hook(t_game *game){
-// 	mlx_loop_hook(game->mlx, (render_frame), game);
-// 	mlx_key_hook(game->mlx, handle_key, game); 
-// 	mlx_close_hook(game->mlx, close_window, game);
-// }
-
-// void game_loop(t_game *game)
-// {
-// 	setup_hook(game); 
-// 	memset(game->img->pixels, 0, game->img->width * game->img->height * sizeof(uint32_t));
-// 	raycast(game); // Raycasting function to render the frame
-// 	DEBUG_PRINT(GRN"Starting game loop...\n"RST);
-// 	mlx_loop(game->mlx); // Open the screen or show the screen
-// }
-
-/*Start again*/
 
 int	main(int ac, char **av)
 {

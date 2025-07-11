@@ -23,6 +23,7 @@ PERFORMANCE_FLAGS =	-O3 \
 					-fno-stack-protector \
 					-DNDEBUG
 CFLAGS      = -Wextra -Wall -Werror -g $(INCLUDE)
+DEBUG_FLAGS = -g -fsanitize=address -O0
 
 SRCS = srcs/main.c srcs/parsing.c srcs/init.c \
 		srcs/garbage_collector.c srcs/map_parsing.c srcs/utils00_parsing.c \
@@ -62,5 +63,12 @@ fclean: clean
 
 # Rebuild everything
 re: fclean all
+
+debug: CFLAGS += $(DEBUG_FLAGS)
+debug: fclean all
+	@echo "Compiled with debug flags: $(DEBUG_FLAGS)"
+
+leaks: all
+	leaks --atExit -- ./cub3d maps/test.cub
 
 .PHONY: all clean fclean re
