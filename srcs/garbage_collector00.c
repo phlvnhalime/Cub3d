@@ -6,14 +6,16 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 13:55:32 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/12 00:05:52 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 12:36:26 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
 /*
-	Initialize garbage collector.
+	Initializes the garbage collector by setting the head of the linked list
+	to NULL. This function should be called before using the garbage collector.
+	It ensures that the garbage collector is ready to register pointers.
 */
 void	garbco_init(t_garbco *garbco)
 {
@@ -23,8 +25,11 @@ void	garbco_init(t_garbco *garbco)
 }
 
 /*
-	Registers all allocated memory and creates a new node that is ready to 
-	register the next pointer.
+	Adds a pointer to the garbage collector.
+	It creates a new node, sets its pointer to the given pointer,
+	and adds it to the head of the linked list. If the pointer is NULL,
+	it does nothing. If memory allocation for the new node fails,
+	it frees the given pointer to avoid memory leaks.
 */
 void	garbco_add(t_garbco *garbco, void *ptr)
 {
@@ -45,7 +50,8 @@ void	garbco_add(t_garbco *garbco, void *ptr)
 }
 
 /*
-	Safe malloc automaticly
+	Allocates memory using malloc and protects the malloc.
+	Registers the pointer in the garbage collector.
 */
 void	*garbco_malloc(t_garbco *garbco, size_t size)
 {
@@ -65,9 +71,11 @@ void	*garbco_malloc(t_garbco *garbco, size_t size)
 }
 
 /*
-	Remove specific pointer from the garbage collector.
+	Removes a pointer from the garbage collector.
+	It searches through the linked list of nodes and removes the node
+	that contains the pointer to be removed. If the pointer is not found,
+	it prints an error message.
 */
-
 void	garbco_remove(t_garbco *garbco, void *ptr)
 {
 	t_garbco_node	*current;
@@ -97,8 +105,12 @@ void	garbco_remove(t_garbco *garbco, void *ptr)
 }
 
 
-/* This function read through the list of registered pointer and
-deallocates (using free) their memory. */
+/*
+	Cleans the garbage collector by iterating through the linked list
+	of nodes and freeing each pointer and node. It sets the head of the
+	linked list to NULL after cleaning up all nodes. It also counts how many
+	pointers were cleaned and prints this information.
+*/
 void	garbco_clean(t_garbco *garbco)
 {
 	t_garbco_node	*current;
