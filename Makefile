@@ -55,13 +55,15 @@ INPUT_SRCS = $(SRCS_DIR)/input/input.c \
 			$(SRCS_DIR)/input/handle_key.c
 
 PARSING_SRCS = $(SRCS_DIR)/parsing/parsing.c \
-				$(SRCS_DIR)/parsing/map_parsing.c \
+				$(SRCS_DIR)/parsing/parse_map_01.c \
 				$(SRCS_DIR)/parsing/utils00_parsing.c \
 				$(SRCS_DIR)/parsing/utils01_parsing.c \
+				$(SRCS_DIR)/parsing/parse_map_00.c
 
 RAYCASTING_SRCS = $(SRCS_DIR)/raycasting/raycasting.c
 
-RENDERING_SRCS = $(SRCS_DIR)/rendering/rendering.c
+RENDERING_SRCS = $(SRCS_DIR)/rendering/rendering.c \
+				$(SRCS_DIR)/rendering/render_utils.c
 
 MEMORY_SRCS = $(SRCS_DIR)/memory/garbage_collector.c
 
@@ -72,7 +74,6 @@ VALIDATION_SRCS = $(SRCS_DIR)/validation/validations.c
 
 GNL_SRCS = $(GNL_DIR)/get_next_line.c \
 			$(GNL_DIR)/get_next_line_utils.c
-
 
 # All sources
 SRCS = $(MAIN_SRCS) \
