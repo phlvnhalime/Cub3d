@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:36 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/12 01:12:48 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 13:26:25 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@
 # define MAGNT "\033[35m"
 # define CYN "\033[36m"
 
+#define MOVE_SPEED 0.08 // Adjust for your preferred speed
+#define ROT_SPEED 0.045 // Adjust for your preferred rotation speed
 
 /*
 	Color structure to represent RGB colors.
@@ -180,9 +182,16 @@ void	garbco_game(t_game *game);
 	HANDLE_KEY.C
 */
 
-void	handle_key(mlx_key_data_t keys, void *frame); // I need to seperated this as a move_player function and rotation function
+void	handle_key(mlx_key_data_t keys, void *frame);
 void	rotate_player(t_game *game);
+void	rotate_player_left(t_game *game);
+void	rotate_player_right(t_game *game);
 void	move_player(t_game *game);
+void	move_player_front(t_game *game);
+void	move_player_back(t_game *game);
+void	move_player_left(t_game *game);
+void	move_player_right(t_game *game);
+
 
 /*
 	INIT.C
