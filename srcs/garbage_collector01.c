@@ -6,12 +6,20 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 00:05:27 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/12 00:11:12 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 12:42:18 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
+/*
+	This function cleans the resources used by the game.
+	It deletes the image associated with the game and terminates the MLX instance.
+	It also sets the image pointer to NULL and prints a debug message.
+	Finally, it sets the MLX pointer to NULL and prints another debug message.
+	Note: This function is called when the game is closed or when the resources
+	are no longer needed to free up memory and avoid memory leaks.
+*/
 void	garbco_cleanup_rsrcs(t_game *game)
 {
 	if (game->img)
@@ -28,6 +36,14 @@ void	garbco_cleanup_rsrcs(t_game *game)
 	}
 }
 
+/*
+	This function cleans the game garbage collector.
+	It iterates through the textures array, deleting each texture
+	and setting the path to NULL.
+	It also calls the garbco_cleanup_rsrcs function to clean up
+	the image and MLX resources.
+	Finally, it calls the garbco_clean function to clean the garbage collector
+*/
 void	garbco_game(t_game *game)
 {
 	int	i;
