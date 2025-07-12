@@ -6,11 +6,11 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:52:07 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/09 17:09:34 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/12 14:13:10 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 // Orientation wall
 int get_wall_direction(t_ray *ray)

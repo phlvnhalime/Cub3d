@@ -6,12 +6,11 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:34:24 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/11 10:08:34 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/12 14:13:06 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
-
+#include "../../include/cub3d.h"
 
 void    init_ray(t_game *game, t_ray *ray, int x){
     /*

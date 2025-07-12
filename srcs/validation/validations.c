@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils01_parsing.c                                  :+:      :+:    :+:   */
+/*   validations.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/02 20:44:45 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/12 14:12:58 by hpehliva         ###   ########.fr       */
+/*   Created: 2025/07/12 14:43:33 by hpehliva          #+#    #+#             */
+/*   Updated: 2025/07/12 14:55:57 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-// For now I'll create a function to remove all ft_split function leak problems.
-void	ft_free_split(char **split)
+int	validate_args(int ac, char **av)
 {
-    int	i;
+	int	len;
 
-    if (!split)
-        return ;
-    i = 0;
-    while (split[i])
-    {
-        free(split[i]);
-        i++;
-    }
-    free(split);
+	if (ac != 2)
+	{
+		printf("Usage: %s <map_file.cub>\n", av[0]);
+		return (0);
+	}
+	len = strlen(av[1]);
+	if (len < 5 || strcmp(av[1] + len - 4, ".cub") != 0)
+	{
+		printf("Error: Map file must have '.cub' \n");
+		return (0);
+	}
+	return (1);
 }

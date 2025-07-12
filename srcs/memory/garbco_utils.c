@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils01_parsing.c                                  :+:      :+:    :+:   */
+/*   garbco_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/02 20:44:45 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/12 14:12:58 by hpehliva         ###   ########.fr       */
+/*   Created: 2025/07/12 14:11:19 by hpehliva          #+#    #+#             */
+/*   Updated: 2025/07/12 14:15:49 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-// For now I'll create a function to remove all ft_split function leak problems.
-void	ft_free_split(char **split)
+char *garbco_strdup(t_garbco *garbco, const char *str)
 {
-    int	i;
-
-    if (!split)
+    char *dup;
+    size_t len;
+    size_t i;
+    
+    if(!garbco || !str)
+        return ;
+    len = strlen(str) + 1;
+    dup = garbco_malloc(garbco, len);
+    if(!dup)
         return ;
     i = 0;
-    while (split[i])
+    while(str[i])
     {
-        free(split[i]);
+        dup[i] = str[i];
         i++;
     }
-    free(split);
+    dup[i] = '\0';
+    return (dup);
 }
+
+
+
