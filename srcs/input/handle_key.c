@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 08:58:35 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/11 15:32:08 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/12 12:50:03 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include "../include/mlx.h"
 #include <math.h>
 
-#define MOVE_SPEED 0.08 // Adjust for your preferred speed
-#define ROT_SPEED 0.045 // Adjust for your preferred rotation speed
 
 void handle_key(mlx_key_data_t keydata, void *frame)
 {
