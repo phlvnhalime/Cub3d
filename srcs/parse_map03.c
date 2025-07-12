@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 20:49:37 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/12 21:27:20 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 21:36:11 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,10 @@ int	parse_map_line(t_game *game, char *line)
 	update_map_dimensions(game, line, line_len);
 	return (1);
 }
+
+/********************/
+/* ORIGINAL version */
+/********************/
 
 // int	parse_map_line(t_game *game, char *line)
 // {
