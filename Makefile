@@ -26,8 +26,9 @@ SRCS =	srcs/main.c \
 		srcs/handle_key.c \
 		srcs/init.c \
 		srcs/input.c \
-		srcs/map_parsing00.c \
-		srcs/map_parsing01.c \
+		srcs/parse_map00.c \
+		srcs/parse_map01.c \
+		srcs/parse_map02.c \
 		srcs/parsing.c \
 		srcs/raycasting.c \
 		srcs/rendering.c \

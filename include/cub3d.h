@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:36 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/12 15:31:34 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 19:35:46 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,7 +205,7 @@ void	setup_hook(t_game *game);
 void	game_loop(t_game *game);
 
 /* 
-	MAP_PARSING.C
+	PARSE_MAP.C
 */
 
 int		is_map_line(char *line);
