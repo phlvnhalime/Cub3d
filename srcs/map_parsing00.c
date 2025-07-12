@@ -1,17 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_parsing.c                                      :+:      :+:    :+:   */
+/*   map_parsing00.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:16:53 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/12 11:54:41 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 15:29:05 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
+/*
+	Checks if the character is a valid map character.
+	Valid characters are '0', '1', 'N', 'S', 'E', 'W', space, and tab.
+*/
 int	is_map_line(char *line)
 {
 	int	i;
@@ -20,20 +24,26 @@ int	is_map_line(char *line)
 	has_map_char = 0;
 
 	if (!line)
-		return (0); // Null line is not a map line
+		return (0);
 	i = 0;
 	while (line[i])
 	{
 		if (is_valid_map_character(line[i]))
 			has_map_char = 1;
 		else if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
-			return (0); // Invalid character in map line
+			return (0);
 		i++;
 	}
 	return (has_map_char);
 }
 
-
+/*
+	Sets the player's direction based on the spawn character.
+	- 'N' for North
+	- 'S' for South
+	- 'E' for East
+	- 'W' for West
+*/
 void	set_player_direction(t_game *game, char spawn_char)
 {
 	game->player.spawn_char = spawn_char;
@@ -73,7 +83,13 @@ void	set_player_direction(t_game *game, char spawn_char)
 	DEBUG_PRINT(GRN"Player direction set to '%c' : dir(%.2f, %.2f) plane(%.2f, %.2f) spawn_dir(%.2f)\n"RST, spawn_char, game->player.dir_x, game->player.dir_y, game->player.plane_x, game->player.plane_y, game->player.spawn_dir);
 }
 
-
+/*
+	Finds the player's position in the map.
+	- Scans the map grid for 'N', 'S', 'E', or 'W' characters.
+	- If found, sets the player's position and direction.
+	- Ensures only one player position is found.
+	- Replaces the player character with '0' (empty space).
+*/
 int	find_player_position(t_game *game)
 {
 	int		x;
@@ -95,20 +111,19 @@ int	find_player_position(t_game *game)
 				if (player_count > 0)
 				{
 					DEBUG_PRINT(RD"Error: Multiple player positions found in the map\n"RST);
-					return (-1); // More than one player position found
+					return (-1);
 				}
 				player_count++;
 				spawn_char = game->map.grid[y][x];
-				game->player.x = x + 0.5; // Center the player in the tile
-				game->player.y = y + 0.5; // Center the player in the tile
-				game->map.grid[y][x] = '0'; // Replace player character with empty space
+				game->player.x = x + 0.5;
+				game->player.y = y + 0.5;
+				game->map.grid[y][x] = '0';
 				DEBUG_PRINT(GRN"Player found at (%d, %d) --> (%.2f, %.2f) facing '%c'\n"RST, x, y, game->player.x, game->player.y, spawn_char);
 			}
 			x++;
 		}
 		y++;
 	}
-
 	if (player_count != 1)
 	{
 		DEBUG_PRINT(RD"Invalid player count: %d (expected 1)\n"RST, player_count);
@@ -119,7 +134,12 @@ int	find_player_position(t_game *game)
 	return (1);
 }
 
-static char	get_char_at(char *line, int position) // change this function as nonstatic
+/*
+	Returns the character at the specified position in the line.
+	- If the position is out of bounds, returns a space character.
+	- If the line is NULL, also returns a space character.
+*/
+static char	get_char_at(char *line, int position)
 {
 	int	len;
 
@@ -131,6 +151,13 @@ static char	get_char_at(char *line, int position) // change this function as non
 	return (line[position]);
 }
 
+/*
+	Checks if the map is surrounded by walls.
+	- Validates the top and bottom walls.
+	- Validates the left and right walls.
+	- Checks for holes in the map (i.e., '0's surrounded by spaces).
+	- Returns 1 if valid, 0 if invalid.
+*/
 int	check_map_walls(t_game *game)
 {
 	int		x;
@@ -138,7 +165,6 @@ int	check_map_walls(t_game *game)
 	char	top_char;
 	char	bottom_char;
 
-	// Check top and bottom walls
 	x = 0;
 	while (x < game->map.width)
 	{
@@ -146,34 +172,32 @@ int	check_map_walls(t_game *game)
 		if (top_char != '1' && top_char != ' ')
 		{
 			DEBUG_PRINT(RD"Map must be surrounded by walls (top) at x = %d\n"RST, x);
-			return (0); // Top or bottom wall is not valid
+			return (0);
 		}
 		bottom_char = get_char_at(game->map.grid[game->map.height - 1], x);
 		if(bottom_char != '1' && bottom_char != ' ')
 		{
 			DEBUG_PRINT(RD"Map must be surrounded by walls (bottom) at x = %d\n"RST, x);
-			return (0); // Top or bottom wall is not valid
+			return (0);
 		}
 		x++;
 	}
-	// check left and right walls
 	y = 0;
 	while (y < game->map.height)
 	{
 		if (game->map.grid[y][0] != '1' && game->map.grid[y][0] != ' ')
 		{
 			DEBUG_PRINT(RD"Map must be surrounded by walls (left) at y = %d\n"RST, y);
-			return (0); // Left or right wall is not valid
+			return (0);
 		}
 		int len = ft_strlen(game->map.grid[y]);
 		if (len > 1 && game->map.grid[y][len - 1] != ' ' && game->map.grid[y][len - 1] != '1')
 		{
 			DEBUG_PRINT(RD"Map must be surrounded by walls (right) at y = %d\n"RST, y);
-			return (0); // Left or right wall is not valid
+			return (0);
 		}
 		y++;
 	}
-
 	// check for holes
 	y = 1;
 	while (y < game->map.height - 1)
@@ -198,6 +222,14 @@ int	check_map_walls(t_game *game)
 	return (1); // Map walls are valid
 }
 
+/*
+	Parses a single line of the map.
+	- Validates the line format.
+	- Allocates memory for the new grid row.
+	- Copies the existing grid and adds the new row.
+	- Updates the map width and height accordingly.
+	- Returns 1 on success, 0 on failure.
+*/
 int	parse_map_line(t_game *game, char *line)
 {
 	char	**new_grind;
@@ -244,6 +276,13 @@ int	parse_map_line(t_game *game, char *line)
 	return (1);
 }
 
+/*
+	Validates the map.
+	- Checks if the map is too small (less than 3x3).
+	- Finds the player position and sets the player's direction.
+	- Checks if the map walls are valid.
+	- Sets the map_valid flag accordingly.
+*/
 void	valid_map(t_game *game)
 {
 	if (game->map.height < 3 || game->map.width < 3)

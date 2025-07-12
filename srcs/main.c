@@ -6,79 +6,97 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/12 14:51:50 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 15:28:40 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	parse_file(t_game *game, char *file)
+static int	parse_elements(t_game *game, int fd)
 {
-	int		fd;
 	char	*line;
 	int		nbr_element;
 
 	nbr_element = 0;
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		return (0);
-	while ((line = get_next_line(fd)) && nbr_element < 6)
+	while (nbr_element < 6)
 	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
 		if (is_empty_line(line))
 		{
 			free(line);
 			continue ;
 		}
-		if (texture_identifier(line))
-		{
-			if (parse_texture(game, line))
-				nbr_element++;
-		}
-		else if (is_color_identifier(line))
-		{
-			if (parse_color(game, line))
-				nbr_element++;
-		}
+		if (texture_identifier(line) && parse_texture(game, line))
+			nbr_element++;
+		else if (is_color_identifier(line) && parse_color(game, line))
+			nbr_element++;
 		free(line);
 	}
 	if (nbr_element != 6)
+		DEBUG_PRINT(RD"Missing textures or colors. Found %d/6\n"RST, \
+			nbr_element);
+	return (nbr_element == 6);
+}
+
+// static int	parse_map_section(t_game *game, int fd)
+// {
+// 	char	*line;
+
+// 	while (1)
+// 	{
+// 		line = get_next_line(fd);
+// 		if (!line)
+// 			break ;
+// 		if (!is_empty_line(line) && is_map_line(line))
+// 		{
+// 			if (!parse_map_line(game, line))
+// 			{
+// 				free(line);
+// 				DEBUG_PRINT(RD"Failed to map parsing"RST);
+// 				return (0);
+// 			}
+// 		}
+// 		else if (!is_empty_line(line))
+// 		{
+// 			DEBUG_PRINT(RD"Invalid line in map section: %s\n"RST, line);
+// 			free(line);
+// 			return (0);
+// 		}
+// 		free(line);
+// 	}
+// 	if (game->map.height == 0)
+// 	{
+// 		DEBUG_PRINT(RD"No map found in the file"RST);
+// 		return (0);
+// 	}
+// 	return (1);
+// }
+
+int	parse_file(t_game *game, char *file)
+{
+	int	fd;
+
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		return (0);
+	if (!parse_elements(game, fd))
 	{
 		close(fd);
-		DEBUG_PRINT(RD"Missig textures or colors. Found %d/6\n"RST, nbr_element);
 		return (0);
 	}
 	game->map_started = 1;
-	while ((line = get_next_line(fd)))
+	if (!parse_map_section(game, fd))
 	{
-		if (!is_empty_line(line) && is_map_line(line))
-		{
-			if (!parse_map_line(game, line))
-			{
-				free(line);
-				close(fd);
-				DEBUG_PRINT(RD"Failed to map parsing"RST);
-				return (0);
-			}
-		}
-		else if (!is_empty_line(line))
-		{
-			DEBUG_PRINT(RD"Invalid line in map section: %s\n"RST, line);
-			free(line);
-			close(fd);
-			return (0);
-		}
-		free(line);
-	}
-	close(fd);
-	if (game->map.height == 0)
-	{
-		DEBUG_PRINT(RD"No map foud in the file"RST);
+		close(fd);
 		return (0);
 	}
+	close(fd);
 	valid_map(game);
 	if (!game->map_valid)
 	{
-		DEBUG_PRINT(RD"MAp validation failed"RST);
+		DEBUG_PRINT(RD"Map validation failed"RST);
 		return (0);
 	}
 	DEBUG_PRINT(GRN"File parsing completed successfully\n"RST);

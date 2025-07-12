@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:36 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/12 14:52:22 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 15:31:34 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ typedef struct s_game
 }	t_game;
 
 /*
-	GARBAGE_COLLECTOR00.C
+	GARBAGE_COLLECTOR.C
 */
 
 void	garbco_init(t_garbco *garbco);
@@ -171,10 +171,6 @@ void	garbco_add(t_garbco *garbco, void *ptr);
 void	*garbco_malloc(t_garbco *garbco, size_t size);
 void	garbco_remove(t_garbco *garbco, void *ptr);
 void	garbco_clean(t_garbco *garbco);
-
-/*
-	GARBAGE_COLLECTOR01.C
-*/
 void	garbco_cleanup_rsrcs(t_game *game);
 void	garbco_game(t_game *game);
 
@@ -218,6 +214,7 @@ int		find_player_position(t_game *game);
 int		check_map_walls(t_game *game);// Me
 int		parse_map_line(t_game *game, char *line);
 void	valid_map(t_game *game);
+int		parse_map_section(t_game *game, int fd);
 
 /*
 	PARSING.C
