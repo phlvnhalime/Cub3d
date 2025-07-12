@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 20:49:37 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/12 21:36:11 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 21:37:29 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,14 @@ static void	update_map_dimensions(t_game *game, char *line, int line_len)
 }
 
 /*
-	Parses a single line of the map.
-	- Validates the line format.
-	- Allocates memory for the new grid row.
-	- Copies the existing grid and adds the new row.
-	- Updates the map width and height accordingly.
-	- Returns 1 on success, 0 on failure.
+	* Parses a line of the map and updates the game map structure.
+	* - Validates the line.
+	* - Allocates memory for the new grid.
+	* - Updates the map dimensions.
+	* - Returns 1 on success, 0 on failure.
+	* @param game Pointer to the game structure.
+	* @param line The line to be parsed.
+	* @return 1 on success, 0 on failure.
 */
 int	parse_map_line(t_game *game, char *line)
 {
