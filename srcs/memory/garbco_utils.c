@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:11:19 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/12 14:15:49 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/12 16:38:47 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char *garbco_strdup(t_garbco *garbco, const char *str)
     size_t i;
     
     if(!garbco || !str)
-        return ;
+        return NULL;
     len = strlen(str) + 1;
     dup = garbco_malloc(garbco, len);
     if(!dup)

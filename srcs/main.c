@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/12 16:00:56 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/12 16:36:53 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	close_window(void *frame)
 {
 	t_game *game = (t_game *)frame;
 	DEBUG_PRINT(YLW"Window close required\n"RST); 
+	garbco_game(game);
 	mlx_close_window(game->mlx);
 }
 
