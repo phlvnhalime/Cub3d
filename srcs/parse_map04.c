@@ -6,11 +6,35 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 21:39:33 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/12 21:39:43 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 22:18:46 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+/*
+	* Handles the case where the player count is invalid.
+	* @returns
+	* -1 if there are too many spawn locations.
+	*
+	* 0 if the player count is not exactly 1.
+	*
+	* 1 if the player count is valid (exactly 1).
+*/
+static int	handle_invalid_pcount(int player_count)
+{
+	if (player_count > 1)
+	{
+		DEBUG_PRINT(RD"Error: Too many spawn locations\n"RST);
+		return (-1);
+	}
+	else if (player_count != 1)
+	{
+		DEBUG_PRINT(RD"Error: player count: %d (expected 1)\n"RST, player_count);
+		return (0);
+	}
+	return (1);
+}
 
 /*
 	Finds the player's position in the map.
@@ -37,11 +61,7 @@ int	find_player_position(t_game *game)
 			if (game->map.grid[y][x] == 'N' || game->map.grid[y][x] == 'S' || \
 				game->map.grid[y][x] == 'E' || game->map.grid[y][x] == 'W')
 			{
-				if (player_count > 0)
-				{
-					DEBUG_PRINT(RD"Error: Too many spawn locations\n"RST);
-					return (-1);
-				}
+				handle_invalid_pcount(player_count);
 				player_count++;
 				spawn_char = game->map.grid[y][x];
 				game->player.x = x + 0.5;
@@ -54,11 +74,7 @@ int	find_player_position(t_game *game)
 		}
 		y++;
 	}
-	if (player_count != 1)
-	{
-		DEBUG_PRINT(RD"Error: player count: %d (expected 1)\n"RST, player_count);
-		return (0);
-	}
+	handle_invalid_pcount(player_count);
 	set_player_direction(game, spawn_char);
 	game->player_found = 1;
 	return (1);
