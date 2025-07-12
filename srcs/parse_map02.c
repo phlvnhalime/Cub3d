@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 19:25:52 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/12 19:35:18 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 20:00:05 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ static void	set_player_west(t_game *game)
 void	set_player_direction(t_game *game, char spawn_char)
 {
 	game->player.spawn_char = spawn_char;
-
 	if (spawn_char == 'N')
 	{
 		set_player_north(game);
