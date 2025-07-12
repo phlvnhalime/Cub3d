@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 00:26:50 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/12 13:46:02 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 16:00:50 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,11 @@ static void	init_colors_and_textures(t_game *data)
 }
 
 /*
-	This function initializes the garbage collector to manage memory cleanup.
-	It also initializes the game data structure with default values, 
-	it sets up the player position, direction, and camera plane,
-	as well as initializing the map and textures.
+	* This function initializes the garbage collector to manage memory cleanup.
+	* It also initializes the game data structure with default values, 
+	* it sets up the player position, direction, and camera plane,
+	* as well as initializing the map and textures.
+	* @param data: Pointer to the game structure to be initialized.
 */
 void	init_data(t_game *data)
 {
@@ -62,10 +63,11 @@ void	init_data(t_game *data)
 }
 
 /*
-	This function initializes the game data, creates a new MLX instance,
-	and creates a new image to be displayed in the window.
-	It also checks for errors during initialization and exits the program
-	if any errors occur.
+	* This function initializes the game data, creates a new MLX instance,
+	* and creates a new image to be displayed in the window.
+	* It also checks for errors during initialization and exits the program
+	* if any errors occur.
+	* @param game: Pointer to the game structure to be initialized.
 */
 void	init_game(t_game *game)
 {

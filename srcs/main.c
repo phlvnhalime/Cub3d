@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/12 15:28:40 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 15:47:04 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,16 @@ static int	parse_elements(t_game *game, int fd)
 // 	return (1);
 // }
 
+/*
+	* Parses the provided .cub file to extract game elements and map data.
+	* It opens the file, reads the elements (textures and colors), and then
+	* parses the map section.
+	* If any parsing fails, it closes the file and returns 0. 
+	* If successful, it validates the map and returns 1.
+	@param game Pointer to the game structure.
+	@param file Path to the .cub file.
+	@return 1 if parsing is successful, 0 otherwise.
+*/
 int	parse_file(t_game *game, char *file)
 {
 	int	fd;
@@ -103,6 +113,16 @@ int	parse_file(t_game *game, char *file)
 	return (1);
 }
 
+/*
+	* Main function to initialize the game and start the game loop.
+	* It validates the command line arguments, initializes the game structure,
+	* and parses the provided .cub file. If parsing is successful, it enters the
+	* game loop. If any errors occur during initialization or parsing,
+	* it cleans up and exits with an error message.
+	@param ac Argument count.
+	@param av Argument vector containing the program name and the .cub file path.
+	@return EXIT_SUCCESS if the game starts successfully, EXIT_FAILURE otherwise.
+*/
 int	main(int ac, char **av)
 {
 	t_game	game;

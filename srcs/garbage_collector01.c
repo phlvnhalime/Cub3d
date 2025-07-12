@@ -6,19 +6,21 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 00:05:27 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/12 13:48:18 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 15:51:02 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
 /*
-	This function cleans the resources used by the game.
-	It deletes the image associated with the game and terminates the MLX instance.
-	It also sets the image pointer to NULL and prints a debug message.
-	Finally, it sets the MLX pointer to NULL and prints another debug message.
+	* This function cleans the resources used by the game.
+	* It deletes the image associated with the game and terminates the MLX instance.
+	* It also sets the image pointer to NULL and prints a debug message.
+	* Finally, it sets the MLX pointer to NULL and prints another debug message.
 	Note: This function is called when the game is closed or when the resources
 	are no longer needed to free up memory and avoid memory leaks.
+	* @param game: Pointer to the game structure containing the resources to clean.
+	* If the game or its resources are NULL, it does nothing.
 */
 void	garbco_cleanup_rsrcs(t_game *game)
 {
@@ -37,12 +39,15 @@ void	garbco_cleanup_rsrcs(t_game *game)
 }
 
 /*
-	This function cleans the game garbage collector.
-	It iterates through the textures array, deleting each texture
-	and setting the path to NULL.
-	It also calls the garbco_cleanup_rsrcs function to clean up
-	the image and MLX resources.
-	Finally, it calls the garbco_clean function to clean the garbage collector
+	* This function cleans the game garbage collector.
+	* It iterates through the textures array, deleting each texture
+	* and setting the path to NULL.
+	* It also calls the garbco_cleanup_rsrcs function to clean up
+	* the image and MLX resources.
+	* Finally, it calls the garbco_clean function to clean the garbage collector
+	* and prints debug messages indicating the cleaning process.
+	* @param game: Pointer to the game structure containing the textures and 
+	* resources. If the game is NULL, it does nothing.
 */
 void	garbco_game(t_game *game)
 {

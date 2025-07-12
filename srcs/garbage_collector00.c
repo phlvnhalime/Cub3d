@@ -6,16 +6,17 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 13:55:32 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/12 13:48:04 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 15:49:41 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
 /*
-	Initializes the garbage collector by setting the head of the linked list
-	to NULL. This function should be called before using the garbage collector.
-	It ensures that the garbage collector is ready to register pointers.
+	* Initializes the garbage collector by setting the head of the linked list
+	* to NULL. This function should be called before using the garbage collector.
+	* It ensures that the garbage collector is ready to register pointers.
+	* @param garbco: Pointer to the garbage collector structure to be initialized.
 */
 void	garbco_init(t_garbco *garbco)
 {
@@ -25,11 +26,12 @@ void	garbco_init(t_garbco *garbco)
 }
 
 /*
-	Adds a pointer to the garbage collector.
-	It creates a new node, sets its pointer to the given pointer,
-	and adds it to the head of the linked list. If the pointer is NULL,
-	it does nothing. If memory allocation for the new node fails,
-	it frees the given pointer to avoid memory leaks.
+	* Adds a pointer to the garbage collector.
+	* It creates a new node, sets its pointer to the given pointer,
+	* and adds it to the head of the linked list. If the allocation fails,
+	* it frees the pointer to avoid memory leaks.
+	* @param garbco: Pointer to the garbage collector structure.
+	* @param ptr: Pointer to be added to the garbage collector.
 */
 void	garbco_add(t_garbco *garbco, void *ptr)
 {
@@ -50,8 +52,11 @@ void	garbco_add(t_garbco *garbco, void *ptr)
 }
 
 /*
-	Allocates memory using malloc and protects the malloc.
-	Registers the pointer in the garbage collector.
+	* Allocates memory using malloc and protects the malloc.
+	* Registers the pointer in the garbage collector.
+	* @param garbco: Pointer to the garbage collector structure.
+	* @param size: Size of memory to allocate.
+	* @return: Pointer to the allocated memory, or NULL if allocation fails.
 */
 void	*garbco_malloc(t_garbco *garbco, size_t size)
 {
@@ -71,10 +76,13 @@ void	*garbco_malloc(t_garbco *garbco, size_t size)
 }
 
 /*
-	Removes a pointer from the garbage collector.
-	It searches through the linked list of nodes and removes the node
-	that contains the pointer to be removed. If the pointer is not found,
-	it prints an error message.
+	* Removes a pointer from the garbage collector.
+	* It searches through the linked list of nodes and removes the node
+	* that contains the pointer to be removed. If the pointer is not found,
+	* it prints an error message.
+	* @param garbco: Pointer to the garbage collector structure.
+	* @param ptr: Pointer to be removed from the garbage collector.
+	* If the pointer is NULL, it does nothing.
 */
 void	garbco_remove(t_garbco *garbco, void *ptr)
 {
@@ -105,10 +113,12 @@ void	garbco_remove(t_garbco *garbco, void *ptr)
 }
 
 /*
-	Cleans the garbage collector by iterating through the linked list
-	of nodes and freeing each pointer and node. It sets the head of the
-	linked list to NULL after cleaning up all nodes. It also counts how many
-	pointers were cleaned and prints this information.
+	* Cleans the garbage collector by iterating through the linked list
+	* of nodes and freeing each pointer and node. It sets the head of the
+	* linked list to NULL after cleaning up all nodes. It also counts how many
+	* pointers were cleaned and prints this information.
+	* @param garbco: Pointer to the garbage collector structure to be cleaned.
+	* If the garbage collector is NULL, it does nothing.
 */
 void	garbco_clean(t_garbco *garbco)
 {

@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:27:29 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/12 15:27:53 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 15:47:17 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,14 @@ static int	validate_map_height(t_game *game)
 	return (1);
 }
 
+/*
+	* Parses the map section of the game file. 
+	* It reads lines from the file, processes valid map lines,
+	* and validates the height of the map.
+	* @param game Pointer to the game structure.
+	* @param fd File descriptor of the opened game file.
+	* @return 1 if parsing is successful, 0 otherwise.
+*/
 int	parse_map_section(t_game *game, int fd)
 {
 	if (!process_map_lines(game, fd))

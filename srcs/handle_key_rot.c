@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 12:51:31 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/12 13:48:44 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 15:56:44 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,24 @@
 #include "../include/mlx.h"
 
 /*
-	This function rotates the player to the right by a certain angle defined 
-	by ROT_SPEED.
+	* This function rotates the player to the right by a certain angle defined 
+	* by ROT_SPEED.
+	* It updates the player's direction vector and camera plane based on the
+	* rotation angle. The new direction is calculated using trigonometric 
+	* functions (cosine and sine) to ensure the player rotates correctly in 
+	* the game world.
+	
+	** If the right key is pressed, it updates the player's direction and 
+	* camera plane.
+	
+	** If the new direction is valid, it updates the player's dir_x and dir_y 
+	* coordinates.
+	
+	** If the new camera plane is valid, it updates the player's plane_x and 
+	* plane_y coordinates.
+	
+	* @param game: Pointer to the game structure containing the player and 
+	* rotation speed.
 */
 void	rotate_player_right(t_game *game)
 {
@@ -38,8 +54,24 @@ void	rotate_player_right(t_game *game)
 }
 
 /*
-	This function rotates the player to the left by a certain angle defined 
-	by ROT_SPEED.
+	* This function rotates the player to the left by a certain angle defined 
+	* by ROT_SPEED.
+	* It updates the player's direction vector and camera plane based on the
+	* rotation angle. The new direction is calculated using trigonometric 
+	* functions (cosine and sine) to ensure the player rotates correctly in 
+	* the game world.
+	
+	** If the left key is pressed, it updates the player's direction and 
+	* camera plane.
+	
+	** If the new direction is valid, it updates the player's dir_x and dir_y 
+	* coordinates.
+	
+	** If the new camera plane is valid, it updates the player's plane_x and 
+	* plane_y coordinates.
+	
+	* @param game: Pointer to the game structure containing the player and 
+	* rotation speed.
 */
 void	rotate_player_left(t_game *game)
 {
@@ -62,8 +94,11 @@ void	rotate_player_left(t_game *game)
 }
 
 /*
-	Checks if the left or right keys are pressed and rotates the player accordingly.
-	It calls the appropriate rotation functions based on the key state.
+	* Checks if the left or right keys are pressed and rotates the player 
+	* accordingly.
+	* It calls the appropriate rotation functions based on the key state.
+	* @param game: Pointer to the game structure containing the player and
+	* rotation speed.
 */
 void	rotate_player(t_game *game)
 {

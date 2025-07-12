@@ -6,22 +6,23 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 08:58:35 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/12 13:26:48 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 16:00:04 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 #include "../include/mlx.h"
 
-// #define MOVE_SPEED 0.08 // Adjust for your preferred speed
-// #define ROT_SPEED 0.045 // Adjust for your preferred rotation speed
-
 /*
-	This function handles key events for player movement and rotation.
-	It also handles the escape key to close the game window.
-	- keydata: The key data structure containing information about the key event.
-	- frame: Pointer to the game structure containing game state and player data.
-	It checks for key presses and repeats, and updates the player's position	
+	* This function handles key events for the game.
+	* It checks if the ESC key is pressed to close the game window.
+	* If the action is a key press or repeat, it checks for movement keys 
+	* (W, S, A, D) and calls the move_player function to update the player's 
+	* position.
+	* It also checks for rotation keys (LEFT, RIGHT) and calls the 
+	* rotate_player function to update the player's direction.
+	* @param keydata: The key data structure containing information about the key event.
+	* @param frame: Pointer to the game structure containing the game state.
 */
 void	handle_key(mlx_key_data_t keydata, void *frame)
 {
