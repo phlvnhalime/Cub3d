@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:36 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/12 13:26:25 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 14:52:22 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -265,6 +265,10 @@ void	check_color_format(char *line);
 */
 
 void	ft_free_split(char **split);
+int		validate_args(int ac, char **av);
+void	error_exit(char *msg);
+void	render_frame(void *frame);
+void	close_window(void *frame);
 
 /*
 	MAIN.C
