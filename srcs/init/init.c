@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:12:07 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/12 14:12:08 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/12 15:29:12 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,23 +62,20 @@ void	init_game(t_game *game)
 	game->mlx = mlx_init(WIDTH, HEIGHT, WIN_TITLE, true);
 	if (!game->mlx)
 	{
-		ft_putstr_fd("Error: MLX42 initialization failed\n", 2);
-		garbco_game(game);
-		exit(EXIT_FAILURE);
+		mlx_error("mlx_init");
 	}
 	// Initialize the game image
 	game->img = mlx_new_image(game->mlx, WIDTH, HEIGHT);
 	if (!game->img)
 	{
-		ft_putstr_fd("Error: Image initialization failed\n", 2);
-		garbco_game(game);
-		exit(EXIT_FAILURE);
+		mlx_terminate(game->mlx);
+		mlx_error("mlx_new_image");
 	}
 	if(mlx_image_to_window(game->mlx, game->img, 0, 0) < 0)
 	{
-		ft_putstr_fd("Error: Failed to display image in window\n", 2);
-		garbco_game(game);
-		exit(EXIT_FAILURE);
+		mlx_delete_image(game->mlx, game->img);
+		mlx_terminate(game->mlx);
+		mlx_error("mlx_image_to_window");
 	}
 	DEBUG_PRINT(GRN"Game initialized successfully\n"RST);
 }

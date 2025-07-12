@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 11:50:26 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/12 14:44:21 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/12 15:58:58 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,14 @@ int is_map_line(char *line);
 int find_player_position(t_game *game);
 int check_map_walls(t_game *game);
 int parse_map_line(t_game *game, char *line);
-void valid_map(t_game *game);
 
 /* File parsing */
 int parse_file(t_game *game, char *file_path);
+
+/* ===== HELPER FUNCTIONS FOR REFACTORING ===== */
+int parse_textures_and_colors(t_game *game, int fd);
+int parse_map_section(t_game *game, int fd);
+int open_and_validate_file(char *file_path);
 
 /* ===== Garbage collector functions ===== */
 
@@ -101,5 +105,6 @@ void	ft_free_split(char **split);
 
 /* ===== VALIDATION FUNCTIONS ===== */
 int	validate_args(int ac, char **av);
+void valid_map(t_game *game);
 
 #endif
