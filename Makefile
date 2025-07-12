@@ -54,6 +54,11 @@ RENDERING_SRCS = $(SRCS_DIR)/rendering/rendering.c
 
 MEMORY_SRCS = $(SRCS_DIR)/memory/garbage_collector.c
 
+ERROR_SRCS = $(SRCS_DIR)/error/error_handling_00.c \
+			$(SRCS_DIR)/error/error_handling_01.c
+
+VALIDATION_SRCS = $(SRCS_DIR)/validation/validations.c
+
 GNL_SRCS = $(GNL_DIR)/get_next_line.c \
 			$(GNL_DIR)/get_next_line_utils.c
 
@@ -66,6 +71,8 @@ SRCS = $(MAIN_SRCS) \
 		$(RAYCASTING_SRCS) \
 		$(RENDERING_SRCS) \
 		$(MEMORY_SRCS) \
+		$(ERROR_SRCS) \
+		$(VALIDATION_SRCS) \
 		$(INCLUDE_SRCS)
 
 # Object files
@@ -89,6 +96,8 @@ $(OBJS_DIR):
 	mkdir -p $(OBJS_DIR)/raycasting
 	mkdir -p $(OBJS_DIR)/rendering
 	mkdir -p $(OBJS_DIR)/memory
+	mkdir -p $(OBJS_DIR)/error
+	mkdir -p $(OBJS_DIR)/validation
 	mkdir -p $(OBJS_DIR)/gnl
 
 # Compile libft

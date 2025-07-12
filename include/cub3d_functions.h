@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_functions.c                                  :+:      :+:    :+:   */
+/*   cub3d_functions.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 11:50:26 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/12 12:01:59 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/12 14:44:21 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,15 @@
 
 # include "cub3d_types.h"
 
-/* ===== CORE FUNCTIONS ===== */
+/* ===== ERROR FUNCTIONS ===== */
 void	error_exit(char *msg);
+void	error_exit_cleanup(t_game *game, char *msg);
+void valid_error(char *content, char *specifier);
+void file_error(char *filename, char *error_msg);
+void map_errors(char *error_msg, int x, int y);
+void texture_error(char *texture_name, char *path, char *error_msg);
+void mlx_error(char *function_name);
+void malloc_error(void);
 
 /* ===== INITIALIZATION FUNCTIONS ===== */
 void	init_data(t_game *data);
@@ -91,5 +98,8 @@ void	render_frame(void *frame);
 
 /* ===== UTILITY FUNCTIONS ===== */
 void	ft_free_split(char **split);
+
+/* ===== VALIDATION FUNCTIONS ===== */
+int	validate_args(int ac, char **av);
 
 #endif

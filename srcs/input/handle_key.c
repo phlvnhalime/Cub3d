@@ -6,13 +6,11 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 08:58:35 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/12 12:50:03 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/12 14:12:23 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
-#include "../include/mlx.h"
-#include <math.h>
+#include "../../include/cub3d.h"
 
 
 void handle_key(mlx_key_data_t keydata, void *frame)

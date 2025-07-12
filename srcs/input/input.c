@@ -6,11 +6,11 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 14:59:34 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/11 15:42:54 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/12 14:12:30 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 /*
     I need to create all keys with hook and all mouse with hook

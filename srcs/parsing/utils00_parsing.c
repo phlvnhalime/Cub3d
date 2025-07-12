@@ -6,11 +6,11 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 20:35:30 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/06 23:00:59 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/12 14:12:55 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 /*
     Parsing validation:
