@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:36 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/12 19:35:46 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 21:32:06 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@
 # define MAGNT "\033[35m"
 # define CYN "\033[36m"
 
-#define MOVE_SPEED 0.08 // Adjust for your preferred speed
-#define ROT_SPEED 0.045 // Adjust for your preferred rotation speed
+#define MOVE_SPEED 0.15 // Adjust for your preferred speed
+#define ROT_SPEED 0.05 // Adjust for your preferred rotation speed
 
 /*
 	Color structure to represent RGB colors.

@@ -29,6 +29,7 @@ SRCS =	srcs/main.c \
 		srcs/parse_map00.c \
 		srcs/parse_map01.c \
 		srcs/parse_map02.c \
+		srcs/parse_map03.c \
 		srcs/parsing.c \
 		srcs/raycasting.c \
 		srcs/rendering.c \

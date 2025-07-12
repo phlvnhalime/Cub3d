@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:16:53 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/12 19:56:11 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 21:34:08 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,58 +178,6 @@ int	find_player_position(t_game *game)
 	}
 	set_player_direction(game, spawn_char);
 	game->player_found = 1;
-	return (1);
-}
-
-/*
-	Parses a single line of the map.
-	- Validates the line format.
-	- Allocates memory for the new grid row.
-	- Copies the existing grid and adds the new row.
-	- Updates the map width and height accordingly.
-	- Returns 1 on success, 0 on failure.
-*/
-int	parse_map_line(t_game *game, char *line)
-{
-	char	**new_grind;
-	int		i;
-	int		line_len;
-
-	if (!line || !is_map_line(line))
-	{
-		DEBUG_PRINT(RD"Invalid map line: %s\n"RST, line);
-		return (0);
-	}
-
-	line_len = ft_strlen(line);
-	if (line_len > 0 && line[line_len - 1] == '\n')
-	{
-		line[line_len - 1] = '\0';
-		line_len--;
-	}
-	new_grind = garbco_malloc(&game->garbco, sizeof(char *) * \
-	(game->map.height + 1));
-	if (!new_grind)
-		return (0);
-	i = 0;
-	while (i < game->map.height)
-	{
-		new_grind[i] = game->map.grid[i];
-		i++;
-	}
-	new_grind[game->map.height] = garbco_malloc(&game->garbco, sizeof(char) * \
-	(line_len + 1));
-	if (!new_grind[game->map.height])
-		return (0);
-	ft_strlcpy(new_grind[game->map.height], line, line_len + 1);
-	if (game->map.grid)
-		garbco_remove(&game->garbco, game->map.grid);
-	game->map.grid = new_grind;
-	game->map.height++;
-	if (line_len > game->map.width)
-		game->map.width = line_len;
-	DEBUG_PRINT(GRN"Map line added: %s (width: %d, height: %d)\n"RST, \
-		line, game->map.width, game->map.height);
 	return (1);
 }
 
