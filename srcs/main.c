@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/12 00:31:19 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 11:53:10 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,8 +141,6 @@ int	parse_file(t_game *game, char *file)
 	return (1); // Return true if all elements are parsed
 }
 
-
-
 int	main(int ac, char **av)
 {
 	t_game	game;
@@ -153,16 +151,12 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 
 	garbco_init(&game.garbco);
-
-
 	/*Parse arguments and set up game*/
 	if (!parse_file(&game, av[1]))
 	{
 		garbco_game(&game);
 		error_exit("Failed to parse .cub file");
 	}
-
-
 	DEBUG_PRINT(GRN"Starting game loop... \n"RST);
 	game_loop(&game);
 	garbco_game(&game);
