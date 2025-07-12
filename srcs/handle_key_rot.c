@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 12:51:31 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/12 13:25:54 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 13:48:44 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	rotate_player_right(t_game *game)
 			game->player.dir_y * sin(ROT_SPEED);
 		game->player.dir_y = old_dir_x * sin(ROT_SPEED) + \
 			game->player.dir_y * cos(ROT_SPEED);
-
 		old_plane_x = game->player.plane_x;
 		game->player.plane_x = game->player.plane_x * cos(ROT_SPEED) - \
 			game->player.plane_y * sin(ROT_SPEED);
@@ -54,7 +53,6 @@ void	rotate_player_left(t_game *game)
 			game->player.dir_y * sin(-ROT_SPEED);
 		game->player.dir_y = old_dir_x * sin(-ROT_SPEED) + \
 			game->player.dir_y * cos(-ROT_SPEED);
-
 		old_plane_x = game->player.plane_x;
 		game->player.plane_x = game->player.plane_x * cos(-ROT_SPEED) - \
 			game->player.plane_y * sin(-ROT_SPEED);

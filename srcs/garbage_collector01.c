@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 00:05:27 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/12 12:42:18 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 13:48:18 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,3 @@ void	garbco_game(t_game *game)
 	garbco_clean(&game->garbco);
 	DEBUG_PRINT(GRN"Game garbage collector cleaned\n"RST);
 }
-

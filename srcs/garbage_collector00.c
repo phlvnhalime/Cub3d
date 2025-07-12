@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 13:55:32 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/12 12:36:26 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/12 13:48:04 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ void	garbco_remove(t_garbco *garbco, void *ptr)
 	}
 	DEBUG_PRINT(RD"Pointer %p not found in garbage collector\n"RST, ptr);
 }
-
 
 /*
 	Cleans the garbage collector by iterating through the linked list
