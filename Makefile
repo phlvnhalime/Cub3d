@@ -43,7 +43,6 @@ PERFORMANCE_FLAGS =	-O3 \
 					-fomit-frame-pointer \
 					-fno-stack-protector \
 					-DNDEBUG
-
 DEBUG_FLAGS = -g -fsanitize=address -O0
 
 # Sources
