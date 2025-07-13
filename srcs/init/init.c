@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:12:07 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/13 12:07:45 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/13 13:38:35 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	init_player_data(t_game *data)
 	data->player.plane_x = 0.66;
 	data->player.plane_y = 0.0;
 	data->player.spawn_dir = 0.0;
+	data->player_found = 0;
 }
 
 static void	init_map_and_textures(t_game *data)
@@ -44,10 +45,6 @@ static void	init_map_and_textures(t_game *data)
 		data->textures[i].path = NULL;
 		i++;
 	}
-}
-
-static void	init_colors_and_flags(t_game *data)
-{
 	data->floor_color.r = 0;
 	data->floor_color.g = 0;
 	data->floor_color.b = 0;
@@ -59,15 +56,30 @@ static void	init_colors_and_flags(t_game *data)
 	data->map_started = 0;
 	data->map_ended = 0;
 	data->map_valid = 0;
-	data->player_found = 0;
 }
+// SPLITTED IT BETWEEN PLAYER_DATA and MAP_AND_TEXTURE
+
+// static void	init_colors_and_flags(t_game *data)
+// {
+// 	data->floor_color.r = 0;
+// 	data->floor_color.g = 0;
+// 	data->floor_color.b = 0;
+// 	data->ceiling_color.r = 0;
+// 	data->ceiling_color.g = 0;
+// 	data->ceiling_color.b = 0;
+// 	data->texture_count = 0;
+// 	data->color_count = 0;
+// 	data->map_started = 0;
+// 	data->map_ended = 0;
+// 	data->map_valid = 0;
+// 	data->player_found = 0;
+// }
 
 void	init_data(t_game *data)
 {
 	init_garbage_and_mlx(data);
 	init_player_data(data);
 	init_map_and_textures(data);
-	init_colors_and_flags(data);
 }
 
 void	init_game(t_game *game)
