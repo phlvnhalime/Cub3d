@@ -51,8 +51,10 @@ MAIN_SRCS = $(SRCS_DIR)/main.c
 
 INIT_SRCS = $(SRCS_DIR)/init/init.c
 
-INPUT_SRCS = $(SRCS_DIR)/input/input.c \
-			$(SRCS_DIR)/input/handle_key.c
+INPUT_SRCS = $(SRCS_DIR)/input/handle_key_mov.c \
+			$(SRCS_DIR)/input/handle_key_rot.c \
+			$(SRCS_DIR)/input/handle_key.c \
+			$(SRCS_DIR)/input/input.c
 
 PARSING_SRCS = $(SRCS_DIR)/parsing/parsing.c \
 				$(SRCS_DIR)/parsing/parse_map_01.c \
