@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validations.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:43:33 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/12 15:51:16 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/13 14:35:38 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,37 +30,40 @@ int	validate_args(int ac, char **av)
 	return (1);
 }
 
-void valid_map(t_game *game)
+void	valid_map(t_game *game)
 {
-    if (game->map.height < 3 || game->map.width < 3)
-    {
-        DEBUG_PRINT(RD"Map is too small (width: %d, height: %d)\n"RST, game->map.width, game->map.height);
-        game->map_valid = 0;
-        return;
-    }
-    if (!find_player_position(game))
-    {
-        DEBUG_PRINT(RD"Player position not found or invalid\n"RST);
-        game->map_valid = 0;
-        return;
-    }
-    if (!check_map_walls(game))
-    {
-        DEBUG_PRINT(RD"Map walls are not valid\n"RST);
-        game->map_valid = 0;
-        return;
-    }
-    game->map_valid = 1;
-    DEBUG_PRINT(GRN"Map is valid\n"RST);
+	if (game->map.height < 3 || game->map.width < 3)
+	{
+		DEBUG_PRINT(RD"Map is too small (width: %d, height: %d)\n"\
+			RST, game->map.width, game->map.height);
+		game->map_valid = 0;
+		return ;
+	}
+	if (!find_player_position(game))
+	{
+		DEBUG_PRINT(RD"Player position not found or invalid\n"RST);
+		game->map_valid = 0;
+		return ;
+	}
+	if (!check_map_walls(game))
+	{
+		DEBUG_PRINT(RD"Map walls are not valid\n"RST);
+		game->map_valid = 0;
+		return ;
+	}
+	game->map_valid = 1;
+	DEBUG_PRINT(GRN"Map is valid\n"RST);
 }
 
-int open_and_validate_file(char *file_path)
+int	open_and_validate_file(char *file_path)
 {
-    int fd = open(file_path, O_RDONLY);
-    if (fd < 0)
-    {
-        file_error(file_path, "Cannot open file");
-        return (-1);
-    }
-    return (fd);
+	int	fd;
+
+	fd = open(file_path, O_RDONLY);
+	if (fd < 0)
+	{
+		file_error(file_path, "Cannot open file");
+		return (-1);
+	}
+	return (fd);
 }
