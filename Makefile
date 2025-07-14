@@ -65,6 +65,7 @@ RAYCASTING_SRCS =	$(SRCS_DIR)/raycasting/raycasting.c \
 					$(SRCS_DIR)/raycasting/raycasting_init_ray.c
 
 RENDERING_SRCS =	$(SRCS_DIR)/rendering/rendering.c \
+					$(SRCS_DIR)/rendering/render_wall_textures.c \
 					$(SRCS_DIR)/rendering/render_utils.c
 
 MEMORY_SRCS =	$(SRCS_DIR)/memory/garbage_collector.c \
