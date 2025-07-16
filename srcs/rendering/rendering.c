@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:52:07 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/15 00:35:13 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/16 13:07:01 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	draw_floor_ceiling(t_game *game, int x, int wall_start, int wall_end)
 // 	{
 // 		DEBUG_PRINT(RD"Texture is not found: %d"RST, wall_direction);
 // 		error_color = 0xFFFF00FF;
-// 		draw_vertical_line(game, x, ray->draw_start, ray->draw_end, \
+// 		draw_vertical_line(game, x, ray->draw_start, ray->draw_end, 
 // 			error_color);
 // 		draw_floor_ceiling(game, x, ray->draw_start, ray->draw_end);
 // 		return ;
@@ -98,12 +98,13 @@ void	draw_floor_ceiling(t_game *game, int x, int wall_start, int wall_end)
 // 	double	wall_x = get_wall_x(game, ray);
 // 	int		tex_x = (int)(wall_x * (double)tex->width);
 
-// 	if ((ray->side == 0 && ray->ray_dir_x > 0) \
+// 	if ((ray->side == 0 && ray->ray_dir_x > 0) 
 // 		|| (ray->side == 1 && ray->ray_dir_y > 0))
 // 		tex_x = tex->width - tex_x - 1;
 
 // 	double	steps = (double)tex->height / (double)ray->line_height;
-// 	double	tex_position = (ray->draw_start - HEIGHT / 2 + ray->line_height / 2) * steps;
+// 	double	tex_position = (ray->draw_start - HEIGHT 
+// 		/ 2 + ray->line_height / 2) * steps;
 
 // 	draw_floor_ceiling(game, x, ray->draw_start, ray->draw_end);
 
