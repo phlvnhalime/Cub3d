@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:11:19 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/13 14:30:08 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/16 12:53:57 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,24 +58,24 @@ void	garbco_remove(t_garbco *garbco, void *ptr)
 	DEBUG_PRINT(RD"Pointer %p not found in garbage collector\n"RST, ptr);
 }
 
-// char	*garbco_strdup(t_garbco *garbco, const char *str)
-// {
-// 	char	*dup;
-// 	size_t	len;
-// 	size_t	i;
+char	*garbco_strdup(t_garbco *garbco, const char *str)
+{
+	char	*dup;
+	size_t	len;
+	size_t	i;
 
-// 	if (!garbco || !str)
-// 		return (NULL);
-// 	len = strlen(str) + 1;
-// 	dup = garbco_malloc(garbco, len);
-// 	if (!dup)
-// 		return ;
-// 	i = 0;
-// 	while (str[i])
-// 	{
-// 		dup[i] = str[i];
-// 		i++;
-// 	}
-// 	dup[i] = '\0';
-// 	return (dup);
-// }
+	if (!garbco || !str)
+		return (NULL);
+	len = strlen(str) + 1;
+	dup = garbco_malloc(garbco, len);
+	if (!dup)
+		return (NULL);
+	i = 0;
+	while (str[i])
+	{
+		dup[i] = str[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
+}
