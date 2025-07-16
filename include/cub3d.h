@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:36 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/12 12:50:23 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/16 10:25:55 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 
 /* =====  EXTERNAL LIBRARIES ===== */
 # include "../MLX42/include/MLX42/MLX42.h"
-# include "../get_next_line/get_next_line.h"
-# include "../libft/libft.h"
+# include "../lib/get_next_line/get_next_line.h"
+# include "../lib/libft/libft.h"
 
 /* ===== PROJECT INCLUDES ===== */
 # include "mlx.h"

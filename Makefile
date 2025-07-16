@@ -28,8 +28,8 @@ INCLUDE     = -I$(MLX42_DIR)/include \
 # Linker flags
 LDINCLUDE = -L$(MLX42_DIR)/build -lmlx42\
 			-L$(LIBFT_DIR) -lft \
-			-L/opt/homebrew/lib -lglfw \
-			-framework Cocoa -framework OpenGL -framework IOKit
+			-lglfw -framework Cocoa -framework OpenGL -framework IOKit \
+			-L/opt/homebrew/lib 
 
 CFLAGS      = -Wextra -Wall -Werror $(INCLUDE)
 
@@ -43,40 +43,44 @@ PERFORMANCE_FLAGS =	-O3 \
 					-fomit-frame-pointer \
 					-fno-stack-protector \
 					-DNDEBUG
-
 DEBUG_FLAGS = -g -fsanitize=address -O0
 
 # Sources
-MAIN_SRCS = $(SRCS_DIR)/main.c
+MAIN_SRCS = 	$(SRCS_DIR)/main.c
 
-INIT_SRCS = $(SRCS_DIR)/init/init.c
+INIT_SRCS = 	$(SRCS_DIR)/init/init.c
 
-INPUT_SRCS = $(SRCS_DIR)/input/input.c \
-			$(SRCS_DIR)/input/handle_key.c
+INPUT_SRCS =	$(SRCS_DIR)/input/handle_key_mov.c \
+				$(SRCS_DIR)/input/handle_key_rot.c \
+				$(SRCS_DIR)/input/handle_key.c \
+				$(SRCS_DIR)/input/input.c
 
-PARSING_SRCS = $(SRCS_DIR)/parsing/parsing.c \
+PARSING_SRCS =	$(SRCS_DIR)/parsing/parsing.c \
 				$(SRCS_DIR)/parsing/parse_map_01.c \
 				$(SRCS_DIR)/parsing/utils00_parsing.c \
 				$(SRCS_DIR)/parsing/utils01_parsing.c \
 				$(SRCS_DIR)/parsing/parse_map_00.c
 
-RAYCASTING_SRCS = $(SRCS_DIR)/raycasting/raycasting.c
+RAYCASTING_SRCS =	$(SRCS_DIR)/raycasting/raycasting.c \
+					$(SRCS_DIR)/raycasting/raycasting_init_ray.c
 
-RENDERING_SRCS = $(SRCS_DIR)/rendering/rendering.c \
-				$(SRCS_DIR)/rendering/render_utils.c
+RENDERING_SRCS =	$(SRCS_DIR)/rendering/rendering.c \
+					$(SRCS_DIR)/rendering/render_wall_textures.c \
+					$(SRCS_DIR)/rendering/render_utils.c
 
-MEMORY_SRCS = $(SRCS_DIR)/memory/garbage_collector.c
+MEMORY_SRCS =	$(SRCS_DIR)/memory/garbage_collector.c \
+				$(SRCS_DIR)/memory/garbco_utils.c
 
-ERROR_SRCS = $(SRCS_DIR)/error/error_handling_00.c \
-			$(SRCS_DIR)/error/error_handling_01.c
+ERROR_SRCS =	$(SRCS_DIR)/error/error_handling_00.c \
+				$(SRCS_DIR)/error/error_handling_01.c
 
-VALIDATION_SRCS = $(SRCS_DIR)/validation/validations.c
+VALIDATION_SRCS =	$(SRCS_DIR)/validation/validations.c
 
-GNL_SRCS = $(GNL_DIR)/get_next_line.c \
+GNL_SRCS =	$(GNL_DIR)/get_next_line.c \
 			$(GNL_DIR)/get_next_line_utils.c
 
 # All sources
-SRCS = $(MAIN_SRCS) \
+SRCS =	$(MAIN_SRCS) \
 		$(INIT_SRCS) \
 		$(INPUT_SRCS) \
 		$(PARSING_SRCS) \
