@@ -1,7 +1,7 @@
-NO ./textures/poison_slime_wall (1).png
-SO ./textures/trash_wall (1).png
+NO ./textures/poison_slime_wall(1).png
+SO ./textures/trash_wall(1).png
 WE ./textures/grassstone_wall.png
-EA ./textures/cobbluestone_wall (1).png
+EA ./textures/cobbluestone_wall.png
 
 F 25,17,55
 C 16,11,38
