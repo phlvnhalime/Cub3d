@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:12:07 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/16 10:22:12 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/16 10:31:46 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,5 @@ void	init_game(t_game *game)
 		mlx_terminate(game->mlx);
 		mlx_error("mlx_image_to_window");
 	}
-	DEBUG_PRINT(GRN"Game initialized successfully\n"RST);
+	DEBUG_PRINT(GRN "Game initialized successfully\n" RST);
 }

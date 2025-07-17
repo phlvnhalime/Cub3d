@@ -21,11 +21,11 @@
 /* ===== INCLUDES ===== */
 # include <errno.h>
 # include <fcntl.h>
+# include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-# include <math.h>
 
 /* =====  EXTERNAL LIBRARIES ===== */
 # include "../MLX42/include/MLX42/MLX42.h"
@@ -33,9 +33,9 @@
 # include "../lib/libft/libft.h"
 
 /* ===== PROJECT INCLUDES ===== */
-# include "mlx.h"
 # include "cub3d_defines.h"
-# include "cub3d_types.h"
 # include "cub3d_functions.h"
+# include "cub3d_types.h"
+# include "mlx.h"
 
 #endif

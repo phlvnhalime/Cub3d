@@ -1,5 +1,5 @@
 /* ************************************************************************** */
-/*	                                                                          */
+/*		                                                                       */
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -33,23 +33,23 @@ void	perform_dda(t_game *game, t_ray *ray)
 	while (ray->hit == 0)
 	{
 		compare_side_dist(ray);
-		if (ray->map_x < 0 || ray->map_x >= game->map.width \
-			|| ray->map_y < 0 || ray->map_y >= game->map.height)
+		if (ray->map_x < 0 || ray->map_x >= game->map.width || ray->map_y < 0
+			|| ray->map_y >= game->map.height)
 		{
 			ray->hit = 1;
 			break ;
 		}
-		if (game->map.grid[ray->map_y] && ray->map_x \
-			< (int)ft_strlen(game->map.grid[ray->map_y]) \
+		if (game->map.grid[ray->map_y]
+			&& ray->map_x < (int)ft_strlen(game->map.grid[ray->map_y])
 			&& game->map.grid[ray->map_y][ray->map_x] == '1')
 			ray->hit = 1;
 	}
 	if (ray->side == 0)
-		ray->perp_wall_dist = (ray->map_x - game->player.x + (1 \
-			- ray->step_x) / 2) / ray->ray_dir_x;
+		ray->perp_wall_dist = (ray->map_x - game->player.x + (1 - ray->step_x)
+				/ 2) / ray->ray_dir_x;
 	else
-		ray->perp_wall_dist = (ray->map_y - game->player.y + (1 \
-			- ray->step_y) / 2) / ray->ray_dir_y;
+		ray->perp_wall_dist = (ray->map_y - game->player.y + (1 - ray->step_y)
+				/ 2) / ray->ray_dir_y;
 }
 
 void	calculate_wall_screen(t_ray *ray)

@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:50:30 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/16 10:24:53 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/16 13:38:27 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ int	parse_map_section(t_game *game, int fd)
 		{
 			if (!parse_map_line(game, line))
 			{
-				free(line);
+				garbco_add(&game->garbco, line);
 				return (0);
 			}
 		}
 		else if (!is_empty_line(line))
 		{
-			free(line);
+			garbco_add(&game->garbco, line);
 			valid_error("Invalid line in map section", line);
 		}
 		free(line);

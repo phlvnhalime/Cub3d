@@ -34,25 +34,25 @@ void	valid_map(t_game *game)
 {
 	if (game->map.height < 3 || game->map.width < 3)
 	{
-		DEBUG_PRINT(RD"Map is too small (width: %d, height: %d)\n"\
-			RST, game->map.width, game->map.height);
+		DEBUG_PRINT(RD "Map is too small (width: %d, height: %d)\n" RST,
+			game->map.width, game->map.height);
 		game->map_valid = 0;
 		return ;
 	}
 	if (!find_player_position(game))
 	{
-		DEBUG_PRINT(RD"Player position not found or invalid\n"RST);
+		DEBUG_PRINT(RD "Player position not found or invalid\n" RST);
 		game->map_valid = 0;
 		return ;
 	}
 	if (!check_map_walls(game))
 	{
-		DEBUG_PRINT(RD"Map walls are not valid\n"RST);
+		DEBUG_PRINT(RD "Map walls are not valid\n" RST);
 		game->map_valid = 0;
 		return ;
 	}
 	game->map_valid = 1;
-	DEBUG_PRINT(GRN"Map is valid\n"RST);
+	DEBUG_PRINT(GRN "Map is valid\n" RST);
 }
 
 int	open_and_validate_file(char *file_path)

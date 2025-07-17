@@ -40,7 +40,7 @@ static void	calculate_step_and_side_dist_x(t_game *game, t_ray *ray)
 	else
 	{
 		ray->step_x = 1;
-		ray->side_dist_x = (ray->map_x + 1.0 - game->player.x) \
+		ray->side_dist_x = (ray->map_x + 1.0 - game->player.x)
 			* ray->delta_dist_x;
 	}
 }
@@ -55,7 +55,7 @@ static void	calculate_step_and_side_dist_y(t_game *game, t_ray *ray)
 	else
 	{
 		ray->step_y = 1;
-		ray->side_dist_y = (ray->map_y + 1.0 - game->player.y) \
+		ray->side_dist_y = (ray->map_y + 1.0 - game->player.y)
 			* ray->delta_dist_y;
 	}
 }

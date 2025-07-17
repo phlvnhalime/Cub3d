@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 11:50:51 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/12 12:02:59 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/16 12:18:06 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 #ifndef CUB3D_TYPES_H
 # define CUB3D_TYPES_H
 
-# include "mlx.h"
 # include "../MLX42/include/MLX42/MLX42.h"
+# include "mlx.h"
 
 /*
 	Color structure to represent RGB colors.
@@ -30,11 +30,11 @@
 */
 typedef struct s_color
 {
-	unsigned char	r;
-	unsigned char	g;
-	unsigned char	b;
-	unsigned char	hex;
-}					t_color;
+	unsigned char			r;
+	unsigned char			g;
+	unsigned char			b;
+	unsigned char			hex;
+}							t_color;
 
 /*
 	Texture structure to hold texture data and its file path.
@@ -43,9 +43,9 @@ typedef struct s_color
 */
 typedef struct s_texture
 {
-	mlx_texture_t	*texture;
-	char			*path;
-}					t_texture;
+	mlx_texture_t			*texture;
+	char					*path;
+}							t_texture;
 
 /*
 	Player structure to hold player information.
@@ -67,8 +67,8 @@ typedef struct s_player
 	double plane_x;   // Player camera plane X component
 	double plane_y;   // Player camera plane Y component
 	double spawn_dir; // Player spawn direction in degrees
-	char spawn_char;  // Character representing the player's spawn direction (N, S, E, W)
-}					t_player;
+	char spawn_char;
+}							t_player;
 
 /*
 	Map structure to hold the game map.
@@ -78,10 +78,10 @@ typedef struct s_player
 */
 typedef struct s_map
 {
-	char			**grid;
+	char					**grid;
 	int width;  // Width of the map
 	int height; // Height of the map
-}					t_map;
+}							t_map;
 
 // Raycasting related structures
 /*
@@ -103,42 +103,42 @@ typedef struct s_ray
 	int step_x;            // Step in X direction (1 or -1)
 	int step_y;            // Step in Y direction (1 or -1)
 	int hit;               // Hit flag (1 if wall hit, 0 otherwise)
-	int side;              // Side of the wall hit (0 for vertical, 1 for horizontal
+	int side;
 	int line_height;       // Height of the wall line to be drawn
 	int draw_start;        // Start of the wall line to be drawn
 	int draw_end;          // End of the wall line to be drawn
-}					t_ray;
+}							t_ray;
 
 /*
 	Garbage collector node structure
 */
 typedef struct s_garbco_node
 {
-	void *ptr;
-	struct s_garbco_node *next;
-} t_garbco_node;
+	void					*ptr;
+	struct s_garbco_node	*next;
+}							t_garbco_node;
 
 /*
 	Garbage collector structure
 */
 typedef struct s_garbco
 {
-	t_garbco_node *head;
-} t_garbco;
+	t_garbco_node			*head;
+}							t_garbco;
 
 /*
-    Main game structure
+	Main game structure
 */
 typedef struct s_game
 {
-	mlx_t			*mlx;
-	mlx_image_t		*img;
-	t_player		player;
-	t_map			map;
+	mlx_t					*mlx;
+	mlx_image_t				*img;
+	t_player				player;
+	t_map					map;
 	t_texture textures[4]; // Array of textures for walls (N, S, E, W)
 	t_color floor_color;   // Floor color
 	t_color ceiling_color; // Ceiling color
-	t_garbco		garbco; // Garbage collector to manage memory
+	t_garbco garbco;       // Garbage collector to manage memory
 
 	int texture_count; // Number of textures loaded
 	int color_count;   // Number of colors loaded
@@ -146,6 +146,14 @@ typedef struct s_game
 	int map_ended;     // Flag to indicate if the map has ended
 	int map_valid;     // Flag to indicate if the map is valid
 	int player_found;  // Flag to indicate if the player position has been found
-}					t_game;
+}							t_game;
+
+typedef struct s_square
+{
+    int x;
+    int y;
+    int size;
+    int color;
+} t_square;
 
 #endif

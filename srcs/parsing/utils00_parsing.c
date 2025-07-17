@@ -13,15 +13,15 @@
 #include "../../include/cub3d.h"
 
 /*
-    Parsing validation:
-    Is the map line readable? // TODO
-        Space, tab, newline included.
-    Is the map starting with the texture identifier? // TODO
-        NO, SO, WE, EA
-    Is the map has color identifiers? // TODO
-        F, C
-    Valid map characters: // TODO
-        0, 1, N, S, E, W
+	Parsing validation:
+	Is the map line readable? // TODO
+		Space, tab, newline included.
+	Is the map starting with the texture identifier? // TODO
+		NO, SO, WE, EA
+	Is the map has color identifiers? // TODO
+		F, C
+	Valid map characters: // TODO
+		0, 1, N, S, E, W
 */
 
 int	is_empty_line(char *line)
@@ -39,8 +39,8 @@ int	texture_identifier(char *line)
 {
 	if (!line)
 		return (0);
-	if (ft_strncmp(line, "NO ", 3) == 0 || ft_strncmp(line, "SO ", 3) == 0 || \
-		ft_strncmp(line, "WE ", 3) == 0 || ft_strncmp(line, "EA ", 3) == 0)
+	if (ft_strncmp(line, "NO ", 3) == 0 || ft_strncmp(line, "SO ", 3) == 0
+		|| ft_strncmp(line, "WE ", 3) == 0 || ft_strncmp(line, "EA ", 3) == 0)
 		return (1);
 	return (0);
 }
@@ -56,8 +56,8 @@ int	is_color_identifier(char *line)
 
 int	is_valid_map_character(char c)
 {
-	return (c == '0' || c == '1' || c == 'N' || c == 'S' \
-		|| c == 'E' || c == 'W');
+	return (c == '0' || c == '1' || c == 'N' || c == 'S' || c == 'E'
+		|| c == 'W');
 }
 
 void	check_color_format(char *line)
