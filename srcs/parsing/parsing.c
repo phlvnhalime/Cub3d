@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 20:35:21 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/15 01:24:19 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/16 13:48:21 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,30 +42,30 @@ int	parse_texture(t_game *game, char *line)
 	if (!path || ft_strlen(path) == 0)
 	{
 		DEBUG_PRINT("Invalid texture path: %s\n", line);
-		if (path)
-			free(path);
+		free(line);
+		garbco_add(&game->garbco, path);
 		return (0);
 	}
 	if (game->textures[i].texture != NULL)
 	{
 		DEBUG_PRINT("Texture already loaded: %s\n", path);
-		free(path);
+		garbco_delete_txtr(game);
 		return (0);
 	}
-	DEBUG_PRINT(CYN"Attempting to load texture: %s\n"RST, path);
+	DEBUG_PRINT(CYN "Attempting to load texture: %s\n" RST, path);
 	game->textures[i].texture = mlx_load_png(path);
 	if (!game->textures[i].texture)
 	{
 		DEBUG_PRINT("Failed to load texture: %s\n", path);
-		free(path);
+		garbco_delete_txtr(game);
 		return (0);
 	}
-	DEBUG_PRINT(GRN"Texture loaded successfully: %s\n"RST, path);
+	DEBUG_PRINT(GRN "Texture loaded successfully: %s\n" RST, path);
 	garbco_add(&game->garbco, path);
 	game->textures[i].path = path;
 	game->texture_count++;
-	DEBUG_PRINT(RD"Texture loaded: %s\n"RST, path);
-	DEBUG_PRINT(RD"Texture count: %d\n"RST, game->texture_count);
+	DEBUG_PRINT(RD "Texture loaded: %s\n" RST, path);
+	DEBUG_PRINT(RD "Texture count: %d\n" RST, game->texture_count);
 	return (1);
 }
 
@@ -86,23 +86,21 @@ void	set_color_values(t_game *game, char identifier, int rgb_arr[3])
 		game->floor_color.r = rgb_arr[0];
 		game->floor_color.g = rgb_arr[1];
 		game->floor_color.b = rgb_arr[2];
-		game->floor_color.hex = (rgb_arr[0] << 16) | (rgb_arr[1] << 8) | \
-			rgb_arr[2];
+		game->floor_color.hex = (rgb_arr[0] << 16) | (rgb_arr[1] << 8) | rgb_arr[2];
 	}
 	else if (identifier == 'C')
 	{
 		game->ceiling_color.r = rgb_arr[0];
 		game->ceiling_color.g = rgb_arr[1];
 		game->ceiling_color.b = rgb_arr[2];
-		game->ceiling_color.hex = (rgb_arr[0] << 16) | (rgb_arr[1] << 8) | \
-			rgb_arr[2];
+		game->ceiling_color.hex = (rgb_arr[0] << 16) | (rgb_arr[1] << 8) | rgb_arr[2];
 	}
 	game->color_count++;
-	DEBUG_PRINT(RD"Color set: %c %d,%d,%d\n"RST, identifier, rgb_arr[0], \
+	DEBUG_PRINT(RD "Color set: %c %d,%d,%d\n" RST, identifier, rgb_arr[0],
 		rgb_arr[1], rgb_arr[2]);
-	DEBUG_PRINT(RD"Color hex: %x\n"RST, (rgb_arr[0] << 16) | \
-		(rgb_arr[1] << 8) | rgb_arr[2]);
-	DEBUG_PRINT(GRN"Check color from parsing part is done.\n"RST);
+	DEBUG_PRINT(RD "Color hex: %x\n" RST,
+		(rgb_arr[0] << 16) | (rgb_arr[1] << 8) | rgb_arr[2]);
+	DEBUG_PRINT(GRN "Check color from parsing part is done.\n" RST);
 }
 
 int	parse_color(t_game *game, char *line)
@@ -212,6 +210,6 @@ int	parse_file(t_game *game, char *file)
 	valid_map(game);
 	if (!game->map_valid)
 		error_exit_cleanup(game, "Map validation failed");
-	DEBUG_PRINT(GRN"File parsing completed successfully\n"RST);
+	DEBUG_PRINT(GRN "File parsing completed successfully\n" RST);
 	return (1);
 }

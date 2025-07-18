@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_key_mov.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:44:56 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/13 13:52:25 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/17 15:17:44 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 static void	move_front(t_game *game)
 {
-	double	new_x;
-	double	new_y;
+	double	new_x = game->player.x + game->player.dir_x * MOVE_SPEED;
+	double	new_y = game->player.y + game->player.dir_y * MOVE_SPEED;
+	double	buffer = 0.2;
 
-	new_x = game->player.x + game->player.dir_x * MOVE_SPEED;
-	new_y = game->player.y + game->player.dir_y * MOVE_SPEED;
-	if (game->map.grid[(int)new_y][(int)new_x] != '1')
+	// Check all four corners around the new position
+	if (game->map.grid[(int)(new_y + buffer)][(int)(new_x + buffer)] != '1' &&
+	    game->map.grid[(int)(new_y - buffer)][(int)(new_x + buffer)] != '1' &&
+	    game->map.grid[(int)(new_y + buffer)][(int)(new_x - buffer)] != '1' &&
+	    game->map.grid[(int)(new_y - buffer)][(int)(new_x - buffer)] != '1')
 	{
 		game->player.x = new_x;
 		game->player.y = new_y;
@@ -30,10 +33,15 @@ static void	move_back(t_game *game)
 {
 	double	new_x;
 	double	new_y;
+	double	buffer = 0.2;
 
 	new_x = game->player.x - game->player.dir_x * MOVE_SPEED;
 	new_y = game->player.y - game->player.dir_y * MOVE_SPEED;
-	if (game->map.grid[(int)new_y][(int)new_x] != '1')
+	if (game->map.grid[(int)new_y][(int)new_x] != '1' &&
+	    game->map.grid[(int)(new_y + buffer)][(int)(new_x + buffer)] != '1' &&
+	    game->map.grid[(int)(new_y - buffer)][(int)(new_x + buffer)] != '1' &&
+	    game->map.grid[(int)(new_y + buffer)][(int)(new_x - buffer)] != '1' &&
+	    game->map.grid[(int)(new_y - buffer)][(int)(new_x - buffer)] != '1')
 	{
 		game->player.x = new_x;
 		game->player.y = new_y;
@@ -44,10 +52,15 @@ static void	move_left(t_game *game)
 {
 	double	new_x;
 	double	new_y;
+	double	buffer = 0.2;
 
 	new_x = game->player.x - game->player.plane_x * MOVE_SPEED;
 	new_y = game->player.y - game->player.plane_y * MOVE_SPEED;
-	if (game->map.grid[(int)new_y][(int)new_x] != '1')
+	if (game->map.grid[(int)new_y][(int)new_x] != '1' &&
+	    game->map.grid[(int)(new_y + buffer)][(int)(new_x + buffer)] != '1' &&
+	    game->map.grid[(int)(new_y - buffer)][(int)(new_x + buffer)] != '1' &&
+	    game->map.grid[(int)(new_y + buffer)][(int)(new_x - buffer)] != '1' &&
+	    game->map.grid[(int)(new_y - buffer)][(int)(new_x - buffer)] != '1')
 	{
 		game->player.x = new_x;
 		game->player.y = new_y;
@@ -58,10 +71,15 @@ static void	move_right(t_game *game)
 {
 	double	new_x;
 	double	new_y;
+	double	buffer = 0.2;
 
 	new_x = game->player.x + game->player.plane_x * MOVE_SPEED;
 	new_y = game->player.y + game->player.plane_y * MOVE_SPEED;
-	if (game->map.grid[(int)new_y][(int)new_x] != '1')
+	if (game->map.grid[(int)new_y][(int)new_x] != '1' &&
+	    game->map.grid[(int)(new_y + buffer)][(int)(new_x + buffer)] != '1' &&
+	    game->map.grid[(int)(new_y - buffer)][(int)(new_x + buffer)] != '1' &&
+	    game->map.grid[(int)(new_y + buffer)][(int)(new_x - buffer)] != '1' &&
+	    game->map.grid[(int)(new_y - buffer)][(int)(new_x - buffer)] != '1')
 	{
 		game->player.x = new_x;
 		game->player.y = new_y;

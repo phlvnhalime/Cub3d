@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   garbco_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:11:19 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/16 12:53:57 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/17 16:03:04 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,44 +21,18 @@ void	garbco_add(t_garbco *garbco, void *ptr)
 	new_node = malloc(sizeof(t_garbco_node));
 	if (!new_node)
 	{
-		free(ptr);
+		// free(ptr);
+		// free(new_node);
 		return ;
 	}
 	new_node->ptr = ptr;
 	new_node->next = garbco->head;
 	garbco->head = new_node;
-	DEBUG_PRINT(GRN"Added pointer %p to garbage collector\n"RST, ptr);
+	printf("GARB ADD: node=%p, ptr=%p\n", (void*)new_node, ptr);
+	DEBUG_PRINT(GRN "Added pointer %p to garbage collector\n" RST, ptr);
 }
 
-void	garbco_remove(t_garbco *garbco, void *ptr)
-{
-	t_garbco_node	*current;
-	t_garbco_node	*prev;
-
-	if (!garbco || !ptr)
-		return ;
-	current = garbco->head;
-	prev = NULL;
-	while (current)
-	{
-		if (current->ptr == ptr)
-		{
-			if (prev)
-				prev->next = current->next;
-			else
-				garbco->head = current->next;
-			free(current);
-			DEBUG_PRINT(GRN"Removed pointer %p from garbage collector\n"\
-				RST, ptr);
-			return ;
-		}
-		prev = current;
-		current = current->next;
-	}
-	DEBUG_PRINT(RD"Pointer %p not found in garbage collector\n"RST, ptr);
-}
-
-char	*garbco_strdup(t_garbco *garbco, const char *str)
+char	*garbco_strdup(t_garbco *garbco, char *str)
 {
 	char	*dup;
 	size_t	len;

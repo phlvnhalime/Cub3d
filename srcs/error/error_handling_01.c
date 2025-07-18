@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling_01.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:39:56 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/13 13:32:45 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/16 10:21:54 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

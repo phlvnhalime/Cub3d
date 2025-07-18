@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_key.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 08:58:35 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/13 14:02:26 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/16 10:31:29 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void	handle_key(mlx_key_data_t keydata, void *frame)
 	game = (t_game *)frame;
 	if (keydata.key == KEY_ESC && keydata.action == KEY_PRESS)
 	{
-		DEBUG_PRINT(RD"The Program is trying to closed\n"RST);
+		DEBUG_PRINT(RD "The Program is trying to closed\n" RST);
 		mlx_close_window(game->mlx);
 		return ;
 	}
 	if (keydata.action == KEY_PRESS || keydata.action == KEY_REPEAT)
 	{
-		if (keydata.key == W || keydata.key == S || \
-			keydata.key == A || keydata.key == D)
+		if (keydata.key == W || keydata.key == S || keydata.key == A
+			|| keydata.key == D)
 		{
 			move_player(game);
 		}

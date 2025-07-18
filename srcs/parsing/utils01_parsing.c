@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils01_parsing.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 20:44:45 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/15 01:13:53 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/16 10:25:13 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
