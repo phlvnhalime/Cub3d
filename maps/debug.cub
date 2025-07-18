@@ -1,0 +1,11 @@
+NO ./textures/poison_slime_wall(1).png
+SO ./textures/trash_wall(1).png
+WE ./textures/grassstone_wall.png
+EA ./textures/cobbluestone_wall.png
+F 220,100,0
+C 225,30,0
+
+1111
+1001
+1N01
+1111
