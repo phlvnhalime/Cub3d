@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 14:59:34 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/16 10:52:54 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/18 13:35:29 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	input_hook(void *frame)
 
 	game = (t_game *)frame;
 	raycast(game);
-	render_minimap(game); // Draw the minimap after the main 3D rendering
+	render_minimap(game);
 	if (mlx_is_key_down(game->mlx, W) || mlx_is_key_down(game->mlx, S)
 		|| mlx_is_key_down(game->mlx, A) || mlx_is_key_down(game->mlx, D))
 	{
