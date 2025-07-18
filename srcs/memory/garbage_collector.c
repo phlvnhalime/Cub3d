@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 13:55:32 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/18 13:43:38 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/18 14:30:55 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,20 @@ void	garbco_clean(t_garbco *garbco)
 	while (current)
 	{
 		tmp = current->next;
-		free_garbco_node(current, &count);
+		if (current->ptr != NULL)
+		{
+			printf("GARB FREE: node=%p, ptr=%p\n", (void *)current, current->ptr);
+			DEBUG_PRINT(YLW "Pointer %p is being freed...\n" RST, current->ptr);
+			count++;
+			free(current->ptr);
+		}
+		else
+		{
+			printf("GARB FREE: node=%p, ptr=NULL\n", (void *)current);
+			DEBUG_PRINT(YLW "Pointer is NULL, skipping free...\n" RST);
+		}
+		free(current);
+		// free_garbco_node(current, &count);
 		current = tmp;
 	}
 	garbco->head = NULL;
