@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   garbco_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:11:19 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/17 16:03:04 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/18 13:44:10 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,12 @@ void	garbco_add(t_garbco *garbco, void *ptr)
 	new_node = malloc(sizeof(t_garbco_node));
 	if (!new_node)
 	{
-		// free(ptr);
-		// free(new_node);
 		return ;
 	}
 	new_node->ptr = ptr;
 	new_node->next = garbco->head;
 	garbco->head = new_node;
-	printf("GARB ADD: node=%p, ptr=%p\n", (void*)new_node, ptr);
+	printf("GARB ADD: node=%p, ptr=%p\n", (void *)new_node, ptr);
 	DEBUG_PRINT(GRN "Added pointer %p to garbage collector\n" RST, ptr);
 }
 
@@ -52,4 +50,21 @@ char	*garbco_strdup(t_garbco *garbco, char *str)
 	}
 	dup[i] = '\0';
 	return (dup);
+}
+
+void	free_garbco_node(t_garbco_node *current, int *count)
+{
+	if (current->ptr != NULL)
+	{
+		printf("GARB FREE: node=%p, ptr=%p\n", (void *)current, current->ptr);
+		DEBUG_PRINT(YLW "Pointer %p is being freed...\n" RST, current->ptr);
+		count++;
+		free(current->ptr);
+	}
+	else
+	{
+		printf("GARB FREE: node=%p, ptr=NULL\n", (void *)current);
+		DEBUG_PRINT(YLW "Pointer is NULL, skipping free...\n" RST);
+	}
+	free(current);
 }

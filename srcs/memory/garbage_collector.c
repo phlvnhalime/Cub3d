@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   garbage_collector.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 13:55:32 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/17 16:03:58 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/18 13:43:38 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ void	garbco_init(t_garbco *garbco)
 
 void	*garbco_malloc(t_garbco *garbco, size_t size)
 {
-	void	*ptr = NULL;
+	void	*ptr;
 
+	ptr = NULL;
 	if (!garbco || size == 0)
 		return (NULL);
 	ptr = malloc(size);
@@ -30,13 +31,31 @@ void	*garbco_malloc(t_garbco *garbco, size_t size)
 	{
 		DEBUG_PRINT(RD "Memory allocation failed for size %zu\n" RST, size);
 		garbco_clean(garbco);
-		// free(ptr);
 		return (NULL);
 	}
 	garbco_add(garbco, ptr);
 	DEBUG_PRINT(GRN "Allocated %zu bytes at %p\n" RST, size, ptr);
 	return (ptr);
 }
+
+// ORIGINALLY from garbco_clean function. Moved to garbco_utils.c
+// 
+// void	free_garbco_node(t_garbco_node *current, int *count)
+// {
+// 	if (current->ptr != NULL)
+// 	{
+// 		printf("GARB FREE: node=%p, ptr=%p\n", (void *)current, current->ptr);
+// 		DEBUG_PRINT(YLW "Pointer %p is being freed...\n" RST, current->ptr);
+// 		count++;
+// 		free(current->ptr);
+// 	}
+// 	else
+// 	{
+// 		printf("GARB FREE: node=%p, ptr=NULL\n", (void *)current);
+// 		DEBUG_PRINT(YLW "Pointer is NULL, skipping free...\n" RST);
+// 	}
+// 	free(current);
+// }
 
 void	garbco_clean(t_garbco *garbco)
 {
@@ -52,19 +71,7 @@ void	garbco_clean(t_garbco *garbco)
 	while (current)
 	{
 		tmp = current->next;
-		if (current->ptr != NULL)
-		{
-			printf("GARB FREE: node=%p, ptr=%p\n", (void*)current, current->ptr);
-			DEBUG_PRINT(YLW "Pointer %p is being freed...\n" RST, current->ptr);
-			count++;
-			free(current->ptr);
-		}
-		else
-		{
-			printf("GARB FREE: node=%p, ptr=NULL\n", (void*)current);
-			DEBUG_PRINT(YLW "Pointer is NULL, skipping free...\n" RST);
-		}
-		free(current);
+		free_garbco_node(current, &count);
 		current = tmp;
 	}
 	garbco->head = NULL;
