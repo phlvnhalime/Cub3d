@@ -1,27 +1,27 @@
-./cub3D maps/test.cub
+ ./cub3D maps/test.cub 
  [DEBUG] Game initialized successfully
  [DEBUG] Attempting to load texture: ./textures/poison_slime_wall(1).png
  [DEBUG] Texture loaded successfully: ./textures/poison_slime_wall(1).png
-GARB ADD: node=0x7f7e6172bdc0, ptr=0x7f7e61753250
- [DEBUG] Added pointer 0x7f7e61753250 to garbage collector
+GARB ADD: node=0x7f96f003c770, ptr=0x7f96eef3a8c0
+ [DEBUG] Added pointer 0x7f96eef3a8c0 to garbage collector
  [DEBUG] Texture loaded: ./textures/poison_slime_wall(1).png
  [DEBUG] Texture count: 1
  [DEBUG] Attempting to load texture: ./textures/trash_wall(1).png
  [DEBUG] Texture loaded successfully: ./textures/trash_wall(1).png
-GARB ADD: node=0x7f7e6170e300, ptr=0x7f7e61747f10
- [DEBUG] Added pointer 0x7f7e61747f10 to garbage collector
+GARB ADD: node=0x7f96f001f1d0, ptr=0x7f96f003b4c0
+ [DEBUG] Added pointer 0x7f96f003b4c0 to garbage collector
  [DEBUG] Texture loaded: ./textures/trash_wall(1).png
  [DEBUG] Texture count: 2
  [DEBUG] Attempting to load texture: ./textures/grassstone_wall.png
  [DEBUG] Texture loaded successfully: ./textures/grassstone_wall.png
-GARB ADD: node=0x7f7e62026c00, ptr=0x7f7e61747ec0
- [DEBUG] Added pointer 0x7f7e61747ec0 to garbage collector
+GARB ADD: node=0x7f96f00042b0, ptr=0x7f96f003d7f0
+ [DEBUG] Added pointer 0x7f96f003d7f0 to garbage collector
  [DEBUG] Texture loaded: ./textures/grassstone_wall.png
  [DEBUG] Texture count: 3
  [DEBUG] Attempting to load texture: ./textures/cobbluestone_wall.png
  [DEBUG] Texture loaded successfully: ./textures/cobbluestone_wall.png
-GARB ADD: node=0x7f7e6172a940, ptr=0x7f7e6174fe20
- [DEBUG] Added pointer 0x7f7e6174fe20 to garbage collector
+GARB ADD: node=0x7f96f0109af0, ptr=0x7f96eef236f0
+ [DEBUG] Added pointer 0x7f96eef236f0 to garbage collector
  [DEBUG] Texture loaded: ./textures/cobbluestone_wall.png
  [DEBUG] Texture count: 4
  [DEBUG] Color set: F 25,17,55
@@ -30,103 +30,103 @@ GARB ADD: node=0x7f7e6172a940, ptr=0x7f7e6174fe20
  [DEBUG] Color set: C 16,11,38
  [DEBUG] Color hex: 100b26
  [DEBUG] Check color from parsing part is done.
-GARB ADD: node=0x7f7e6172b0f0, ptr=0x7f7e6172bc90
- [DEBUG] Added pointer 0x7f7e6172bc90 to garbage collector
- [DEBUG] Allocated 8 bytes at 0x7f7e6172bc90
-GARB ADD: node=0x7f7e6174fbd0, ptr=0x7f7e6174fba0
- [DEBUG] Added pointer 0x7f7e6174fba0 to garbage collector
- [DEBUG] Allocated 34 bytes at 0x7f7e6174fba0
+GARB ADD: node=0x7f96f010be80, ptr=0x7f96f0121c90
+ [DEBUG] Added pointer 0x7f96f0121c90 to garbage collector
+ [DEBUG] Allocated 8 bytes at 0x7f96f0121c90
+GARB ADD: node=0x7f96f0123150, ptr=0x7f96f011efb0
+ [DEBUG] Added pointer 0x7f96f011efb0 to garbage collector
+ [DEBUG] Allocated 34 bytes at 0x7f96f011efb0
  [DEBUG] Map line added:         1111111111111111111111111 (width: 33, height: 1)
-GARB ADD: node=0x7f7e61753280, ptr=0x7f7e617272f0
- [DEBUG] Added pointer 0x7f7e617272f0 to garbage collector
- [DEBUG] Allocated 16 bytes at 0x7f7e617272f0
-GARB ADD: node=0x7f7e620216b0, ptr=0x7f7e62026a20
- [DEBUG] Added pointer 0x7f7e62026a20 to garbage collector
- [DEBUG] Allocated 34 bytes at 0x7f7e62026a20
+GARB ADD: node=0x7f96f001f0a0, ptr=0x7f96f001f820
+ [DEBUG] Added pointer 0x7f96f001f820 to garbage collector
+ [DEBUG] Allocated 16 bytes at 0x7f96f001f820
+GARB ADD: node=0x7f96f001de10, ptr=0x7f96f003b560
+ [DEBUG] Added pointer 0x7f96f003b560 to garbage collector
+ [DEBUG] Allocated 34 bytes at 0x7f96f003b560
  [DEBUG] Map line added:         1000000000110000000000001 (width: 33, height: 2)
-GARB ADD: node=0x7f7e62004f20, ptr=0x7f7e62027230
- [DEBUG] Added pointer 0x7f7e62027230 to garbage collector
- [DEBUG] Allocated 24 bytes at 0x7f7e62027230
-GARB ADD: node=0x7f7e6201eaf0, ptr=0x7f7e6202c620
- [DEBUG] Added pointer 0x7f7e6202c620 to garbage collector
- [DEBUG] Allocated 34 bytes at 0x7f7e6202c620
+GARB ADD: node=0x7f96f001eb80, ptr=0x7f96f003fa20
+ [DEBUG] Added pointer 0x7f96f003fa20 to garbage collector
+ [DEBUG] Allocated 24 bytes at 0x7f96f003fa20
+GARB ADD: node=0x7f96f001e530, ptr=0x7f96f004f110
+ [DEBUG] Added pointer 0x7f96f004f110 to garbage collector
+ [DEBUG] Allocated 34 bytes at 0x7f96f004f110
  [DEBUG] Map line added:         1011000001110000000000001 (width: 33, height: 3)
-GARB ADD: node=0x7f7e6202b140, ptr=0x7f7e62027280
- [DEBUG] Added pointer 0x7f7e62027280 to garbage collector
- [DEBUG] Allocated 32 bytes at 0x7f7e62027280
-GARB ADD: node=0x7f7e6201dae0, ptr=0x7f7e6202f650
- [DEBUG] Added pointer 0x7f7e6202f650 to garbage collector
- [DEBUG] Allocated 34 bytes at 0x7f7e6202f650
+GARB ADD: node=0x7f96eef26010, ptr=0x7f96eef4a280
+ [DEBUG] Added pointer 0x7f96eef4a280 to garbage collector
+ [DEBUG] Allocated 32 bytes at 0x7f96eef4a280
+GARB ADD: node=0x7f96eef0b310, ptr=0x7f96eef38230
+ [DEBUG] Added pointer 0x7f96eef38230 to garbage collector
+ [DEBUG] Allocated 34 bytes at 0x7f96eef38230
  [DEBUG] Map line added:         1001000000000000000000001 (width: 33, height: 4)
-GARB ADD: node=0x7f7e62021dc0, ptr=0x7f7e62041f00
- [DEBUG] Added pointer 0x7f7e62041f00 to garbage collector
- [DEBUG] Allocated 40 bytes at 0x7f7e62041f00
-GARB ADD: node=0x7f7e62024ad0, ptr=0x7f7e620324c0
- [DEBUG] Added pointer 0x7f7e620324c0 to garbage collector
- [DEBUG] Allocated 34 bytes at 0x7f7e620324c0
+GARB ADD: node=0x7f96eef1ab70, ptr=0x7f96eef3c710
+ [DEBUG] Added pointer 0x7f96eef3c710 to garbage collector
+ [DEBUG] Allocated 40 bytes at 0x7f96eef3c710
+GARB ADD: node=0x7f96eef17530, ptr=0x7f96eef438b0
+ [DEBUG] Added pointer 0x7f96eef438b0 to garbage collector
+ [DEBUG] Allocated 34 bytes at 0x7f96eef438b0
  [DEBUG] Map line added: 111111111011000001110000000000001 (width: 33, height: 5)
-GARB ADD: node=0x7f7e6201ccd0, ptr=0x7f7e62040ac0
- [DEBUG] Added pointer 0x7f7e62040ac0 to garbage collector
- [DEBUG] Allocated 48 bytes at 0x7f7e62040ac0
-GARB ADD: node=0x7f7e6201bcf0, ptr=0x7f7e6201bcc0
- [DEBUG] Added pointer 0x7f7e6201bcc0 to garbage collector
- [DEBUG] Allocated 34 bytes at 0x7f7e6201bcc0
+GARB ADD: node=0x7f96eef1f2f0, ptr=0x7f96eef43a40
+ [DEBUG] Added pointer 0x7f96eef43a40 to garbage collector
+ [DEBUG] Allocated 48 bytes at 0x7f96eef43a40
+GARB ADD: node=0x7f96f001fe70, ptr=0x7f96f0017290
+ [DEBUG] Added pointer 0x7f96f0017290 to garbage collector
+ [DEBUG] Allocated 34 bytes at 0x7f96f0017290
  [DEBUG] Map line added: 100000000011000001110111110111111 (width: 33, height: 6)
-GARB ADD: node=0x7f7e6172b610, ptr=0x7f7e61738380
- [DEBUG] Added pointer 0x7f7e61738380 to garbage collector
- [DEBUG] Allocated 56 bytes at 0x7f7e61738380
-GARB ADD: node=0x7f7e6172c410, ptr=0x7f7e61747dd0
- [DEBUG] Added pointer 0x7f7e61747dd0 to garbage collector
- [DEBUG] Allocated 30 bytes at 0x7f7e61747dd0
+GARB ADD: node=0x7f96f001ea50, ptr=0x7f96f001cf10
+ [DEBUG] Added pointer 0x7f96f001cf10 to garbage collector
+ [DEBUG] Allocated 56 bytes at 0x7f96f001cf10
+GARB ADD: node=0x7f96f001deb0, ptr=0x7f96f003f9d0
+ [DEBUG] Added pointer 0x7f96f003f9d0 to garbage collector
+ [DEBUG] Allocated 30 bytes at 0x7f96f003f9d0
  [DEBUG] Map line added: 11110111111111011100000010001 (width: 33, height: 7)
-GARB ADD: node=0x7f7e6170b150, ptr=0x7f7e61762040
- [DEBUG] Added pointer 0x7f7e61762040 to garbage collector
- [DEBUG] Allocated 64 bytes at 0x7f7e61762040
-GARB ADD: node=0x7f7e6172afc0, ptr=0x7f7e61747c50
- [DEBUG] Added pointer 0x7f7e61747c50 to garbage collector
- [DEBUG] Allocated 30 bytes at 0x7f7e61747c50
+GARB ADD: node=0x7f96f0023ec0, ptr=0x7f96f003f7d0
+ [DEBUG] Added pointer 0x7f96f003f7d0 to garbage collector
+ [DEBUG] Allocated 64 bytes at 0x7f96f003f7d0
+GARB ADD: node=0x7f96eef12970, ptr=0x7f96eef49b70
+ [DEBUG] Added pointer 0x7f96eef49b70 to garbage collector
+ [DEBUG] Allocated 30 bytes at 0x7f96eef49b70
  [DEBUG] Map line added: 11110111111111000001010010001 (width: 33, height: 8)
-GARB ADD: node=0x7f7e62018ea0, ptr=0x7f7e620084c0
- [DEBUG] Added pointer 0x7f7e620084c0 to garbage collector
- [DEBUG] Allocated 72 bytes at 0x7f7e620084c0
-GARB ADD: node=0x7f7e62024b60, ptr=0x7f7e620273e0
- [DEBUG] Added pointer 0x7f7e620273e0 to garbage collector
- [DEBUG] Allocated 30 bytes at 0x7f7e620273e0
+GARB ADD: node=0x7f96eef177b0, ptr=0x7f96eef36c30
+ [DEBUG] Added pointer 0x7f96eef36c30 to garbage collector
+ [DEBUG] Allocated 72 bytes at 0x7f96eef36c30
+GARB ADD: node=0x7f96eef105c0, ptr=0x7f96eef4e940
+ [DEBUG] Added pointer 0x7f96eef4e940 to garbage collector
+ [DEBUG] Allocated 30 bytes at 0x7f96eef4e940
  [DEBUG] Map line added: 11000000110101011100000010001 (width: 33, height: 9)
-GARB ADD: node=0x7f7e6201b630, ptr=0x7f7e62031e10
- [DEBUG] Added pointer 0x7f7e62031e10 to garbage collector
- [DEBUG] Allocated 80 bytes at 0x7f7e62031e10
-GARB ADD: node=0x7f7e62011e70, ptr=0x7f7e62027430
- [DEBUG] Added pointer 0x7f7e62027430 to garbage collector
- [DEBUG] Allocated 30 bytes at 0x7f7e62027430
+GARB ADD: node=0x7f96eef21440, ptr=0x7f96eef4cb30
+ [DEBUG] Added pointer 0x7f96eef4cb30 to garbage collector
+ [DEBUG] Allocated 80 bytes at 0x7f96eef4cb30
+GARB ADD: node=0x7f96eef4a830, ptr=0x7f96eef52000
+ [DEBUG] Added pointer 0x7f96eef52000 to garbage collector
+ [DEBUG] Allocated 30 bytes at 0x7f96eef52000
  [DEBUG] Map line added: 10000000000000000000000010001 (width: 33, height: 10)
-GARB ADD: node=0x7f7e62004e70, ptr=0x7f7e620282d0
- [DEBUG] Added pointer 0x7f7e620282d0 to garbage collector
- [DEBUG] Allocated 88 bytes at 0x7f7e620282d0
-GARB ADD: node=0x7f7e6172c930, ptr=0x7f7e61747ca0
- [DEBUG] Added pointer 0x7f7e61747ca0 to garbage collector
- [DEBUG] Allocated 30 bytes at 0x7f7e61747ca0
+GARB ADD: node=0x7f96eef1dd70, ptr=0x7f96eef361f0
+ [DEBUG] Added pointer 0x7f96eef361f0 to garbage collector
+ [DEBUG] Allocated 88 bytes at 0x7f96eef361f0
+GARB ADD: node=0x7f96eef4f200, ptr=0x7f96eef522c0
+ [DEBUG] Added pointer 0x7f96eef522c0 to garbage collector
+ [DEBUG] Allocated 30 bytes at 0x7f96eef522c0
  [DEBUG] Map line added: 10000000000000001101010010001 (width: 33, height: 11)
-GARB ADD: node=0x7f7e6172f7b0, ptr=0x7f7e6176e660
- [DEBUG] Added pointer 0x7f7e6176e660 to garbage collector
- [DEBUG] Allocated 96 bytes at 0x7f7e6176e660
-GARB ADD: node=0x7f7e6176e6c0, ptr=0x7f7e61747c00
- [DEBUG] Added pointer 0x7f7e61747c00 to garbage collector
- [DEBUG] Allocated 32 bytes at 0x7f7e61747c00
+GARB ADD: node=0x7f96eef599b0, ptr=0x7f96eef10290
+ [DEBUG] Added pointer 0x7f96eef10290 to garbage collector
+ [DEBUG] Allocated 96 bytes at 0x7f96eef10290
+GARB ADD: node=0x7f96eef3b010, ptr=0x7f96eef4fec0
+ [DEBUG] Added pointer 0x7f96eef4fec0 to garbage collector
+ [DEBUG] Allocated 32 bytes at 0x7f96eef4fec0
  [DEBUG] Map line added: 11000001110101011111010110N0111 (width: 33, height: 12)
-GARB ADD: node=0x7f7e61723d70, ptr=0x7f7e6176dd80
- [DEBUG] Added pointer 0x7f7e6176dd80 to garbage collector
- [DEBUG] Allocated 104 bytes at 0x7f7e6176dd80
-GARB ADD: node=0x7f7e617272a0, ptr=0x7f7e61747b00
- [DEBUG] Added pointer 0x7f7e61747b00 to garbage collector
- [DEBUG] Allocated 30 bytes at 0x7f7e61747b00
+GARB ADD: node=0x7f96eef12690, ptr=0x7f96eef36cb0
+ [DEBUG] Added pointer 0x7f96eef36cb0 to garbage collector
+ [DEBUG] Allocated 104 bytes at 0x7f96eef36cb0
+GARB ADD: node=0x7f96eef0b150, ptr=0x7f96eef54640
+ [DEBUG] Added pointer 0x7f96eef54640 to garbage collector
+ [DEBUG] Allocated 30 bytes at 0x7f96eef54640
  [DEBUG] Map line added: 11110111 1110101 101110010001 (width: 33, height: 13)
-GARB ADD: node=0x7f7e6171d260, ptr=0x7f7e617674f0
- [DEBUG] Added pointer 0x7f7e617674f0 to garbage collector
- [DEBUG] Allocated 112 bytes at 0x7f7e617674f0
-GARB ADD: node=0x7f7e617217e0, ptr=0x7f7e61747690
- [DEBUG] Added pointer 0x7f7e61747690 to garbage collector
- [DEBUG] Allocated 30 bytes at 0x7f7e61747690
+GARB ADD: node=0x7f96eef5c200, ptr=0x7f96eef4b6b0
+ [DEBUG] Added pointer 0x7f96eef4b6b0 to garbage collector
+ [DEBUG] Allocated 112 bytes at 0x7f96eef4b6b0
+GARB ADD: node=0x7f96eef5d470, ptr=0x7f96eef53050
+ [DEBUG] Added pointer 0x7f96eef53050 to garbage collector
+ [DEBUG] Allocated 30 bytes at 0x7f96eef53050
  [DEBUG] Map line added: 11111111 1111111 111111111111 (width: 33, height: 14)
  [DEBUG] Player found at (26, 11) --> (26.50,11.50) facing 'N'
  [DEBUG] Player direction set to 'N' : dir(0.00, -1.00) plane(0.66, 0.00) spawn_dir(90.00)
@@ -144,95 +144,114 @@ GARB ADD: node=0x7f7e617217e0, ptr=0x7f7e61747690
  [DEBUG] Image cleaned
  [DEBUG] MLX cleaned
  [DEBUG] Cleaning garbage collector...
-GARB FREE: node=0x7f7e617217e0, ptr=0x7f7e61747690
- [DEBUG] Pointer 0x7f7e61747690 is being freed...
-GARB FREE: node=0x7f7e6171d260, ptr=0x7f7e617674f0
- [DEBUG] Pointer 0x7f7e617674f0 is being freed...
-GARB FREE: node=0x7f7e617272a0, ptr=0x7f7e61747b00
- [DEBUG] Pointer 0x7f7e61747b00 is being freed...
-GARB FREE: node=0x7f7e61723d70, ptr=0x7f7e6176dd80
- [DEBUG] Pointer 0x7f7e6176dd80 is being freed...
-GARB FREE: node=0x7f7e6176e6c0, ptr=0x7f7e61747c00
- [DEBUG] Pointer 0x7f7e61747c00 is being freed...
-GARB FREE: node=0x7f7e6172f7b0, ptr=0x7f7e6176e660
- [DEBUG] Pointer 0x7f7e6176e660 is being freed...
-GARB FREE: node=0x7f7e6172c930, ptr=0x7f7e61747ca0
- [DEBUG] Pointer 0x7f7e61747ca0 is being freed...
-GARB FREE: node=0x7f7e62004e70, ptr=0x7f7e620282d0
- [DEBUG] Pointer 0x7f7e620282d0 is being freed...
-GARB FREE: node=0x7f7e62011e70, ptr=0x7f7e62027430
- [DEBUG] Pointer 0x7f7e62027430 is being freed...
-GARB FREE: node=0x7f7e6201b630, ptr=0x7f7e62031e10
- [DEBUG] Pointer 0x7f7e62031e10 is being freed...
-GARB FREE: node=0x7f7e62024b60, ptr=0x7f7e620273e0
- [DEBUG] Pointer 0x7f7e620273e0 is being freed...
-GARB FREE: node=0x7f7e62018ea0, ptr=0x7f7e620084c0
- [DEBUG] Pointer 0x7f7e620084c0 is being freed...
-GARB FREE: node=0x7f7e6172afc0, ptr=0x7f7e61747c50
- [DEBUG] Pointer 0x7f7e61747c50 is being freed...
-GARB FREE: node=0x7f7e6170b150, ptr=0x7f7e61762040
- [DEBUG] Pointer 0x7f7e61762040 is being freed...
-GARB FREE: node=0x7f7e6172c410, ptr=0x7f7e61747dd0
- [DEBUG] Pointer 0x7f7e61747dd0 is being freed...
-GARB FREE: node=0x7f7e6172b610, ptr=0x7f7e61738380
- [DEBUG] Pointer 0x7f7e61738380 is being freed...
-GARB FREE: node=0x7f7e6201bcf0, ptr=0x7f7e6201bcc0
- [DEBUG] Pointer 0x7f7e6201bcc0 is being freed...
-GARB FREE: node=0x7f7e6201ccd0, ptr=0x7f7e62040ac0
- [DEBUG] Pointer 0x7f7e62040ac0 is being freed...
-GARB FREE: node=0x7f7e62024ad0, ptr=0x7f7e620324c0
- [DEBUG] Pointer 0x7f7e620324c0 is being freed...
-GARB FREE: node=0x7f7e62021dc0, ptr=0x7f7e62041f00
- [DEBUG] Pointer 0x7f7e62041f00 is being freed...
-GARB FREE: node=0x7f7e6201dae0, ptr=0x7f7e6202f650
- [DEBUG] Pointer 0x7f7e6202f650 is being freed...
-GARB FREE: node=0x7f7e6202b140, ptr=0x7f7e62027280
- [DEBUG] Pointer 0x7f7e62027280 is being freed...
-GARB FREE: node=0x7f7e6201eaf0, ptr=0x7f7e6202c620
- [DEBUG] Pointer 0x7f7e6202c620 is being freed...
-GARB FREE: node=0x7f7e62004f20, ptr=0x7f7e62027230
- [DEBUG] Pointer 0x7f7e62027230 is being freed...
-GARB FREE: node=0x7f7e620216b0, ptr=0x7f7e62026a20
- [DEBUG] Pointer 0x7f7e62026a20 is being freed...
-GARB FREE: node=0x7f7e61753280, ptr=0x7f7e617272f0
- [DEBUG] Pointer 0x7f7e617272f0 is being freed...
-GARB FREE: node=0x7f7e6174fbd0, ptr=0x7f7e6174fba0
- [DEBUG] Pointer 0x7f7e6174fba0 is being freed...
-GARB FREE: node=0x7f7e6172b0f0, ptr=0x7f7e6172bc90
- [DEBUG] Pointer 0x7f7e6172bc90 is being freed...
-GARB FREE: node=0x7f7e6172a940, ptr=0x7f7e6174fe20
- [DEBUG] Pointer 0x7f7e6174fe20 is being freed...
-GARB FREE: node=0x7f7e62026c00, ptr=0x7f7e61747ec0
- [DEBUG] Pointer 0x7f7e61747ec0 is being freed...
-GARB FREE: node=0x7f7e6170e300, ptr=0x7f7e61747f10
- [DEBUG] Pointer 0x7f7e61747f10 is being freed...
-GARB FREE: node=0x7f7e6172bdc0, ptr=0x7f7e61753250
- [DEBUG] Pointer 0x7f7e61753250 is being freed...
+GARB FREE: node=0x7f96eef5d470, ptr=0x7f96eef53050
+ [DEBUG] Pointer 0x7f96eef53050 is being freed...
+GARB FREE: node=0x7f96eef5c200, ptr=0x7f96eef4b6b0
+ [DEBUG] Pointer 0x7f96eef4b6b0 is being freed...
+GARB FREE: node=0x7f96eef0b150, ptr=0x7f96eef54640
+ [DEBUG] Pointer 0x7f96eef54640 is being freed...
+GARB FREE: node=0x7f96eef12690, ptr=0x7f96eef36cb0
+ [DEBUG] Pointer 0x7f96eef36cb0 is being freed...
+GARB FREE: node=0x7f96eef3b010, ptr=0x7f96eef4fec0
+ [DEBUG] Pointer 0x7f96eef4fec0 is being freed...
+GARB FREE: node=0x7f96eef599b0, ptr=0x7f96eef10290
+ [DEBUG] Pointer 0x7f96eef10290 is being freed...
+GARB FREE: node=0x7f96eef4f200, ptr=0x7f96eef522c0
+ [DEBUG] Pointer 0x7f96eef522c0 is being freed...
+GARB FREE: node=0x7f96eef1dd70, ptr=0x7f96eef361f0
+ [DEBUG] Pointer 0x7f96eef361f0 is being freed...
+GARB FREE: node=0x7f96eef4a830, ptr=0x7f96eef52000
+ [DEBUG] Pointer 0x7f96eef52000 is being freed...
+GARB FREE: node=0x7f96eef21440, ptr=0x7f96eef4cb30
+ [DEBUG] Pointer 0x7f96eef4cb30 is being freed...
+GARB FREE: node=0x7f96eef105c0, ptr=0x7f96eef4e940
+ [DEBUG] Pointer 0x7f96eef4e940 is being freed...
+GARB FREE: node=0x7f96eef177b0, ptr=0x7f96eef36c30
+ [DEBUG] Pointer 0x7f96eef36c30 is being freed...
+GARB FREE: node=0x7f96eef12970, ptr=0x7f96eef49b70
+ [DEBUG] Pointer 0x7f96eef49b70 is being freed...
+GARB FREE: node=0x7f96f0023ec0, ptr=0x7f96f003f7d0
+ [DEBUG] Pointer 0x7f96f003f7d0 is being freed...
+GARB FREE: node=0x7f96f001deb0, ptr=0x7f96f003f9d0
+ [DEBUG] Pointer 0x7f96f003f9d0 is being freed...
+GARB FREE: node=0x7f96f001ea50, ptr=0x7f96f001cf10
+ [DEBUG] Pointer 0x7f96f001cf10 is being freed...
+GARB FREE: node=0x7f96f001fe70, ptr=0x7f96f0017290
+ [DEBUG] Pointer 0x7f96f0017290 is being freed...
+GARB FREE: node=0x7f96eef1f2f0, ptr=0x7f96eef43a40
+ [DEBUG] Pointer 0x7f96eef43a40 is being freed...
+GARB FREE: node=0x7f96eef17530, ptr=0x7f96eef438b0
+ [DEBUG] Pointer 0x7f96eef438b0 is being freed...
+GARB FREE: node=0x7f96eef1ab70, ptr=0x7f96eef3c710
+ [DEBUG] Pointer 0x7f96eef3c710 is being freed...
+GARB FREE: node=0x7f96eef0b310, ptr=0x7f96eef38230
+ [DEBUG] Pointer 0x7f96eef38230 is being freed...
+GARB FREE: node=0x7f96eef26010, ptr=0x7f96eef4a280
+ [DEBUG] Pointer 0x7f96eef4a280 is being freed...
+GARB FREE: node=0x7f96f001e530, ptr=0x7f96f004f110
+ [DEBUG] Pointer 0x7f96f004f110 is being freed...
+GARB FREE: node=0x7f96f001eb80, ptr=0x7f96f003fa20
+ [DEBUG] Pointer 0x7f96f003fa20 is being freed...
+GARB FREE: node=0x7f96f001de10, ptr=0x7f96f003b560
+ [DEBUG] Pointer 0x7f96f003b560 is being freed...
+GARB FREE: node=0x7f96f001f0a0, ptr=0x7f96f001f820
+ [DEBUG] Pointer 0x7f96f001f820 is being freed...
+GARB FREE: node=0x7f96f0123150, ptr=0x7f96f011efb0
+ [DEBUG] Pointer 0x7f96f011efb0 is being freed...
+GARB FREE: node=0x7f96f010be80, ptr=0x7f96f0121c90
+ [DEBUG] Pointer 0x7f96f0121c90 is being freed...
+GARB FREE: node=0x7f96f0109af0, ptr=0x7f96eef236f0
+ [DEBUG] Pointer 0x7f96eef236f0 is being freed...
+GARB FREE: node=0x7f96f00042b0, ptr=0x7f96f003d7f0
+ [DEBUG] Pointer 0x7f96f003d7f0 is being freed...
+GARB FREE: node=0x7f96f001f1d0, ptr=0x7f96f003b4c0
+ [DEBUG] Pointer 0x7f96f003b4c0 is being freed...
+GARB FREE: node=0x7f96f003c770, ptr=0x7f96eef3a8c0
+ [DEBUG] Pointer 0x7f96eef3a8c0 is being freed...
  [DEBUG] Garbage collector cleaned 32 pointers
  [DEBUG] Game garbage collector cleaned
-Process:         cub3D [20862]
+Process:         cub3D [21991]
 Path:            /Users/USER/Desktop/*/cub3D
-Load Address:    0x1047c0000
+Load Address:    0x105069000
 Identifier:      cub3D
 Version:         ???
 Code Type:       X86-64
 Platform:        macOS
 Parent Process:  zsh [4507]
 
-Date/Time:       2025-07-18 14:31:10.134 +0200
-Launch Time:     2025-07-18 14:31:06.178 +0200
+Date/Time:       2025-07-18 14:54:48.270 +0200
+Launch Time:     2025-07-18 14:54:42.766 +0200
 OS Version:      macOS 12.7.6 (21H1320)
 Report Version:  7
 Analysis Tool:   /usr/bin/leaks
 
-Physical footprint:         13.7M
-Physical footprint (peak):  27.4M
+Physical footprint:         14.3M
+Physical footprint (peak):  28.0M
 ----
 
 leaks Report Version: 4.0
-Process 20862: 18439 nodes malloced for 3679 KB
-Process 20862: 2 leaks for 64 total leaked bytes.
+Process 21991: 18469 nodes malloced for 3681 KB
+Process 21991: 18 leaks for 832 total leaked bytes.
 
-    2 (64 bytes) << TOTAL >>
-      1 (48 bytes) ROOT LEAK: <CFString 0x7f7e6172f690> [48]  length: 26  "Copyright Apple Inc., 2019"
-      1 (16 bytes) ROOT LEAK: 0x7f7e6172f7f0 [16]  length: 1  ""
+    18 (832 bytes) << TOTAL >>
+
+      16 (768 bytes) ROOT CYCLE: 0x7f96f006a620 [48]
+         15 (720 bytes) ROOT CYCLE: 0x7f96f006a650 [48]
+            CYCLE BACK TO 0x7f96f006a620 [48]
+            13 (624 bytes) ROOT CYCLE: 0x7f96f006a6b0 [48]
+               12 (576 bytes) ROOT CYCLE: 0x7f96f006a9f0 [48]
+                  5 (240 bytes) ROOT CYCLE: 0x7f96f006aab0 [48]
+                     4 (192 bytes) ROOT CYCLE: 0x7f96f006ab10 [48]
+                        2 (96 bytes) ROOT CYCLE: 0x7f96f006ab40 [48]
+                           1 (48 bytes) ROOT CYCLE: 0x7f96f006ab70 [48]
+                        1 (48 bytes) ROOT CYCLE: 0x7f96f006aae0 [48]
+                  3 (144 bytes) ROOT CYCLE: 0x7f96f006a990 [48]
+                     1 (48 bytes) ROOT CYCLE: 0x7f96f006a960 [48]
+                     1 (48 bytes) ROOT CYCLE: 0x7f96f006a9c0 [48]
+                  3 (144 bytes) ROOT CYCLE: 0x7f96f006aa80 [48]
+                     2 (96 bytes) ROOT CYCLE: 0x7f96f006aa50 [48]
+                        1 (48 bytes) ROOT CYCLE: 0x7f96f006aa20 [48]
+            1 (48 bytes) ROOT CYCLE: 0x7f96f006a680 [48]
+
+      1 (48 bytes) ROOT LEAK: <CFString 0x7f96f0023d60> [48]  length: 26  "Copyright Apple Inc., 2019"
+      1 (16 bytes) ROOT LEAK: 0x7f96f0116a20 [16]  length: 1  ""
