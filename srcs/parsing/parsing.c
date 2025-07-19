@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 20:35:21 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/16 13:48:21 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/19 10:25:40 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,7 @@ int	parse_textures_and_colors(t_game *game, int fd)
 		}
 		free(line);
 	}
+	free(line);
 	if (nbr_element != 6)
 		return (0);
 	return (1);
