@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 20:35:21 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/19 10:25:40 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/19 11:00:09 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,48 +27,6 @@ int	get_texture_count(char *line)
 	return (-1);
 }
 
-int	parse_texture(t_game *game, char *line)
-{
-	char	*path;
-	int		i;
-
-	i = get_texture_count(line);
-	if (i == -1)
-	{
-		DEBUG_PRINT("Invalid texture identifier: %s\n", line);
-		return (0);
-	}
-	path = ft_strtrim(line + 3, " \t\n");
-	if (!path || ft_strlen(path) == 0)
-	{
-		DEBUG_PRINT("Invalid texture path: %s\n", line);
-		free(line);
-		garbco_add(&game->garbco, path);
-		return (0);
-	}
-	if (game->textures[i].texture != NULL)
-	{
-		DEBUG_PRINT("Texture already loaded: %s\n", path);
-		garbco_delete_txtr(game);
-		return (0);
-	}
-	DEBUG_PRINT(CYN "Attempting to load texture: %s\n" RST, path);
-	game->textures[i].texture = mlx_load_png(path);
-	if (!game->textures[i].texture)
-	{
-		DEBUG_PRINT("Failed to load texture: %s\n", path);
-		garbco_delete_txtr(game);
-		return (0);
-	}
-	DEBUG_PRINT(GRN "Texture loaded successfully: %s\n" RST, path);
-	garbco_add(&game->garbco, path);
-	game->textures[i].path = path;
-	game->texture_count++;
-	DEBUG_PRINT(RD "Texture loaded: %s\n" RST, path);
-	DEBUG_PRINT(RD "Texture count: %d\n" RST, game->texture_count);
-	return (1);
-}
-
 int	valid_rgb_format(int r, int g, int b)
 {
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
@@ -86,14 +44,16 @@ void	set_color_values(t_game *game, char identifier, int rgb_arr[3])
 		game->floor_color.r = rgb_arr[0];
 		game->floor_color.g = rgb_arr[1];
 		game->floor_color.b = rgb_arr[2];
-		game->floor_color.hex = (rgb_arr[0] << 16) | (rgb_arr[1] << 8) | rgb_arr[2];
+		game->floor_color.hex = (rgb_arr[0] << 16) | (rgb_arr[1] << 8) \
+		| rgb_arr[2];
 	}
 	else if (identifier == 'C')
 	{
 		game->ceiling_color.r = rgb_arr[0];
 		game->ceiling_color.g = rgb_arr[1];
 		game->ceiling_color.b = rgb_arr[2];
-		game->ceiling_color.hex = (rgb_arr[0] << 16) | (rgb_arr[1] << 8) | rgb_arr[2];
+		game->ceiling_color.hex = (rgb_arr[0] << 16) | (rgb_arr[1] << 8) \
+		| rgb_arr[2];
 	}
 	game->color_count++;
 	DEBUG_PRINT(RD "Color set: %c %d,%d,%d\n" RST, identifier, rgb_arr[0],

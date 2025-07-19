@@ -56,10 +56,11 @@ INPUT_SRCS =	$(SRCS_DIR)/input/handle_key_mov.c \
 				$(SRCS_DIR)/input/input.c
 
 PARSING_SRCS =	$(SRCS_DIR)/parsing/parsing.c \
+				$(SRCS_DIR)/parsing/parse_texture.c \
+				$(SRCS_DIR)/parsing/parse_map_00.c \
 				$(SRCS_DIR)/parsing/parse_map_01.c \
 				$(SRCS_DIR)/parsing/utils00_parsing.c \
-				$(SRCS_DIR)/parsing/utils01_parsing.c \
-				$(SRCS_DIR)/parsing/parse_map_00.c
+				$(SRCS_DIR)/parsing/utils01_parsing.c
 
 RAYCASTING_SRCS =	$(SRCS_DIR)/raycasting/raycasting.c \
 					$(SRCS_DIR)/raycasting/raycasting_init_ray.c
