@@ -6,11 +6,59 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 11:11:08 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/19 11:21:02 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/19 11:23:21 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+// ORIGINAL VERSION of parse_textures_and_colors function
+
+// int	parse_textures_and_colors(t_game *game, int fd)
+// {
+// 	char	*line;
+// 	int		nbr_element;
+
+// 	nbr_element = 0;
+// 	while ((line = get_next_line(fd)) && nbr_element < 6)
+// 	{
+// 		if (is_empty_line(line))
+// 		{
+// 			free(line);
+// 			continue ;
+// 		}
+// 		if (texture_identifier(line))
+// 		{
+// 			if (parse_texture(game, line))
+// 				nbr_element++;
+// 			else
+// 			{
+// 				free(line);
+// 				return (0);
+// 			}
+// 		}
+// 		else if (is_color_identifier(line))
+// 		{
+// 			if (parse_color(game, line))
+// 				nbr_element++;
+// 			else
+// 			{
+// 				free(line);
+// 				return (0);
+// 			}
+// 		}
+// 		else
+// 		{
+// 			free(line);
+// 			valid_error("Invalid line in texture or color section", line);
+// 		}
+// 		free(line);
+// 	}
+// 	free(line);
+// 	if (nbr_element != 6)
+// 		return (0);
+// 	return (1);
+// }
 
 static int	handle_texture(t_game *game, char *line, int *nbr_element)
 {
