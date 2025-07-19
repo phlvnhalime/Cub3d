@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:11:19 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/18 14:30:12 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/19 10:32:23 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,19 +52,19 @@ char	*garbco_strdup(t_garbco *garbco, char *str)
 	return (dup);
 }
 
-// void	free_garbco_node(t_garbco_node *current, int *count)
-// {
-// 	if (current->ptr != NULL)
-// 	{
-// 		printf("GARB FREE: node=%p, ptr=%p\n", (void *)current, current->ptr);
-// 		DEBUG_PRINT(YLW "Pointer %p is being freed...\n" RST, current->ptr);
-// 		count++;
-// 		free(current->ptr);
-// 	}
-// 	else
-// 	{
-// 		printf("GARB FREE: node=%p, ptr=NULL\n", (void *)current);
-// 		DEBUG_PRINT(YLW "Pointer is NULL, skipping free...\n" RST);
-// 	}
-// 	free(current);
-// }
+void	free_garbco_node(t_garbco_node *current, int *count)
+{
+	if (current->ptr != NULL)
+	{
+		printf("GARB FREE: node=%p, ptr=%p\n", (void *)current, current->ptr);
+		DEBUG_PRINT(YLW "Pointer %p is being freed...\n" RST, current->ptr);
+		count++;
+		free(current->ptr);
+	}
+	else
+	{
+		printf("GARB FREE: node=%p, ptr=NULL\n", (void *)current);
+		DEBUG_PRINT(YLW "Pointer is NULL, skipping free...\n" RST);
+	}
+	free(current);
+}
