@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:52:07 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/16 13:13:18 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/19 10:35:36 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ void	draw_vertical_line(t_game *game, int start, int end,
 		uint32_t color)
 {
 	int	y;
-	int x = 0;
+	int	x;
 
+	x = 0;
 	y = start;
 	while (y <= end && y < HEIGHT)
 	{
@@ -57,7 +58,6 @@ void	render_frame(t_game *game)
 {
 	raycast(game);
 	render_minimap(game);
-	// render_perspective(game); // TODO
 	DEBUG_PRINT(GRN "Frame rendered\n" RST);
 }
 

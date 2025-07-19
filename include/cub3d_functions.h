@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 11:50:26 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/18 14:29:55 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/19 10:32:59 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void		garbco_add(t_garbco *garbco, void *ptr);
 void		garbco_clean(t_garbco *garbco);
 // void		garbco_remove(t_garbco *garbco, void *ptr);
 char		*garbco_strdup(t_garbco *garbco, char *str);
-// void		free_garbco_node(t_garbco_node *current, int *count);
+void		free_garbco_node(t_garbco_node *current, int *count);
 void		garbco_init(t_garbco *garbco);
 void		*garbco_malloc(t_garbco *garbco, size_t size);
 void		garbco_game(t_game *game);
