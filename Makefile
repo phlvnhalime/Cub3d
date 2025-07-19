@@ -59,7 +59,7 @@ PARSING_SRCS =	$(SRCS_DIR)/parsing/parsing.c \
 				$(SRCS_DIR)/parsing/parse_texture.c \
 				$(SRCS_DIR)/parsing/parse_textures_and_colors.c \
 				$(SRCS_DIR)/parsing/parse_color.c \
-				$(SRCS_DIR)/parsing/parse_map_00.c \
+				$(SRCS_DIR)/parsing/parse_map_section.c \
 				$(SRCS_DIR)/parsing/parse_map_01.c \
 				$(SRCS_DIR)/parsing/utils00_parsing.c \
 				$(SRCS_DIR)/parsing/utils01_parsing.c
