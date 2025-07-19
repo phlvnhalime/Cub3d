@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 11:50:26 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/19 10:32:59 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/19 12:25:31 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int			parse_file(t_game *game, char *file_path);
 int			parse_textures_and_colors(t_game *game, int fd);
 int			parse_map_section(t_game *game, int fd);
 int			open_and_validate_file(char *file_path);
+void		set_player_direction(t_game *game, char spawn_char);
 
 /* ===== Garbage collector functions ===== */
 

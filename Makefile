@@ -61,6 +61,7 @@ PARSING_SRCS =	$(SRCS_DIR)/parsing/parsing.c \
 				$(SRCS_DIR)/parsing/parse_color.c \
 				$(SRCS_DIR)/parsing/parse_map_section.c \
 				$(SRCS_DIR)/parsing/parse_map_01.c \
+				$(SRCS_DIR)/parsing/set_player_direction.c \
 				$(SRCS_DIR)/parsing/utils00_parsing.c \
 				$(SRCS_DIR)/parsing/utils01_parsing.c
 

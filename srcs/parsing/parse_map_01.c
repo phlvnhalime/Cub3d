@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_01.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:16:53 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/17 14:04:41 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/19 12:24:49 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,49 +32,43 @@ int	is_map_line(char *line)
 	return (has_map_char);
 }
 
-void	set_player_direction(t_game *game, char spawn_char)
-{
-	game->player.spawn_char = spawn_char;
-	if (spawn_char == 'N')
-	{
-		game->player.dir_x = 0.0;
-		game->player.dir_y = -1.0;
-		game->player.plane_x = 0.66;
-		game->player.plane_y = 0.0;
-		game->player.spawn_dir = 90.0;
-	}
-	else if (spawn_char == 'S')
-	{
-		game->player.dir_x = 0.0;
-		game->player.dir_y = 1.0;
-		game->player.plane_x = -0.66;
-		game->player.plane_y = 0.0;
-		game->player.spawn_dir = 270.0;
-	}
-	else if (spawn_char == 'E')
-	{
-		game->player.dir_x = 1.0;
-		game->player.dir_y = 0.0;
-		game->player.plane_x = 0.0;
-		game->player.plane_y = 0.66;
-		game->player.spawn_dir = 0.0;
-	}
-	else if (spawn_char == 'W')
-	{
-		game->player.dir_x = -1.0;
-		game->player.dir_y = 0.0;
-		game->player.plane_x = 0.0;
-		game->player.plane_y = -0.66;
-		game->player.spawn_dir = 180.0;
-	}
-	DEBUG_PRINT(GRN "Player direction set to '%c' : dir(%.2f, %.2f) plane(%.2f, %.2f) spawn_dir(%.2f)\n" RST,
-				spawn_char,
-				game->player.dir_x,
-				game->player.dir_y,
-				game->player.plane_x,
-				game->player.plane_y,
-				game->player.spawn_dir);
-}
+// void	set_player_direction(t_game *game, char spawn_char)
+// {
+// 	game->player.spawn_char = spawn_char;
+// 	if (spawn_char == 'N')
+// 	{
+// 		game->player.dir_x = 0.0;
+// 		game->player.dir_y = -1.0;
+// 		game->player.plane_x = 0.66;
+// 		game->player.plane_y = 0.0;
+// 		game->player.spawn_dir = 90.0;
+// 	}
+// 	else if (spawn_char == 'S')
+// 	{
+// 		game->player.dir_x = 0.0;
+// 		game->player.dir_y = 1.0;
+// 		game->player.plane_x = -0.66;
+// 		game->player.plane_y = 0.0;
+// 		game->player.spawn_dir = 270.0;
+// 	}
+// 	else if (spawn_char == 'E')
+// 	{
+// 		game->player.dir_x = 1.0;
+// 		game->player.dir_y = 0.0;
+// 		game->player.plane_x = 0.0;
+// 		game->player.plane_y = 0.66;
+// 		game->player.spawn_dir = 0.0;
+// 	}
+// 	else if (spawn_char == 'W')
+// 	{
+// 		game->player.dir_x = -1.0;
+// 		game->player.dir_y = 0.0;
+// 		game->player.plane_x = 0.0;
+// 		game->player.plane_y = -0.66;
+// 		game->player.spawn_dir = 180.0;
+// 	}
+// 	DEBUG_PRINT(GRN "Player direction set to '%c' : dir(%.2f, %.2f) plane(%.2f, %.2f) spawn_dir(%.2f)\n" RST, spawn_char, game->player.dir_x, game->player.dir_y, game->player.plane_x, game->player.plane_y, game->player.spawn_dir);
+// }
 
 int	find_player_position(t_game *game)
 {
@@ -153,14 +147,14 @@ int	check_map_walls(t_game *game)
 		top_char = get_char_at(game->map.grid[0], x);
 		if (top_char != '1' && top_char != ' ')
 		{
-			DEBUG_PRINT(RD "Map must be surrounded by walls (top) at x = %d\n" RST, x);
-			return (0); // Top or bottom wall is not valid
+			DEBUG_PRINT(RD "Map must be surrounded by walls (top) at x = %d\n"RST, x);
+			return (0);
 		}
 		bottom_char = get_char_at(game->map.grid[game->map.height - 1], x);
 		if (bottom_char != '1' && bottom_char != ' ')
 		{
 			DEBUG_PRINT(RD "Map must be surrounded by walls (bottom) at x = %d\n" RST, x);
-			return (0); // Top or bottom wall is not valid
+			return (0);
 		}
 		x++;
 	}
