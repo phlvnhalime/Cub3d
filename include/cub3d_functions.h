@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 11:50:26 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/21 17:36:57 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/21 18:36:20 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,7 @@ void		draw_player_direction(t_game *game, int player_cx, int player_cy, \
 			int cell_size);
 void		draw_player_collision_area(t_game *game, int offset_x, \
 			int offset_y, int cell_size);
-void		draw_filled_circle(t_game *game, int cx, int cy, int radius, \
-			uint32_t color);
+void		draw_filled_circle(t_game *game, int cx, int cy, int radius);
 
 /* ===== INPUT FUNCTIONS ===== */
 void		handle_key(mlx_key_data_t keys, void *frame);

@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 16:00:42 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/21 18:22:38 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/21 18:31:00 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,68 +91,29 @@ void	draw_square(t_game *game, t_square *sq)
 }
 
 // Helper function to draw a filled circle with better boundary checks
-void	draw_filled_circle(t_game *game, int cx, int cy, int radius,
-		uint32_t color)
-{
-	int	px;
-	int	py;
-	int	x;
-	int	y;
+// void	draw_filled_circle(t_game *game, int cx, int cy, int radius,
+// 		uint32_t color)
+// {
+// 	int	px;
+// 	int	py;
+// 	int	x;
+// 	int	y;
 
-	y = -radius;
-	while (y <= radius)
-	{
-		x = -radius;
-		while (x <= radius)
-		{
-			if (x * x + y * y <= radius * radius)
-			{
-				px = cx + x;
-				py = cy + y;
-				if (px >= 0 && px < WIDTH && py >= 0 && py < HEIGHT)
-					mlx_put_pixel(game->img, px, py, color);
-			}
-			x++;
-		}
-		y++;
-	}
-}
-
-// Helper function to draw player collision area
-void	draw_player_collision_area(t_game *game, int offset_x, int offset_y,
-		int cell_size)
-{
-	double	map_player_x;
-	double	map_player_y;
-	int		pixel_x;
-	int		pixel_y;
-	int		buffer_pixels;
-	int		px;
-	int		py;
-	double	buffer;
-	int		dx;
-	int		dy;
-
-	buffer = 0.2;
-	map_player_x = game->player.x;
-	map_player_y = game->player.y;
-	pixel_x = offset_x + (int)(map_player_x * cell_size);
-	pixel_y = offset_y + (int)(map_player_y * cell_size);
-	buffer_pixels = (int)(buffer * cell_size);
-	dy = -buffer_pixels;
-	while (dy <= buffer_pixels)
-	{
-		dx = -buffer_pixels;
-		while (dx <= buffer_pixels)
-		{
-			px = pixel_x + dx;
-			py = pixel_y + dy;
-			if (px >= 0 && px < WIDTH && py >= 0 && py < HEIGHT)
-			{
-				mlx_put_pixel(game->img, px, py, PLAYER_BUFFER_COLOR);
-			}
-			dx++;
-		}
-		dy++;
-	}
-}
+// 	y = -radius;
+// 	while (y <= radius)
+// 	{
+// 		x = -radius;
+// 		while (x <= radius)
+// 		{
+// 			if (x * x + y * y <= radius * radius)
+// 			{
+// 				px = cx + x;
+// 				py = cy + y;
+// 				if (px >= 0 && px < WIDTH && py >= 0 && py < HEIGHT)
+// 					mlx_put_pixel(game->img, px, py, color);
+// 			}
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// }

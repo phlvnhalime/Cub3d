@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:28:59 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/21 17:53:58 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/21 18:37:47 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ static void	render_player_elements(t_game *game, int offset_x, int offset_y, \
 	draw_fov_rays(game, offset_x, offset_y, cell_size);
 	draw_player_collision_area(game, offset_x, offset_y, cell_size);
 	draw_player_direction(game, player_cx, player_cy, cell_size);
-	draw_filled_circle(game, player_cx, player_cy, player_radius, PLAYER_COLOR);
+	draw_filled_circle(game, player_cx, player_cy, player_radius);
 	mlx_put_pixel(game->img, player_cx, player_cy, 0xFFFFFFFF);
 }
 
