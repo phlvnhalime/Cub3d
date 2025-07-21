@@ -3,6 +3,7 @@ SO ./textures/trash_wall(1).png
 WE ./textures/grassstone_wall.png
 EA ./textures/cobbluestone_wall.png
 
+F 25,17,55
 C 16,11,38
 
         1111111111111111111111111
@@ -20,3 +21,7 @@ C 16,11,38
 11110111 1110101 101110010001
 11111111 1111111 1111111111111
 
+
+1111
+1001
+1111
