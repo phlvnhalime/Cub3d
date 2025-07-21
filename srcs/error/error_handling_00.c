@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:20:43 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/16 10:21:22 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/21 14:33:08 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	valid_error(char *content, char *specifier)
 	}
 	if (specifier)
 		ft_putstr_fd(specifier, 2);
-	ft_putstr_fd("\n", 2);
+	// ft_putstr_fd("\n", 2);
 	exit(EXIT_FAILURE);
 }
 

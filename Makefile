@@ -29,7 +29,7 @@ INCLUDE     = -I$(MLX42_DIR)/include \
 LDINCLUDE = -L$(MLX42_DIR)/build -lmlx42\
 			-L$(LIBFT_DIR) -lft \
 			-lglfw -framework Cocoa -framework OpenGL -framework IOKit \
-			# -L/opt/homebrew/lib 
+			-L/opt/homebrew/lib 
 
 CFLAGS      = -Wextra -Wall -Werror $(INCLUDE)
 
@@ -59,7 +59,13 @@ PARSING_SRCS =	$(SRCS_DIR)/parsing/parsing.c \
 				$(SRCS_DIR)/parsing/parse_map_01.c \
 				$(SRCS_DIR)/parsing/utils00_parsing.c \
 				$(SRCS_DIR)/parsing/utils01_parsing.c \
-				$(SRCS_DIR)/parsing/parse_map_00.c
+				$(SRCS_DIR)/parsing/parse_map_00.c \
+				$(SRCS_DIR)/parsing/parse_player_pos.c \
+				$(SRCS_DIR)/parsing/parse_player_direct.c \
+				$(SRCS_DIR)/parsing/parse_texture.c \
+				$(SRCS_DIR)/parsing/parse_color.c \
+				$(SRCS_DIR)/parsing/parse_color_text.c \
+				$(SRCS_DIR)/parsing/parse_map_02.c
 
 RAYCASTING_SRCS =	$(SRCS_DIR)/raycasting/raycasting.c \
 					$(SRCS_DIR)/raycasting/raycasting_init_ray.c
@@ -122,13 +128,14 @@ $(LIBFT):
 	make -C $(LIBFT_DIR) CFLAGS="-Wall -Wextra -Werror"
 	make clean -C $(LIBFT_DIR)
 
-# Compile MLX42
-$(MLX42_LIB):
-	echo "\033[1;33mCompiling MLX42...\033[0m"
-	make -C $(MLX42_DIR)
+# Always build MLX42 when running make
+MLX42:
+	echo "\033[1;33mConfiguring and building MLX42 with CMake...\033[0m"
+	cd $(MLX42_DIR) && cmake -B build
+	cd $(MLX42_DIR) && cmake --build build -j4
 
 # Final target to build the executable
-$(NAME): $(OBJS_DIR) $(MLX42_LIB) $(LIBFT) $(OBJS)
+$(NAME): $(OBJS_DIR) MLX42 $(LIBFT) $(OBJS)
 	echo "\033[1;34mLinking $(NAME)...\033[0m"
 	$(CC) $(CFLAGS) $(OBJS) $(LDINCLUDE) $(PERFORMANCE_FLAGS) -o $(NAME)
 	echo "\033[1;32m$(NAME) compiled successfully!\033[0m"
@@ -151,8 +158,10 @@ clean:
 fclean: clean
 	echo "\033[1;31mCleaning $(NAME)...\033[0m"
 	$(RM) $(NAME)
+	$(RM_DIR) $(MLX42_DIR)/build
 	make fclean -C $(LIBFT_DIR)
 	echo "\033[1;32m$(NAME) cleaned successfully!\033[0m"
+	echo "\033[1;32mMLX42 cleaned successfully!\033[0m"
 
 # Rebuild everything
 re: fclean all
@@ -201,4 +210,4 @@ help:
 	echo "  info        - Show compilation information"
 	echo "  help        - Show this help"
 
-.PHONY: all clean fclean re debug performance leaks valgrind tree info help
+.PHONY: all clean fclean re debug performance leaks valgrind tree info help MLX42

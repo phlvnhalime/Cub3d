@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:11:19 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/17 16:03:04 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/21 13:13:52 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,10 @@ void	garbco_add(t_garbco *garbco, void *ptr)
 		return ;
 	new_node = malloc(sizeof(t_garbco_node));
 	if (!new_node)
-	{
-		// free(ptr);
-		// free(new_node);
 		return ;
-	}
 	new_node->ptr = ptr;
 	new_node->next = garbco->head;
 	garbco->head = new_node;
-	printf("GARB ADD: node=%p, ptr=%p\n", (void*)new_node, ptr);
-	DEBUG_PRINT(GRN "Added pointer %p to garbage collector\n" RST, ptr);
 }
 
 char	*garbco_strdup(t_garbco *garbco, char *str)

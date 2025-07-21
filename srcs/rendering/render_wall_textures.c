@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 21:37:08 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/16 13:26:27 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/21 13:21:43 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,10 @@ static int	get_valid_wall_dir(t_ray *ray)
 {
 	int	wall_direction;
 
-	if (!ray->hit)
-	{
-		DEBUG_PRINT(RD "Ray hit is not found, cannot render texture\n" RST);
-	}
+
 	wall_direction = get_wall_direction(ray);
 	if (wall_direction < 0 || wall_direction >= 4)
-	{
-		DEBUG_PRINT(RD "Invalid wall direction: %d\n" RST, wall_direction);
 		return (-1);
-	}
 	return (wall_direction);
 }
 
@@ -35,21 +29,17 @@ static mlx_texture_t	*get_texture(t_game *game, int wall_direction)
 
 	tex = game->textures[wall_direction].texture;
 	if (!tex)
-	{
-		DEBUG_PRINT(RD "Texture is not found: %d" RST, wall_direction);
-	}
+		return (NULL);
 	return (tex);
 }
 
-static void	handle_missing_texture(t_game *game, t_ray *ray, int x,
-		int wall_direction)
+void	handle_missing_texture(t_game *game, t_ray *ray, int x)
 {
 	uint32_t	error_color;
 
 	error_color = 0xFFFF00FF;
 	draw_vertical_line(game, ray->draw_start, ray->draw_end, error_color);
 	draw_floor_ceiling(game, x, ray->draw_start, ray->draw_end);
-	DEBUG_PRINT(RD "Texture is not found: %d" RST, wall_direction);
 }
 
 void	render_textures_wall(t_game *game, t_ray *ray, int x)
@@ -74,7 +64,7 @@ void	render_textures_wall(t_game *game, t_ray *ray, int x)
 	tex = get_texture(game, wall_direction);
 	if (!tex)
 	{
-		handle_missing_texture(game, ray, x, wall_direction);
+		handle_missing_texture(game, ray, x);
 		return ;
 	}
 	wall_x = get_wall_x(game, ray);

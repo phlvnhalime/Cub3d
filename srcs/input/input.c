@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 14:59:34 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/16 10:52:54 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/21 12:58:25 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	input_hook(void *frame)
 
 	game = (t_game *)frame;
 	raycast(game);
-	render_minimap(game); // Draw the minimap after the main 3D rendering
+	render_minimap(game);
 	if (mlx_is_key_down(game->mlx, W) || mlx_is_key_down(game->mlx, S)
 		|| mlx_is_key_down(game->mlx, A) || mlx_is_key_down(game->mlx, D))
 	{
@@ -43,6 +43,5 @@ void	game_loop(t_game *game)
 	memset(game->img->pixels, 0, game->img->width * game->img->height
 		* sizeof(uint32_t));
 	raycast(game);
-	DEBUG_PRINT(GRN "Starting game loop...\n" RST);
 	mlx_loop(game->mlx);
 }

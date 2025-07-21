@@ -6,18 +6,17 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/16 12:28:28 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/21 14:23:04 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../include/cub3d.h"
 
 void	close_window(void *frame)
 {
 	t_game	*game;
 
 	game = (t_game *)frame;
-	DEBUG_PRINT(YLW "Window close required\n" RST);
 	garbco_game(game);
 	mlx_close_window(game->mlx);
 }
@@ -43,7 +42,6 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 	}
 	atexit(check_leaks);
-	DEBUG_PRINT(GRN "Starting game loop... \n" RST);
 	game_loop(&game);
 	garbco_game(&game);
 	return (EXIT_SUCCESS);
