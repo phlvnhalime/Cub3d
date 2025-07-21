@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:16:53 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/19 12:24:49 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/19 14:15:24 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,44 +31,6 @@ int	is_map_line(char *line)
 	}
 	return (has_map_char);
 }
-
-// void	set_player_direction(t_game *game, char spawn_char)
-// {
-// 	game->player.spawn_char = spawn_char;
-// 	if (spawn_char == 'N')
-// 	{
-// 		game->player.dir_x = 0.0;
-// 		game->player.dir_y = -1.0;
-// 		game->player.plane_x = 0.66;
-// 		game->player.plane_y = 0.0;
-// 		game->player.spawn_dir = 90.0;
-// 	}
-// 	else if (spawn_char == 'S')
-// 	{
-// 		game->player.dir_x = 0.0;
-// 		game->player.dir_y = 1.0;
-// 		game->player.plane_x = -0.66;
-// 		game->player.plane_y = 0.0;
-// 		game->player.spawn_dir = 270.0;
-// 	}
-// 	else if (spawn_char == 'E')
-// 	{
-// 		game->player.dir_x = 1.0;
-// 		game->player.dir_y = 0.0;
-// 		game->player.plane_x = 0.0;
-// 		game->player.plane_y = 0.66;
-// 		game->player.spawn_dir = 0.0;
-// 	}
-// 	else if (spawn_char == 'W')
-// 	{
-// 		game->player.dir_x = -1.0;
-// 		game->player.dir_y = 0.0;
-// 		game->player.plane_x = 0.0;
-// 		game->player.plane_y = -0.66;
-// 		game->player.spawn_dir = 180.0;
-// 	}
-// 	DEBUG_PRINT(GRN "Player direction set to '%c' : dir(%.2f, %.2f) plane(%.2f, %.2f) spawn_dir(%.2f)\n" RST, spawn_char, game->player.dir_x, game->player.dir_y, game->player.plane_x, game->player.plane_y, game->player.spawn_dir);
-// }
 
 int	find_player_position(t_game *game)
 {
@@ -99,12 +61,8 @@ int	find_player_position(t_game *game)
 				game->player.x = x + 0.5;
 				game->player.y = y + 0.5;
 				game->map.grid[y][x] = '0';
-				DEBUG_PRINT(GRN "Player found at (%d, %d) --> (%.2f,%.2f) facing '%c'\n" RST,
-							x,
-							y,
-							game->player.x,
-							game->player.y,
-							spawn_char);
+				DEBUG_PRINT(GRN "Player found at (%d, %d) --> (%.2f,%.2f) facing \
+				'%c'\n" RST, x, y, game->player.x, game->player.y, spawn_char);
 			}
 			x++;
 		}
@@ -147,42 +105,43 @@ int	check_map_walls(t_game *game)
 		top_char = get_char_at(game->map.grid[0], x);
 		if (top_char != '1' && top_char != ' ')
 		{
-			DEBUG_PRINT(RD "Map must be surrounded by walls (top) at x = %d\n"RST, x);
+			DEBUG_PRINT(RD "Map must be surrounded by walls (top) at x = %d\n"\
+			RST, x);
 			return (0);
 		}
 		bottom_char = get_char_at(game->map.grid[game->map.height - 1], x);
 		if (bottom_char != '1' && bottom_char != ' ')
 		{
-			DEBUG_PRINT(RD "Map must be surrounded by walls (bottom) at x = %d\n" RST, x);
+			DEBUG_PRINT(RD "Map must be surrounded by walls (bottom) at x = %d\n"\
+			RST, x);
 			return (0);
 		}
 		x++;
 	}
-	// check left and right walls
 	y = 0;
 	while (y < game->map.height)
 	{
 		if (game->map.grid[y][0] != '1' && game->map.grid[y][0] != ' ')
 		{
-			DEBUG_PRINT(RD "Map must be surrounded by walls (left) at y = %d\n" RST, y);
-			return (0); // Left or right wall is not valid
+			DEBUG_PRINT(RD "Map must be surrounded by walls (left) at y = %d\n"\
+			RST, y);
+			return (0);
 		}
 		len = ft_strlen(game->map.grid[y]);
 		if (len > 1 && game->map.grid[y][len - 1] != ' '
 			&& game->map.grid[y][len - 1] != '1')
 		{
-			DEBUG_PRINT(RD "Map must be surrounded by walls (right) at y = %d\n" RST, y);
-			return (0); // Left or right wall is not valid
+			DEBUG_PRINT(RD "Map must be surrounded by walls (right) at y = %d\n"\
+			RST, y);
+			return (0);
 		}
 		y++;
 	}
-	// check for holes
 	y = 1;
 	while (y < game->map.height - 1)
 	{
 		x = 1;
-		int row_len = ft_strlen(game->map.grid[y]);
-		while (x < row_len - 1)
+		while (x < (int) ft_strlen(game->map.grid[y]) - 1)
 		{
 			if (game->map.grid[y][x] == '0')
 			{
@@ -193,7 +152,7 @@ int	check_map_walls(t_game *game)
 						&& game->map.grid[y + 1][x] == ' '))
 				{
 					DEBUG_PRINT(RD "Map has a hole at (%d, %d)\n" RST, x, y);
-					return (0); // Hole found in the map
+					return (0);
 				}
 			}
 			x++;
@@ -201,7 +160,7 @@ int	check_map_walls(t_game *game)
 		y++;
 	}
 	DEBUG_PRINT(GRN "Map walls are valid\n" RST);
-	return (1); // Map walls are valid
+	return (1);
 }
 
 int	parse_map_line(t_game *game, char *line)
@@ -213,28 +172,24 @@ int	parse_map_line(t_game *game, char *line)
 	if (!line || !is_map_line(line))
 	{
 		DEBUG_PRINT(RD "Invalid map line: %s\n" RST, line);
-		return (0); // Invalid map line
+		return (0);
 	}
 	line_len = ft_strlen(line);
 	if (line_len > 0 && line[line_len - 1] == '\n')
 	{
-		line[line_len - 1] = '\0'; // Remove trailing newline character
+		line[line_len - 1] = '\0';
 		line_len--;
-		// garbco_strdup(&game->garbco, line);
 	}
 	new_grind = garbco_malloc(&game->garbco, sizeof(char *) * (game->map.height
 				+ 1));
 	if (!new_grind)
 		return (0);
-	// existing grid copy
 	i = 0;
 	while (i < game->map.height)
 	{
 		new_grind[i] = game->map.grid[i];
 		i++;
 	}
-	// ADD new "ROWW"
-	// Allocate memory for the new row
 	new_grind[game->map.height] = garbco_malloc(&game->garbco, sizeof(char)
 			* (line_len + 1));
 	if (!new_grind[game->map.height])
@@ -244,6 +199,7 @@ int	parse_map_line(t_game *game, char *line)
 	game->map.height++;
 	if (line_len > game->map.width)
 		game->map.width = line_len;
-	DEBUG_PRINT(GRN "Map line added: %s (width: %d, height: %d)\n" RST, line, game->map.width, game->map.height);
+	DEBUG_PRINT(GRN "Map line added: %s (width: %d, height: %d)\n" RST, \
+	line, game->map.width, game->map.height);
 	return (1);
 }
