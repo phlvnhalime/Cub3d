@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 11:55:39 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/19 12:00:54 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/21 13:35:15 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,8 @@ void	set_player_direction(t_game *game, char spawn_char)
 		set_east_direction(game);
 	else if (spawn_char == 'W')
 		set_west_direction(game);
-	DEBUG_PRINT(GRN "Player direction set to '%c' : dir(%.2f, %.2f) plane(%.2f, %.2f) spawn_dir(%.2f)\n" RST, 
-		spawn_char, game->player.dir_x, game->player.dir_y, 
+	DEBUG_PRINT(GRN "Player direction set to '%c' : \
+		dir(%.2f, %.2f) plane(%.2f, %.2f) spawn_dir(%.2f)\n" \
+		RST, spawn_char, game->player.dir_x, game->player.dir_y, \
 		game->player.plane_x, game->player.plane_y, game->player.spawn_dir);
 }
