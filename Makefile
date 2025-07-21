@@ -71,6 +71,8 @@ RAYCASTING_SRCS =	$(SRCS_DIR)/raycasting/raycasting.c \
 					$(SRCS_DIR)/raycasting/raycasting_init_ray.c
 
 RENDERING_SRCS =	$(SRCS_DIR)/rendering/rendering.c \
+					$(SRCS_DIR)/rendering/draw_fov_rays.c \
+					$(SRCS_DIR)/rendering/draw_player_direction.c \
 					$(SRCS_DIR)/rendering/render_minimap.c \
 					$(SRCS_DIR)/rendering/render_wall_textures.c \
 					$(SRCS_DIR)/rendering/render_utils.c
