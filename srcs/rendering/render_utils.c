@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 16:00:42 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/21 17:19:23 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/21 17:46:29 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,15 +91,19 @@ void	draw_square(t_game *game, t_square *sq)
 }
 
 // Helper function to draw a filled circle with better boundary checks
-static void	draw_filled_circle(t_game *game, int cx, int cy, int radius,
+void	draw_filled_circle(t_game *game, int cx, int cy, int radius,
 		uint32_t color)
 {
 	int	px;
 	int	py;
+	int	x;
+	int	y;
 
-	for (int y = -radius; y <= radius; y++)
+	y = -radius;
+	while (y <= radius)
 	{
-		for (int x = -radius; x <= radius; x++)
+		x = -radius;
+		while (x <= radius)
 		{
 			if (x * x + y * y <= radius * radius)
 			{
@@ -108,12 +112,14 @@ static void	draw_filled_circle(t_game *game, int cx, int cy, int radius,
 				if (px >= 0 && px < WIDTH && py >= 0 && py < HEIGHT)
 					mlx_put_pixel(game->img, px, py, color);
 			}
+			x++;
 		}
+		y++;
 	}
 }
 
 // Helper function to draw player collision area
-static void	draw_player_collision_area(t_game *game, int offset_x, int offset_y,
+void	draw_player_collision_area(t_game *game, int offset_x, int offset_y,
 		int cell_size)
 {
 	double	map_player_x;
@@ -123,30 +129,36 @@ static void	draw_player_collision_area(t_game *game, int offset_x, int offset_y,
 	int		buffer_pixels;
 	int		px;
 	int		py;
+	double	buffer;
+	int		dx;
+	int		dy;
 
-	double buffer = 0.2; // Same buffer as in movement code
+	buffer = 0.2;
 	map_player_x = game->player.x;
 	map_player_y = game->player.y;
 	pixel_x = offset_x + (int)(map_player_x * cell_size);
 	pixel_y = offset_y + (int)(map_player_y * cell_size);
 	buffer_pixels = (int)(buffer * cell_size);
-	for (int dy = -buffer_pixels; dy <= buffer_pixels; dy++)
+	dy = -buffer_pixels;
+	while (dy <= buffer_pixels)
 	{
-		for (int dx = -buffer_pixels; dx <= buffer_pixels; dx++)
+		dx = -buffer_pixels;
+		while (dx <= buffer_pixels)
 		{
 			px = pixel_x + dx;
 			py = pixel_y + dy;
 			if (px >= 0 && px < WIDTH && py >= 0 && py < HEIGHT)
 			{
-				// Semi-transparent orange for collision area
 				mlx_put_pixel(game->img, px, py, PLAYER_BUFFER_COLOR);
 			}
+			dx++;
 		}
+		dy++;
 	}
 }
 
 // Draw player direction line
-static void	draw_player_direction(t_game *game, int player_cx, int player_cy,
+void	draw_player_direction(t_game *game, int player_cx, int player_cy,
 		int cell_size)
 {
 	int	dir_length;
@@ -192,7 +204,7 @@ static void	draw_player_direction(t_game *game, int player_cx, int player_cy,
 }
 
 // Draw FOV rays
-static void	draw_fov_rays(t_game *game, int offset_x, int offset_y,
+void	draw_fov_rays(t_game *game, int offset_x, int offset_y,
 		int cell_size)
 {
 	double	base_angle;
@@ -205,20 +217,28 @@ static void	draw_fov_rays(t_game *game, int offset_x, int offset_y,
 	int		map_y;
 	int		draw_x;
 	int		draw_y;
+	int		num_rays;
+	double	fov;
+	double	step;
+	int		max_steps;
+	int		r;
+	int		i;
 
-	int num_rays = 10;
-	double fov = M_PI / 3;
+	num_rays = 10;
+	fov = M_PI / 3;
 	base_angle = atan2(game->player.dir_y, game->player.dir_x);
-	double step = 0.05;
-	int max_steps = (int)(3.0 / step);
-	for (int r = 0; r < num_rays; r++)
+	step = 0.05;
+	max_steps = (int)(3.0 / step);
+	r = 0;
+	while (r < num_rays)
 	{
 		angle = base_angle + fov * ((double)r / (num_rays - 1) - 0.5);
 		dx = cos(angle);
 		dy = sin(angle);
 		x = game->player.x;
 		y = game->player.y;
-		for (int i = 0; i < max_steps; i++)
+		i = 0;
+		while (i < max_steps)
 		{
 			map_x = (int)x;
 			map_y = (int)y;
@@ -234,58 +254,60 @@ static void	draw_fov_rays(t_game *game, int offset_x, int offset_y,
 				mlx_put_pixel(game->img, draw_x, draw_y, RAY_COLOR);
 			x += dx * step;
 			y += dy * step;
+			i++;
 		}
+		r++;
 	}
 }
 
-void	render_minimap(t_game *game)
-{
-	t_square	sq;
-	char		cell;
-	int			player_cx;
-	int			player_cy;
-	int			map_x;
-	int			map_y;
-	int			cell_size;
-	int			offset_x;
-	int			offset_y;
-	int			player_radius;
+// void	render_minimap(t_game *game)
+// {
+// 	t_square	sq;
+// 	char		cell;
+// 	int			player_cx;
+// 	int			player_cy;
+// 	int			map_x;
+// 	int			map_y;
+// 	int			cell_size;
+// 	int			offset_x;
+// 	int			offset_y;
+// 	int			player_radius;
 
-	offset_x = 10;
-	offset_y = 10;
-	cell_size = 10;
-	map_y = 0;
-	while (map_y < game->map.height)
-	{
-		map_x = 0;
-		while (map_x < game->map.width)
-		{
-			sq.x = offset_x + map_x * cell_size;
-			sq.y = offset_y + map_y * cell_size;
-			sq.size = cell_size;
-			if (map_x < (int)strlen(game->map.grid[map_y]))
-			{
-				cell = game->map.grid[map_y][map_x];
-				if (cell == '1')
-					sq.color = MAP_WALL_COLOR;
-				else if (cell == '0')
-					sq.color = MAP_FLOOR_COLOR;
-				else
-					sq.color = MAP_EMPTY_COLOR;
-			}
-			else
-				sq.color = MAP_EMPTY_COLOR;
-			draw_square(game, &sq);
-			map_x++;
-		}
-		map_y++;
-	}
-	draw_fov_rays(game, offset_x, offset_y, cell_size);
-	draw_player_collision_area(game, offset_x, offset_y, cell_size);
-	player_cx = offset_x + (int)(game->player.x * cell_size);
-	player_cy = offset_y + (int)(game->player.y * cell_size);
-	draw_player_direction(game, player_cx, player_cy, cell_size);
-	player_radius = cell_size / 3;
-	draw_filled_circle(game, player_cx, player_cy, player_radius, PLAYER_COLOR);
-	mlx_put_pixel(game->img, player_cx, player_cy, 0xFFFFFFFF);
-}
+// 	offset_x = 10;
+// 	offset_y = 10;
+// 	cell_size = 10;
+// 	map_y = 0;
+// 	while (map_y < game->map.height)
+// 	{
+// 		map_x = 0;
+// 		while (map_x < game->map.width)
+// 		{
+// 			sq.x = offset_x + map_x * cell_size;
+// 			sq.y = offset_y + map_y * cell_size;
+// 			sq.size = cell_size;
+// 			if (map_x < (int)strlen(game->map.grid[map_y]))
+// 			{
+// 				cell = game->map.grid[map_y][map_x];
+// 				if (cell == '1')
+// 					sq.color = MAP_WALL_COLOR;
+// 				else if (cell == '0')
+// 					sq.color = MAP_FLOOR_COLOR;
+// 				else
+// 					sq.color = MAP_EMPTY_COLOR;
+// 			}
+// 			else
+// 				sq.color = MAP_EMPTY_COLOR;
+// 			draw_square(game, &sq);
+// 			map_x++;
+// 		}
+// 		map_y++;
+// 	}
+// 	draw_fov_rays(game, offset_x, offset_y, cell_size);
+// 	draw_player_collision_area(game, offset_x, offset_y, cell_size);
+// 	player_cx = offset_x + (int)(game->player.x * cell_size);
+// 	player_cy = offset_y + (int)(game->player.y * cell_size);
+// 	draw_player_direction(game, player_cx, player_cy, cell_size);
+// 	player_radius = cell_size / 3;
+// 	draw_filled_circle(game, player_cx, player_cy, player_radius, PLAYER_COLOR);
+// 	mlx_put_pixel(game->img, player_cx, player_cy, 0xFFFFFFFF);
+// }
