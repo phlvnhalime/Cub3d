@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 16:00:42 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/21 16:41:12 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/21 17:19:23 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,10 +244,16 @@ void	render_minimap(t_game *game)
 	char		cell;
 	int			player_cx;
 	int			player_cy;
+	int			map_x;
+	int			map_y;
+	int			cell_size;
+	int			offset_x;
+	int			offset_y;
+	int			player_radius;
 
-	int map_x, map_y;
-	int cell_size = 10;
-	int offset_x = 10, offset_y = 10;
+	offset_x = 10;
+	offset_y = 10;
+	cell_size = 10;
 	map_y = 0;
 	while (map_y < game->map.height)
 	{
@@ -279,7 +285,7 @@ void	render_minimap(t_game *game)
 	player_cx = offset_x + (int)(game->player.x * cell_size);
 	player_cy = offset_y + (int)(game->player.y * cell_size);
 	draw_player_direction(game, player_cx, player_cy, cell_size);
-	int player_radius = cell_size / 3;
+	player_radius = cell_size / 3;
 	draw_filled_circle(game, player_cx, player_cy, player_radius, PLAYER_COLOR);
 	mlx_put_pixel(game->img, player_cx, player_cy, 0xFFFFFFFF);
 }

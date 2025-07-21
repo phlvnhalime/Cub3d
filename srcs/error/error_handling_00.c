@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling_00.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:20:43 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/21 16:30:14 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/21 17:12:00 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	valid_error(char *content, char *specifier)
 	}
 	if (specifier)
 		ft_putstr_fd(specifier, 2);
-	// ft_putstr_fd("\n", 2);
 	exit(EXIT_FAILURE);
 }
 
