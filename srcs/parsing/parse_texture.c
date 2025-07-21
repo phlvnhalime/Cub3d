@@ -3,109 +3,77 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 10:58:28 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/19 11:02:53 by julcalde         ###   ########.fr       */
+/*   Created: 2025/07/21 14:01:40 by hpehliva          #+#    #+#             */
+/*   Updated: 2025/07/21 16:41:29 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-// ORIGINAL PARSE_TEXTURE FUNCTION
 
-// int	parse_texture(t_game *game, char *line)
-// {
-// 	char	*path;
-// 	int		i;
-
-// 	i = get_texture_count(line);
-// 	if (i == -1)
-// 	{
-// 		DEBUG_PRINT("Invalid texture identifier: %s\n", line);
-// 		return (0);
-// 	}
-// 	path = ft_strtrim(line + 3, " \t\n");
-// 	if (!path || ft_strlen(path) == 0)
-// 	{
-// 		DEBUG_PRINT("Invalid texture path: %s\n", line);
-// 		free(line);
-// 		garbco_add(&game->garbco, path);
-// 		return (0);
-// 	}
-// 	if (game->textures[i].texture != NULL)
-// 	{
-// 		DEBUG_PRINT("Texture already loaded: %s\n", path);
-// 		garbco_delete_txtr(game);
-// 		return (0);
-// 	}
-// 	DEBUG_PRINT(CYN "Attempting to load texture: %s\n" RST, path);
-// 	game->textures[i].texture = mlx_load_png(path);
-// 	if (!game->textures[i].texture)
-// 	{
-// 		DEBUG_PRINT("Failed to load texture: %s\n", path);
-// 		garbco_delete_txtr(game);
-// 		return (0);
-// 	}
-// 	DEBUG_PRINT(GRN "Texture loaded successfully: %s\n" RST, path);
-// 	garbco_add(&game->garbco, path);
-// 	game->textures[i].path = path;
-// 	game->texture_count++;
-// 	DEBUG_PRINT(RD "Texture loaded: %s\n" RST, path);
-// 	DEBUG_PRINT(RD "Texture count: %d\n" RST, game->texture_count);
-// 	return (1);
-// }
-
-static int	validate_texture_input(t_game *game, char *line, \
-		int *i, char **path)
+int	get_texture_count(char *line)
 {
-	*i = get_texture_count(line);
-	if (*i == -1)
-	{
-		DEBUG_PRINT("Invalid texture identifier: %s\n", line);
+	if (!line)
+		return (-1);
+	if (ft_strncmp(line, "NO ", 3) == 0)
 		return (0);
-	}
-	*path = ft_strtrim(line + 3, " \t\n");
-	if (!*path || ft_strlen(*path) == 0)
-	{
-		DEBUG_PRINT("Invalid texture path: %s\n", line);
-		free(line);
-		garbco_add(&game->garbco, *path);
-		return (0);
-	}
-	if (game->textures[*i].texture != NULL)
-	{
-		DEBUG_PRINT("Texture already loaded: %s\n", *path);
-		garbco_delete_txtr(game);
-		return (0);
-	}
-	return (1);
+	else if (ft_strncmp(line, "SO ", 3) == 0)
+		return (1);
+	else if (ft_strncmp(line, "WE ", 3) == 0)
+		return (2);
+	else if (ft_strncmp(line, "EA ", 3) == 0)
+		return (3);
+	return (-1);
 }
 
-static int	load_texture(t_game *game, char *path, int i)
+char	*get_texture_name(int index)
 {
-	DEBUG_PRINT(CYN "Attempting to load texture: %s\n" RST, path);
-	game->textures[i].texture = mlx_load_png(path);
-	if (!game->textures[i].texture)
-	{
-		DEBUG_PRINT("Failed to load texture: %s\n", path);
-		garbco_delete_txtr(game);
+	if (index == 0)
+		return ("NO");
+	else if (index == 1)
+		return ("SO");
+	else if (index == 2)
+		return ("WE");
+	else if (index == 3)
+		return ("EA");
+	else
+		return ("unknown");
+}
+
+int	file_exists(char *path)
+{
+	int	fd;
+
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
 		return (0);
-	}
-	DEBUG_PRINT(GRN "Texture loaded successfully: %s\n" RST, path);
-	garbco_add(&game->garbco, path);
-	game->textures[i].path = path;
-	game->texture_count++;
-	DEBUG_PRINT(RD "Texture loaded: %s\n" RST, path);
-	DEBUG_PRINT(RD "Texture count: %d\n" RST, game->texture_count);
+	close(fd);
 	return (1);
 }
 
 int	parse_texture(t_game *game, char *line)
 {
-	int		i;
 	char	*path;
+	int		i;
+	char	*texture_name;
 
-	if (!validate_texture_input(game, line, &i, &path))
+	i = get_texture_count(line);
+	if (i == -1)
 		return (0);
-	return (load_texture(game, path, i));
+	texture_name = get_texture_name(i);
+	if (game->textures[i].texture != NULL)
+		return (print_texture_error(texture_name, "already set", NULL), 0);
+	path = extract_texture_path(line, texture_name);
+	if (!path)
+		return (0);
+	if (!validate_texture_path(path, texture_name))
+		return (free(path), 0);
+	game->textures[i].texture = load_texture(path, texture_name);
+	if (!game->textures[i].texture)
+		return (free(path), 0);
+	garbco_add(&game->garbco, (char *)path);
+	game->textures[i].path = (char *)path;
+	game->texture_count++;
+	return (1);
 }

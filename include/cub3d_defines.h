@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_defines.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 11:44:58 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/19 10:34:43 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/21 16:38:14 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,7 @@
 #ifndef CUB3D_DEFINES_H
 # define CUB3D_DEFINES_H
 
-/*
-	Debug Settings
-*/
 
-# define DEBUG 1
-# if DEBUG
-	#  define DEBUG_PRINT(fmt, ...) fprintf(stderr, " [DEBUG] " fmt, ##__VA_ARGS__)
-# else
-# define DEBUG_PRINT(fmt, ...) do {} while(0)
-	Dont do anything when the debug closed
-#endif
 
 /*
 	ASCII Color Codes
@@ -42,27 +32,22 @@
 # define CYN "\033[36m"
 
 // Colors of the minimap
-# define MAP_WALL_COLOR      0x000000FF  
-# define MAP_FLOOR_COLOR     0xFFFFFFFF  
-# define MAP_EMPTY_COLOR     0xC0C0C0FF  
-# define PLAYER_COLOR        0xFF0000FF  
-# define DIRECTION_COLOR     0x00FF00FF  
-# define RAY_COLOR           0xFFFF00FF  
-# define PLAYER_BUFFER_COLOR 0xFF8000FF  
+# define MAP_WALL_COLOR 0x000000FF
+# define MAP_FLOOR_COLOR 0xFFFFFFFF
+# define MAP_EMPTY_COLOR 0xC0C0C0FF
+# define PLAYER_COLOR 0xFF0000FF
+# define DIRECTION_COLOR 0x00FF00FF
+# define RAY_COLOR 0xFFFF00FF
+# define PLAYER_BUFFER_COLOR 0xFF8000FF
 
 /*
 	Math Constant
 */
 # define PI 3.14159265359f
-# define DEG_TO_RAD(deg) ((deg) * (PI / 180.0f))
-# define RAD_TO_DEG(rad) ((rad) * (180.0f / PI))
-# define FOV 60.0f
-# define HALF_FOV (FOV / 2.0f)
-
 /*
 	Speed Settings
 */
-# define MOVE_SPEED 0.08
-# define ROT_SPEED 0.045
+# define MOVE_SPEED 0.08 // Adjust for your preferred speed
+# define ROT_SPEED 0.045 // Adjust for your preferred rotation speed
 
 #endif

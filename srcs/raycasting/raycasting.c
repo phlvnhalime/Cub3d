@@ -1,12 +1,12 @@
 /* ************************************************************************** */
-/*		                                                                       */
+/*				                                                                 */
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:34:24 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/14 12:14:46 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/21 13:15:11 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void	perform_dda(t_game *game, t_ray *ray)
 			ray->hit = 1;
 	}
 	if (ray->side == 0)
-		ray->perp_wall_dist = (ray->map_x - game->player.x + (1 - ray->step_x)
-				/ 2) / ray->ray_dir_x;
+		ray->perp_wall_dist = (ray->map_x - game->player.x
+			+ (1 - ray->step_x) / 2) / ray->ray_dir_x;
 	else
-		ray->perp_wall_dist = (ray->map_y - game->player.y + (1 - ray->step_y)
-				/ 2) / ray->ray_dir_y;
+		ray->perp_wall_dist = (ray->map_y - game->player.y
+				+ (1 - ray->step_y) / 2) / ray->ray_dir_y;
 }
 
 void	calculate_wall_screen(t_ray *ray)

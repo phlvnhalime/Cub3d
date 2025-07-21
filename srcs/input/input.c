@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 14:59:34 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/18 13:35:29 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/21 16:42:53 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,5 @@ void	game_loop(t_game *game)
 	memset(game->img->pixels, 0, game->img->width * game->img->height
 		* sizeof(uint32_t));
 	raycast(game);
-	DEBUG_PRINT(GRN "Starting game loop...\n" RST);
 	mlx_loop(game->mlx);
 }

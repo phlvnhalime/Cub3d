@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:12:07 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/16 10:31:46 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/21 16:42:41 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,23 +57,6 @@ static void	init_map_and_textures(t_game *data)
 	data->map_ended = 0;
 	data->map_valid = 0;
 }
-// SPLITTED IT BETWEEN PLAYER_DATA and MAP_AND_TEXTURE
-
-// static void	init_colors_and_flags(t_game *data)
-// {
-// 	data->floor_color.r = 0;
-// 	data->floor_color.g = 0;
-// 	data->floor_color.b = 0;
-// 	data->ceiling_color.r = 0;
-// 	data->ceiling_color.g = 0;
-// 	data->ceiling_color.b = 0;
-// 	data->texture_count = 0;
-// 	data->color_count = 0;
-// 	data->map_started = 0;
-// 	data->map_ended = 0;
-// 	data->map_valid = 0;
-// 	data->player_found = 0;
-// }
 
 void	init_data(t_game *data)
 {
@@ -100,5 +83,4 @@ void	init_game(t_game *game)
 		mlx_terminate(game->mlx);
 		mlx_error("mlx_image_to_window");
 	}
-	DEBUG_PRINT(GRN "Game initialized successfully\n" RST);
 }
