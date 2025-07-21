@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 11:50:51 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/16 12:18:06 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/21 14:56:02 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,14 @@ typedef struct s_texture
 typedef struct s_player
 {
 	/*Player directories*/
-	double x;         // Player X position
-	double y;         // Player Y position
-	double dir_x;     // Player direction X component
-	double dir_y;     // Player direction Y component
-	double plane_x;   // Player camera plane X component
-	double plane_y;   // Player camera plane Y component
-	double spawn_dir; // Player spawn direction in degrees
-	char spawn_char;
+	char					spawn_char;
+	double					x;
+	double					y;
+	double					dir_x;
+	double					dir_y;
+	double					plane_x;
+	double					plane_y;
+	double					spawn_dir;
 }							t_player;
 
 /*
@@ -79,34 +79,29 @@ typedef struct s_player
 typedef struct s_map
 {
 	char					**grid;
-	int width;  // Width of the map
-	int height; // Height of the map
+	int						width;
+	int						height;
 }							t_map;
 
-// Raycasting related structures
-/*
-	s_ray structure to hold raycasting information.
-	This structure is used to store information about the ray being cast in the game.
-*/
 typedef struct s_ray
 {
-	double camera_x;       // Camera X coordinate
-	double ray_dir_x;      // Ray direction X component
-	double ray_dir_y;      // Ray direction Y component
-	double delta_dist_x;   // Distance between grid lines in X direction
-	double delta_dist_y;   // Distance between grid lines in Y direction
-	double side_dist_x;    // Distance to the next vertical grid line
-	double side_dist_y;    // Distance to the next horizontal grid line
-	double perp_wall_dist; // Perpendicular distance to the wall
-	int map_x;             // Current map X coordinate
-	int map_y;             // Current map Y coordinate
-	int step_x;            // Step in X direction (1 or -1)
-	int step_y;            // Step in Y direction (1 or -1)
-	int hit;               // Hit flag (1 if wall hit, 0 otherwise)
-	int side;
-	int line_height;       // Height of the wall line to be drawn
-	int draw_start;        // Start of the wall line to be drawn
-	int draw_end;          // End of the wall line to be drawn
+	double					camera_x;
+	double					ray_dir_x;
+	double					ray_dir_y;
+	double					delta_dist_x;
+	double					delta_dist_y;
+	double					side_dist_x;
+	double					side_dist_y;
+	double					perp_wall_dist;
+	int						map_x;
+	int						map_y;
+	int						step_x;
+	int						step_y;
+	int						hit;
+	int						side;
+	int						line_height;
+	int						draw_start;
+	int						draw_end;
 }							t_ray;
 
 /*
@@ -135,25 +130,25 @@ typedef struct s_game
 	mlx_image_t				*img;
 	t_player				player;
 	t_map					map;
-	t_texture textures[4]; // Array of textures for walls (N, S, E, W)
-	t_color floor_color;   // Floor color
-	t_color ceiling_color; // Ceiling color
-	t_garbco garbco;       // Garbage collector to manage memory
+	t_texture				textures[4];
+	t_color					floor_color;
+	t_color					ceiling_color;
+	t_garbco				garbco;
 
-	int texture_count; // Number of textures loaded
-	int color_count;   // Number of colors loaded
-	int map_started;   // Flag to indicate if the map has started
-	int map_ended;     // Flag to indicate if the map has ended
-	int map_valid;     // Flag to indicate if the map is valid
-	int player_found;  // Flag to indicate if the player position has been found
+	int						texture_count;
+	int						color_count;
+	int						map_started;
+	int						map_ended;
+	int						map_valid;
+	int						player_found;
 }							t_game;
 
 typedef struct s_square
 {
-    int x;
-    int y;
-    int size;
-    int color;
-} t_square;
+	int						x;
+	int						y;
+	int						size;
+	int						color;
+}							t_square;
 
 #endif

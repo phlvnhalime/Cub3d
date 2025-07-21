@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_init_ray.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 12:26:25 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/14 19:19:00 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/21 15:09:37 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

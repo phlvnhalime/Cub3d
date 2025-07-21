@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 11:50:26 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/21 14:15:45 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/21 15:45:04 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,17 @@ int			is_valid_map_character(char c);
 void		check_color_format(char *line);
 
 /* Player parsing */
-void	set_player_direction(t_game *game, char spawn_char);
-int		find_player_position(t_game *game);
+void		set_player_direction(t_game *game, char spawn_char);
+int			find_player_position(t_game *game);
 /* Texture parsing */
 int			get_texture_count(char *line);
 int			parse_texture(t_game *game, char *line);
+char		*get_texture_name(int index);
+int			file_exists(char *path);
+void		print_texture_error(char *texture_name, char *message, char *path);
+char		*extract_texture_path(char *line, char *texture_name);
+int			validate_texture_path(char *path, char *texture_name);
+void		*load_texture(char *path, char *texture_name);
 
 /* Color parsing */
 int			valid_rgb_format(int r, int g, int b);
@@ -69,7 +75,8 @@ int			parse_file(t_game *game, char *file_path);
 
 /* ===== HELPER FUNCTIONS FOR REFACTORING ===== */
 int			parse_textures_and_colors(t_game *game, int fd);
-int			validate_map_block(t_game *game, char *line, int *map_started, int *map_ended);
+int			validate_map_block(t_game *game, char *line, int *map_started,
+				int *map_ended);
 int			parse_map_section(t_game *game, int fd);
 int			open_and_validate_file(char *file_path);
 
@@ -82,7 +89,7 @@ char		*garbco_strdup(t_garbco *garbco, char *str);
 void		garbco_init(t_garbco *garbco);
 void		*garbco_malloc(t_garbco *garbco, size_t size);
 void		garbco_game(t_game *game);
-void	garbco_delete_txtr(t_game *game);
+void		garbco_delete_txtr(t_game *game);
 
 /* ===== RAYCASTING FUNCTIONS ===== */
 void		raycast(t_game *game);

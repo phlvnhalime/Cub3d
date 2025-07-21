@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 14:01:21 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/21 14:46:15 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/21 15:47:10 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,16 @@ void	set_color_values(t_game *game, char identifier, int rgb_arr[3])
 		game->floor_color.r = rgb_arr[0];
 		game->floor_color.g = rgb_arr[1];
 		game->floor_color.b = rgb_arr[2];
-		game->floor_color.hex = (rgb_arr[0] << 16) | (rgb_arr[1] << 8) | rgb_arr[2];
+		game->floor_color.hex = (rgb_arr[0] << 16) |
+		 			(rgb_arr[1] << 8) | rgb_arr[2];
 	}
 	else if (identifier == 'C')
 	{
 		game->ceiling_color.r = rgb_arr[0];
 		game->ceiling_color.g = rgb_arr[1];
 		game->ceiling_color.b = rgb_arr[2];
-		game->ceiling_color.hex = (rgb_arr[0] << 16) | (rgb_arr[1] << 8) | rgb_arr[2];
+		game->ceiling_color.hex = (rgb_arr[0] << 16) | 
+					(rgb_arr[1] << 8) | rgb_arr[2];
 	}
 	game->color_count++;
 }
