@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_functions.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 11:50:26 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/21 16:42:30 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/21 17:36:57 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,14 @@ int			get_wall_direction(t_ray *ray);
 void		draw_square(t_game *game, t_square *sq);
 void		render_minimap(t_game *game);
 void		handle_missing_texture(t_game *game, t_ray *ray, int x);
+void		draw_fov_rays(t_game *game, int offset_x, int offset_y, \
+			int cell_size);
+void		draw_player_direction(t_game *game, int player_cx, int player_cy, \
+			int cell_size);
+void		draw_player_collision_area(t_game *game, int offset_x, \
+			int offset_y, int cell_size);
+void		draw_filled_circle(t_game *game, int cx, int cy, int radius, \
+			uint32_t color);
 
 /* ===== INPUT FUNCTIONS ===== */
 void		handle_key(mlx_key_data_t keys, void *frame);
