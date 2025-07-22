@@ -6,13 +6,32 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:39:56 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/22 20:20:48 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/23 00:53:20 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-/* Map validation errors */
+/*
+** map_errors - Prints an error message to stderr and exits the program
+** with a failure status.
+** This function is called when a map validation fails.
+** It prints a generic error message indicating that the map validation
+** has failed, along with the coordinates (x, y) where the error occurred.
+** If an additional error message is provided, it will be printed after
+** the coordinates.
+** The program then exits with EXIT_FAILURE.
+**
+** @param error_msg: A specific error message describing the issue.
+** @param x: The x-coordinate where the error occurred (if applicable).
+** @param y: The y-coordinate where the error occurred (if applicable).
+** If x and y are both greater than 0, they will be printed in the format
+** "(x, y)". If they are not applicable, they will not be printed.
+** If error_msg is NULL, no specific error message will be printed.
+** If error_msg is not NULL, it will be printed after the coordinates.
+** If no coordinates are provided, only the generic error message will be
+** printed.
+*/
 void	map_errors(char *error_msg, int x, int y)
 {
 	ft_putstr_fd("Error\n", 2);
@@ -33,7 +52,21 @@ void	map_errors(char *error_msg, int x, int y)
 	exit(EXIT_FAILURE);
 }
 
-/* Texture errors */
+/*
+** texture_error - Prints an error message to stderr and exits the program
+** with a failure status.
+** This function is called when a texture-related error occurs, such as
+** when a texture file cannot be loaded or is invalid.
+** It prints the texture name, path, and a specific error message if provided.
+** If the texture name or path is not provided, it will not print that part
+** of the message.
+** The program then exits with EXIT_FAILURE.
+**
+** @param texture_name: The name of the texture that caused the error.
+** @param path: The path to the texture file that caused the error.
+** @param error_msg: A specific error message describing the issue.
+** If NULL, no specific error message is printed.
+*/
 void	texture_error(char *texture_name, char *path, char *error_msg)
 {
 	ft_putstr_fd("Error\n", 2);
@@ -58,7 +91,17 @@ void	texture_error(char *texture_name, char *path, char *error_msg)
 	exit(EXIT_FAILURE);
 }
 
-/* mlx errors */
+/*
+** mlx_error - Prints an error message to stderr and exits the program
+** with a failure status.
+** This function is called when an MLX42 function fails.
+** It prints a generic error message indicating that an MLX42 function
+** has failed, along with the name of the function that caused the error.
+** If the function name is not provided, it prints "Unknown function".
+** The program then exits with EXIT_FAILURE.
+**
+** @param function_name: The name of the MLX42 function that failed.
+*/
 void	mlx_error(char *function_name)
 {
 	ft_putstr_fd("Error\n", 2);
@@ -72,14 +115,11 @@ void	mlx_error(char *function_name)
 }
 
 /*
-** Memory allocation error handling
-** Prints an error message to stderr indicating that memory allocation failed.
-** Exits the program with EXIT_FAILURE.
-*
-** This function is called when a memory allocation fails, typically during
-* the initialization of game structures or when loading resources.
-* It ensures that the program does not continue running in an invalid state
-* and provides a clear error message to the user.
+** malloc_error - Prints an error message to stderr and exits the program
+** with a failure status.
+** This function is called when a memory allocation fails.
+** It prints a generic error message indicating that memory allocation
+** has failed, and then exits the program with EXIT_FAILURE.
 */
 void	malloc_error(void)
 {

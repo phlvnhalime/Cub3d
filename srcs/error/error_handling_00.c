@@ -6,19 +6,21 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:20:43 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/22 20:21:13 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/23 00:52:27 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
 /*
-** Error exit handling
-** Prints the error message to stderr.
-** Exits the program with EXIT_FAILURE.
-*
-** @param msg: The error message to be printed.
-** If msg is NULL, only "Error" is printed.
+** error_exit - Error handling function
+** This function prints an error message to stderr and exits the program.
+** It is used for general error handling where no specific game structure
+** cleanup is needed.
+** It exits the program with EXIT_FAILURE.
+**
+** @param msg: The error message to be printed. If NULL, no additional message
+** is printed.
 */
 void	error_exit(char *msg)
 {
@@ -32,13 +34,16 @@ void	error_exit(char *msg)
 }
 
 /*
-** Error exit with cleanup
-** Prints the error message to stderr.
-** Cleans up the garbage collector if the game structure is provided.
-** Exits the program with EXIT_FAILURE.
-*
-** @param game: Pointer to the game structure for cleanup.
-** @param msg: The error message to be printed.
+** error_exit_cleanup - Error handling with cleanup
+** This function prints an error message to stderr, cleans up the game structure,
+** and exits the program.
+** It is used for error handling where the game structure needs to be cleaned up
+** before exiting.
+** It exits the program with EXIT_FAILURE.
+**
+** @param game: Pointer to the game structure that needs to be cleaned up.
+** @param msg: The error message to be printed. If NULL, no additional message
+** is printed.
 */
 void	error_exit_cleanup(t_game *game, char *msg)
 {
@@ -52,11 +57,12 @@ void	error_exit_cleanup(t_game *game, char *msg)
 }
 
 /*
-** Validity error handling
-** Prints the error message to stderr.
-** If content is provided, it prints it before the specifier.
-** Exits the program with EXIT_FAILURE.
-*
+** valid_error - Error handling for specifiers
+** This function prints an error message to stderr
+** when a specifier is invalid or not found.
+** It can also include additional content before the specifier.
+** It exits the program with EXIT_FAILURE.
+**
 ** @param content: Additional content to be printed before the specifier.
 ** @param specifier: The specifier that caused the error.
 */
@@ -74,12 +80,14 @@ void	valid_error(char *content, char *specifier)
 }
 
 /*
-** File error handling
-** Prints the filename and the error message to stderr.
-** Exits the program with EXIT_FAILURE.
-*
+** file_error - Error handling for file operations
+** This function prints an error message to stderr
+** when a file operation fails, such as opening or reading a file.
+** It includes the filename and an optional error message.
+** It exits the program with EXIT_FAILURE.
+**
 ** @param filename: The name of the file that caused the error.
-** @param error_msg: The error message to be printed.
+** @param error_msg: An optional error message to be printed.
 */
 void	file_error(char *filename, char *error_msg)
 {
