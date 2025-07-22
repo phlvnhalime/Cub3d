@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_types.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 11:50:51 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/21 16:42:36 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/21 18:51:13 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,5 +150,13 @@ typedef struct s_square
 	int						size;
 	int						color;
 }							t_square;
+
+typedef struct s_draw_data
+{
+	mlx_texture_t			*tex;
+	int						tex_x;
+	int						tex_position;
+	int						steps;
+}							t_draw_data;
 
 #endif

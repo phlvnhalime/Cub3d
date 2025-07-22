@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_wall_textures.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 21:37:08 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/21 16:33:03 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/22 12:14:04 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	handle_missing_texture(t_game *game, t_ray *ray, int x)
 	draw_vertical_line(game, ray->draw_start, ray->draw_end, error_color);
 	draw_floor_ceiling(game, x, ray->draw_start, ray->draw_end);
 }
+// ORIGINAL VERSION of render_textures_wall function
 
 void	render_textures_wall(t_game *game, t_ray *ray, int x)
 {

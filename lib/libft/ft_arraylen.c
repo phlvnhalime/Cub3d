@@ -3,22 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_arraylen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 22:47:56 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/06 23:03:35 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/22 12:22:24 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_arraylen(char **array)
+int	ft_arraylen(char **array)
 {
-    int len = 0;
-    if(!array)
-        return 0;
-    while(array[len])
-        len++;
-    return (len);
+	int	len;
 
+	len = 0;
+	if (!array)
+		return (0);
+	while (array[len])
+		len++;
+	return (len);
 }

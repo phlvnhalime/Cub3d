@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_defines.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 11:44:58 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/21 16:38:14 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/22 12:21:07 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 
 #ifndef CUB3D_DEFINES_H
 # define CUB3D_DEFINES_H
-
-
 
 /*
 	ASCII Color Codes
