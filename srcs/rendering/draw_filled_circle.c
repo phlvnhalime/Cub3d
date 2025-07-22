@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:34:00 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/21 18:39:13 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/22 23:57:42 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,17 @@
 // }
 // }
 
+/*
+** draw_circle_pixels - Draws a filled circle on the game image.
+** This function iterates over a square area defined by the circle's radius
+** and checks if each pixel is within the circle's radius. If it is, it
+** draws the pixel at the specified coordinates with the given color.
+**
+** @param game: Pointer to the game structure containing the image.
+** @param params: An array containing the circle's center coordinates (cx, cy)
+**                 and the radius (r).
+** @param color: The color to fill the circle with.
+*/
 static void	draw_circle_pixels(t_game *game, int *params, uint32_t color)
 {
 	int	x;
@@ -67,6 +78,17 @@ static void	draw_circle_pixels(t_game *game, int *params, uint32_t color)
 	}
 }
 
+/*
+** draw_filled_circle - Draws a filled circle on the game image.
+** This function prepares the parameters for the circle drawing function
+** and calls it to draw a filled circle at the specified center coordinates
+** with the color defined by PLAYER_COLOR.
+**
+** @param game: Pointer to the game structure containing the image.
+** @param cx: The x-coordinate of the circle's center.
+** @param cy: The y-coordinate of the circle's center.
+** @param radius: The radius of the circle to be drawn.
+*/
 void	draw_filled_circle(t_game *game, int cx, int cy, int radius)
 {
 	int	params[3];

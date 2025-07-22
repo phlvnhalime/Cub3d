@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:06:33 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/21 18:22:55 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/23 00:07:53 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,24 @@
 // 	}
 // }
 
+/*
+** init_line_params - Initializes the parameters for the line drawing
+** function.
+** This function calculates the end coordinates of the line based on
+** the player's direction and the specified length.
+** It also calculates the absolute differences in the x and y
+** coordinates to determine the line's slope.
+**
+** @param game: Pointer to the game structure containing player data.
+** @param player_cx: The x-coordinate of the player's position.
+** @param player_cy: The y-coordinate of the player's position.
+** @param params: An array to store the calculated parameters.
+**                 params[0] - length of the line,
+**                 params[1] - end x-coordinate,
+**                 params[2] - end y-coordinate,
+**                 params[3] - absolute difference in x,
+**                 params[4] - absolute difference in y.
+*/
 static void	init_line_params(t_game *game, int player_cx, int player_cy, \
 	int *params)
 {
@@ -71,6 +89,25 @@ static void	init_line_params(t_game *game, int player_cx, int player_cy, \
 	params[4] = abs(params[2] - player_cy);
 }
 
+/*
+** calculate_step_direction - Determines the step direction for the line
+** drawing based on the player's position and the end coordinates.
+** This function sets the step values for both x and y directions,
+** as well as the difference in x and y coordinates.
+**
+** @param player_cx: The x-coordinate of the player's position.
+** @param player_cy: The y-coordinate of the player's position.
+** @param params: An array containing the end coordinates and differences.
+**                 params[1] - end x-coordinate,
+**                 params[2] - end y-coordinate,
+**                 params[3] - absolute difference in x,
+**                 params[4] - absolute difference in y.
+** @param steps: An array to store the step values.
+**                steps[0] - step in x direction,
+**                steps[1] - step in y direction,
+**                steps[2] - difference in x and y coordinates.
+**                steps[2] = params[3] - params[4].
+*/
 static void	calculate_step_direction(int player_cx, int player_cy, \
 	int *params, int *steps)
 {
@@ -85,6 +122,27 @@ static void	calculate_step_direction(int player_cx, int player_cy, \
 	steps[2] = params[3] - params[4];
 }
 
+/*
+** draw_line_segment - Draws a line segment from the current position
+** to the next point in the line.
+** This function uses Bresenham's line algorithm to determine the
+** next pixel to draw based on the current position and the
+** calculated step direction.
+**
+** @param game: Pointer to the game structure containing the image data.
+** @param x: The current x-coordinate of the pixel to draw.
+** @param y: The current y-coordinate of the pixel to draw.
+** @param line_data: An array containing the line data.
+**                  line_data[0] - end x-coordinate,
+**                  line_data[1] - end y-coordinate,
+**                  line_data[2] - error term for x direction,
+**                  line_data[3] - absolute difference in y,
+**                  line_data[4] - absolute difference in x,
+**                  line_data[5] - step in x direction,
+**                  line_data[6] - step in y direction,
+**                  line_data[7] - previous x-coordinate,
+**                  line_data[8] - previous y-coordinate.
+*/
 static void	draw_line_segment(t_game *game, int x, int y, int *line_data)
 {
 	int	e2;
@@ -108,6 +166,20 @@ static void	draw_line_segment(t_game *game, int x, int y, int *line_data)
 	line_data[8] = y;
 }
 
+/*
+** draw_player_direction - Draws the player's direction on the game
+** screen.
+** This function calculates the end coordinates of the line based on
+** the player's direction and draws a line from the player's position
+** to the end coordinates using Bresenham's line algorithm.
+**
+** @param game: Pointer to the game structure containing player data and
+**              image data.
+** @param player_cx: The x-coordinate of the player's position.
+** @param player_cy: The y-coordinate of the player's position.
+** @param cell_size: The length of the line to be drawn, representing
+**                   the player's direction.
+*/
 void	draw_player_direction(t_game *game, int player_cx, int player_cy, \
 	int cell_size)
 {

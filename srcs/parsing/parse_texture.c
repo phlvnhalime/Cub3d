@@ -3,15 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 14:01:40 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/21 16:41:29 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/22 23:09:30 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
+/*
+** get_texture_count - Determines the index of the texture based on the line
+** content.
+** This function checks the beginning of the line to identify which texture
+** it corresponds to (NO, SO, WE, EA). It returns an index that can be used
+** to access the appropriate texture in the game structure.
+**
+** @param line The line from the configuration file.
+** @return The index of the texture (0 for NO, 1 for SO, 2 for WE, 3 for EA),
+*/
 int	get_texture_count(char *line)
 {
 	if (!line)
@@ -27,6 +37,15 @@ int	get_texture_count(char *line)
 	return (-1);
 }
 
+/*
+** get_texture_name - Returns the name of the texture based on its index.
+** This function maps the texture index to its corresponding name.
+** It is used to provide a human-readable name for error messages and
+** debugging purposes.
+**
+** @param index The index of the texture (0 for NO, 1 for SO, etc.).
+** @return The name of the texture as a string.
+*/
 char	*get_texture_name(int index)
 {
 	if (index == 0)
@@ -41,6 +60,16 @@ char	*get_texture_name(int index)
 		return ("unknown");
 }
 
+/*
+** file_exists - Checks if a file exists at the given path.
+** This function attempts to open the file in read-only mode. If the file
+** can be opened, it is considered to exist, and the function returns 1.
+** If the file cannot be opened (e.g., it does not exist), the function
+** returns 0.
+**
+** @param path The path to the file to check.
+** @return 1 if the file exists, 0 if it does not.
+*/
 int	file_exists(char *path)
 {
 	int	fd;
@@ -52,6 +81,18 @@ int	file_exists(char *path)
 	return (1);
 }
 
+/*
+** parse_texture - Parses a texture line from the configuration file.
+** This function extracts the texture path from the line, validates it,
+** and loads the texture into the game structure.
+** It also checks if the texture has already been set and handles errors
+** accordingly.
+**
+** @param game Pointer to the game structure.
+** @param line The line from the configuration file containing the texture
+** information.
+** @return 1 on success, 0 on failure.
+*/
 int	parse_texture(t_game *game, char *line)
 {
 	char	*path;

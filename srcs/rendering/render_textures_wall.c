@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 21:37:08 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/22 17:45:12 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/23 00:12:37 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,21 @@
 // 	}
 // }
 
+/*
+** init_texture_params - Initializes the texture parameters
+** for rendering the wall texture.
+** This function calculates the texture X coordinate, step size
+** for the texture Y coordinate, and the current texture Y coordinate.
+**
+** @param game: Pointer to the game structure containing textures and image.
+** @param ray: Pointer to the ray structure containing ray properties.
+** @param params: Array to store the texture parameters:
+**                [0] - Texture X coordinate,
+**                [1] - Step size for texture Y coordinate,
+**                [2] - Current texture Y coordinate,
+**                [3] - Wall direction (texture index).
+** @param tex: Pointer to the texture to be used for rendering.
+*/
 static void	init_texture_params(t_game *game, t_ray *ray, \
 		double *params, mlx_texture_t *tex)
 {
@@ -87,6 +102,14 @@ static void	init_texture_params(t_game *game, t_ray *ray, \
 		/ 2) * params[1]);
 }
 
+/*
+** adjust_wall_color - Adjusts the wall color based on the ray's side.
+** If the ray hits a wall on the side, it darkens the color
+** to simulate lighting effects.
+**
+** @param ray: Pointer to the ray structure containing ray properties.
+** @param color: Pointer to the color value to adjust.
+*/
 static void	adjust_wall_color(t_ray *ray, uint32_t *color)
 {
 	uint8_t	r;
@@ -104,6 +127,20 @@ static void	adjust_wall_color(t_ray *ray, uint32_t *color)
 	}
 }
 
+/*
+** render_wall_pixels - Renders the wall pixels for a given ray.
+** This function calculates the texture coordinates and renders
+** the wall pixels based on the ray's properties and the texture.
+**
+** @param game: Pointer to the game structure containing textures and image.
+** @param ray: Pointer to the ray structure containing ray properties.
+** @param x: The x-coordinate of the pixel column to render.
+** @param params: Array containing texture parameters:
+**                [0] - Texture X coordinate,
+**                [1] - Step size for texture Y coordinate,
+**                [2] - Current texture Y coordinate,
+**                [3] - Wall direction (texture index).
+*/
 static void	render_wall_pixels(t_game *game, t_ray *ray, int x, double *params)
 {
 	int				y;
@@ -128,6 +165,15 @@ static void	render_wall_pixels(t_game *game, t_ray *ray, int x, double *params)
 	}
 }
 
+/*
+** render_textures_wall - Renders the wall textures for a given ray.
+** This function calculates the texture coordinates and renders
+** the wall pixels based on the ray's properties and the texture.
+**
+** @param game: Pointer to the game structure containing textures and image.
+** @param ray: Pointer to the ray structure containing ray properties.
+** @param x: The x-coordinate of the pixel column to render.
+*/
 void	render_textures_wall(t_game *game, t_ray *ray, int x)
 {
 	int				wall_direction;

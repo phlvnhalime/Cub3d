@@ -12,6 +12,16 @@
 
 #include "../../include/cub3d.h"
 
+/*
+** compare_side_dist - Compares the side distances and updates the ray's
+** map coordinates and side.
+** This function determines which side of the grid the ray is closer to
+** and updates the ray's map coordinates accordingly. It also sets the
+** side variable to indicate whether the ray hit a vertical or horizontal wall.
+**
+** @param ray: Pointer to the ray structure containing side distances and
+** map coordinates.
+*/
 static void	compare_side_dist(t_ray *ray)
 {
 	if (ray->side_dist_x < ray->side_dist_y)
@@ -28,6 +38,18 @@ static void	compare_side_dist(t_ray *ray)
 	}
 }
 
+/*
+** perform_dda - Performs the Digital Differential Analyzer (DDA) algorithm
+** to find the wall hit.
+** This function iterates through the grid based on the ray's direction
+** and checks for wall collisions. It updates the ray's hit status and
+** calculates the perpendicular wall distance when a wall is hit.
+**
+** @param game: Pointer to the game structure containing player and map
+** information.
+** @param ray: Pointer to the ray structure containing ray direction and
+** map coordinates.
+*/
 void	perform_dda(t_game *game, t_ray *ray)
 {
 	while (ray->hit == 0)
@@ -52,6 +74,17 @@ void	perform_dda(t_game *game, t_ray *ray)
 				+ (1 - ray->step_y) / 2) / ray->ray_dir_y;
 }
 
+/*
+** cakculate_wall_screen - Calculates the height and draw start/end
+** positions for the wall on the screen.
+** This function computes the height of the wall based on the perpendicular
+** distance to the wall and sets the start and end positions for drawing
+** the wall on the screen. It ensures that the wall is drawn within the
+** screen boundaries.
+**
+** @param ray: Pointer to the ray structure containing the perpendicular
+** wall distance and calculated line height.
+*/
 void	calculate_wall_screen(t_ray *ray)
 {
 	ray->line_height = (int)(HEIGHT / ray->perp_wall_dist);
@@ -63,6 +96,15 @@ void	calculate_wall_screen(t_ray *ray)
 		ray->draw_end = HEIGHT - 1;
 }
 
+/*
+** raycast - Main function for raycasting in the game.
+** This function iterates over each pixel in the screen width, initializes
+** the ray for that pixel, performs the DDA algorithm to find the wall hit,
+** calculates the wall screen position, and renders the wall textures.
+**
+** @param game: Pointer to the game structure containing player and map
+** information.
+*/
 void	raycast(t_game *game)
 {
 	int		x;

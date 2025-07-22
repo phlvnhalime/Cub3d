@@ -3,15 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 20:35:21 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/21 16:50:59 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/22 23:09:53 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
+/*
+** parse_file - Parses the configuration file for the game.
+** This function opens the specified file, validates its contents, and
+** extracts textures, colors, and the map section. It ensures that the file
+** is correctly formatted and that all necessary components are present.
+**
+** @param game Pointer to the game structure that holds the parsed data.
+** @param file The path to the configuration file to be parsed.
+** @return 1 on success, 0 on failure.
+*/
 int	parse_file(t_game *game, char *file)
 {
 	int	fd;

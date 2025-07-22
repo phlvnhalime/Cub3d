@@ -6,12 +6,19 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/22 20:03:07 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/23 00:22:26 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
+/*
+** close_window - Closes the game window and cleans up resources.
+** This function is called when the window is closed by the user.
+** It cleans up the game resources and closes the window using the mlx library.
+**
+** @param frame - Pointer to the game structure containing all necessary data.
+*/
 void	close_window(void *frame)
 {
 	t_game	*game;
@@ -21,11 +28,17 @@ void	close_window(void *frame)
 	mlx_close_window(game->mlx);
 }
 
-void	check_leaks(void)
-{
-	system("leaks ");
-}
-
+/*
+** main - Entry point of the Cub3D game.
+** This function initializes the game, validates the command line arguments,
+** parses the map file, and starts the game loop.
+** It also sets up a cleanup function to be called at exit to check for memory
+** leaks.
+** 
+** @param ac - The number of command line arguments.
+** @param av - The array of command line arguments.
+** @return EXIT_SUCCESS if the game runs successfully, EXIT_FAILURE otherwise.
+*/
 int	main(int ac, char **av)
 {
 	t_game	game;
@@ -41,7 +54,6 @@ int	main(int ac, char **av)
 		garbco_clean(&game.garbco);
 		return (EXIT_FAILURE);
 	}
-	atexit(check_leaks);
 	game_loop(&game);
 	garbco_game(&game);
 	return (EXIT_SUCCESS);

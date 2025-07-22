@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:28:59 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/21 18:37:47 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/23 00:09:36 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,14 @@
 // 	mlx_put_pixel(game->img, player_cx, player_cy, 0xFFFFFFFF);
 // }
 
+/*
+** init_minimap_vars - Initializes the variables for the minimap.
+** It sets the offsets for the minimap and the size of each cell.
+**
+** @param offset_x - Pointer to the x offset for the minimap.
+** @param offset_y - Pointer to the y offset for the minimap.
+** @param cell_size - Pointer to the size of each cell in the minimap grid.
+*/
 static void	init_minimap_vars(int *offset_x, int *offset_y, int *cell_size)
 {
 	*offset_x = 10;
@@ -73,6 +81,15 @@ static void	init_minimap_vars(int *offset_x, int *offset_y, int *cell_size)
 	*cell_size = 10;
 }
 
+/*
+** draw_map_cell - Draws a single cell of the map on the minimap.
+** It determines the color of the cell based on its type:
+** wall ('1'), floor ('0'), or empty space (other characters).
+**
+** @param game - Pointer to the game structure containing all necessary data.
+** @param sq - Pointer to the square structure representing the cell.
+** @param cell - The character representing the cell type ('1', '0', or other).
+*/
 static void	draw_map_cell(t_game *game, t_square *sq, char cell)
 {
 	if (cell == '1')
@@ -84,6 +101,16 @@ static void	draw_map_cell(t_game *game, t_square *sq, char cell)
 	draw_square(game, sq);
 }
 
+/*
+** render_map_grid - Renders the grid of the map on the minimap.
+** It iterates through each cell of the map, calculates its position,
+** and draws the corresponding square based on the cell type.
+**
+** @param game - Pointer to the game structure containing all necessary data.
+** @param offset_x - The x offset for the minimap.
+** @param offset_y - The y offset for the minimap.
+** @param cell_size - The size of each cell in the minimap grid.
+*/
 static void	render_map_grid(t_game *game, int offset_x, int offset_y, \
 	int cell_size)
 {
@@ -112,6 +139,16 @@ static void	render_map_grid(t_game *game, int offset_x, int offset_y, \
 	}
 }
 
+/*
+** render_player_elements - Renders the player elements on the minimap.
+** It calculates the player's center coordinates, draws the field of view rays,
+** collision area, player direction, and the player position as a filled circle.
+**
+** @param game - Pointer to the game structure containing all necessary data.
+** @param offset_x - The x offset for the minimap.
+** @param offset_y - The y offset for the minimap.
+** @param cell_size - The size of each cell in the minimap grid.
+*/
 static void	render_player_elements(t_game *game, int offset_x, int offset_y, \
 	int cell_size)
 {
@@ -129,6 +166,14 @@ static void	render_player_elements(t_game *game, int offset_x, int offset_y, \
 	mlx_put_pixel(game->img, player_cx, player_cy, 0xFFFFFFFF);
 }
 
+/*
+** render_minimap - Renders the minimap for the game.
+** It initializes the minimap variables, renders the map grid,
+** and draws the player elements such as the field of view rays,
+** collision area, direction, and player position.
+**
+** @param game - Pointer to the game structure containing all necessary data.
+*/
 void	render_minimap(t_game *game)
 {
 	int	offset_x;

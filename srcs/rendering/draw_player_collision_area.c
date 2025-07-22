@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:26:10 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/21 18:30:29 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/23 00:04:38 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,21 @@
 // 	}
 // }
 
+/*
+** init_collision_params - Initializes the parameters for drawing the
+** player collision area.
+** This function calculates the pixel coordinates of the player
+** and sets the buffer size for the collision area.
+**
+** @param game: Pointer to the game structure containing player position.
+** @param cell_size: Size of each cell in the grid.
+** @param params: Array to hold the parameters for drawing.
+**                params[0]: offset_x
+**                params[1]: offset_y
+**                params[2]: pixel_x (calculated)
+**                params[3]: pixel_y (calculated)
+**                params[4]: buffer size in pixels
+*/
 static void	init_collision_params(t_game *game, int cell_size, int *params)
 {
 	double	buffer;
@@ -66,6 +81,19 @@ static void	init_collision_params(t_game *game, int cell_size, int *params)
 	params[4] = (int)(buffer * cell_size);
 }
 
+/*
+** draw_collision_grid - Draws a grid around the player to visualize
+** the collision area.
+** This function iterates over a square area centered on the player
+** and draws pixels to represent the collision area.
+**
+** @param game: Pointer to the game structure containing the image buffer.
+** @param params: Array containing the parameters for drawing.
+**                params[2]: pixel_x (center of the collision area)
+**                params[3]: pixel_y (center of the collision area)
+**                params[4]: buffer size in pixels (half the side length
+**                            of the square area to draw)
+*/
 static void	draw_collision_grid(t_game *game, int *params)
 {
 	int	dx;
@@ -89,6 +117,18 @@ static void	draw_collision_grid(t_game *game, int *params)
 	}
 }
 
+/*
+** draw_player_collision_area - Draws the player's collision area
+** on the game image.
+** This function calculates the pixel coordinates of the player
+** and draws a square area around the player to visualize the
+** collision area.
+**
+** @param game: Pointer to the game structure containing player position
+** @param offset_x: Horizontal offset for the drawing area.
+** @param offset_y: Vertical offset for the drawing area.
+** @param cell_size: Size of each cell in the grid.
+*/
 void	draw_player_collision_area(t_game *game, int offset_x, \
 	int offset_y, int cell_size)
 {
