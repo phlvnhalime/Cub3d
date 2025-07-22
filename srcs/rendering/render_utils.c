@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 16:00:42 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/21 18:31:00 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/22 20:05:41 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,31 +89,3 @@ void	draw_square(t_game *game, t_square *sq)
 		i++;
 	}
 }
-
-// Helper function to draw a filled circle with better boundary checks
-// void	draw_filled_circle(t_game *game, int cx, int cy, int radius,
-// 		uint32_t color)
-// {
-// 	int	px;
-// 	int	py;
-// 	int	x;
-// 	int	y;
-
-// 	y = -radius;
-// 	while (y <= radius)
-// 	{
-// 		x = -radius;
-// 		while (x <= radius)
-// 		{
-// 			if (x * x + y * y <= radius * radius)
-// 			{
-// 				px = cx + x;
-// 				py = cy + y;
-// 				if (px >= 0 && px < WIDTH && py >= 0 && py < HEIGHT)
-// 					mlx_put_pixel(game->img, px, py, color);
-// 			}
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// }

@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 11:50:51 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/22 13:13:13 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/22 20:15:29 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ typedef struct s_texture
 */
 typedef struct s_player
 {
-	/*Player directories*/
 	char					spawn_char;
 	double					x;
 	double					y;

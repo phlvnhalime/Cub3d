@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_00.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:50:30 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/21 16:50:56 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/22 20:09:28 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	handle_map_line(t_game *game, char *line, int *map_started,
 	if (*map_ended)
 	{
 		garbco_add(&game->garbco, line);
-		valid_error("Map block already started", line);
+		valid_error("Error: chunks of map cannot be separated", line);
 	}
 	*map_started = 1;
 	if (!parse_map_line(game, line))

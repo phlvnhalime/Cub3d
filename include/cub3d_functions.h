@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 11:50:26 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/22 15:25:04 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/22 20:15:12 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ int				get_texture_count(char *line);
 int				parse_texture(t_game *game, char *line);
 char			*get_texture_name(int index);
 int				file_exists(char *path);
-void			print_texture_error(char *texture_name, char *message, char *path);
+void			print_texture_error(char *texture_name, char *message, \
+				char *path);
 char			*extract_texture_path(char *line, char *texture_name);
 int				validate_texture_path(char *path, char *texture_name);
 void			*load_texture(char *path, char *texture_name);

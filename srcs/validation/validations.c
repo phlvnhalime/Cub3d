@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validations.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:43:33 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/21 16:33:22 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/22 20:04:03 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ int	validate_args(int ac, char **av)
 
 	if (ac != 2)
 	{
-		printf("Usage: %s <map_file.cub>\n", av[0]);
+		printf("Usage: %s <map_name.cub>\n", av[0]);
 		return (0);
 	}
 	len = strlen(av[1]);
 	if (len < 5 || strcmp(av[1] + len - 4, ".cub") != 0)
 	{
-		printf("Error: Map file must have '.cub' \n");
+		printf("Error: Map file must have '.cub' extension\n");
 		return (0);
 	}
 	return (1);

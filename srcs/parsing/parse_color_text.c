@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_color_text.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 14:01:08 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/21 15:39:59 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/22 20:07:25 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

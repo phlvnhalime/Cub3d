@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 20:44:45 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/21 17:15:36 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/22 20:13:23 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ int	validate_texture_path(char *path, char *texture_name)
 	path_len = ft_strlen(path);
 	if (path_len < 4 || ft_strncmp(path + path_len - 4, ".png", 4) != 0)
 	{
-		print_texture_error(texture_name, "invalid file extension", path);
+		print_texture_error(texture_name, \
+		"file extension must be '.png'", path);
 		return (0);
 	}
 	if (!file_exists(path))
