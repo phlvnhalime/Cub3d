@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 11:50:51 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/21 18:51:13 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/22 13:13:13 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ typedef struct s_ray
 	int						line_height;
 	int						draw_start;
 	int						draw_end;
+	int						x;
 }							t_ray;
 
 /*

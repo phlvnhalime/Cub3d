@@ -77,6 +77,7 @@ RENDERING_SRCS =	$(SRCS_DIR)/rendering/rendering.c \
 					$(SRCS_DIR)/rendering/draw_filled_circle.c \
 					$(SRCS_DIR)/rendering/render_minimap.c \
 					$(SRCS_DIR)/rendering/render_textures_wall.c \
+					$(SRCS_DIR)/rendering/render_textures_wall_utils.c \
 					$(SRCS_DIR)/rendering/render_utils.c
 
 MEMORY_SRCS =	$(SRCS_DIR)/memory/garbage_collector.c \
