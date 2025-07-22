@@ -3,15 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:12:07 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/21 16:42:41 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/22 20:23:48 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
+/*
+** Initializes the garbage collector and mlx structure in the game data.
+** Sets the mlx pointer and image pointer to NULL.
+**
+** @param data Pointer to the game structure containing garbage collector and
+** mlx data.
+*/
 static void	init_garbage_and_mlx(t_game *data)
 {
 	garbco_init(&data->garbco);
@@ -19,6 +26,12 @@ static void	init_garbage_and_mlx(t_game *data)
 	data->img = NULL;
 }
 
+/*
+** Initializes player data with default values.
+** Sets the player's position, direction, plane, and spawn direction.
+**
+* @param data Pointer to the game structure containing player data.
+*/
 static void	init_player_data(t_game *data)
 {
 	data->player.x = 0.0;
@@ -31,6 +44,12 @@ static void	init_player_data(t_game *data)
 	data->player_found = 0;
 }
 
+/*
+* Initializes the map and textures in the game structure.
+* Sets default values for the map grid, dimensions, textures, and colors.
+*
+* @param data Pointer to the game structure to be initialized.
+*/
 static void	init_map_and_textures(t_game *data)
 {
 	int	i;
@@ -58,6 +77,12 @@ static void	init_map_and_textures(t_game *data)
 	data->map_valid = 0;
 }
 
+/*
+** Initializes the game data structure with default values.
+** Sets up the garbage collector, player data, map, and textures.
+**
+** @param data Pointer to the game structure to be initialized.
+*/
 void	init_data(t_game *data)
 {
 	init_garbage_and_mlx(data);
@@ -65,6 +90,12 @@ void	init_data(t_game *data)
 	init_map_and_textures(data);
 }
 
+/*
+** Initializes the game structure and sets up the mlx window and image.
+** If any initialization fails, it cleans up and exits with an error.
+*
+** @param game Pointer to the game structure to be initialized.
+*/
 void	init_game(t_game *game)
 {
 	init_data(game);

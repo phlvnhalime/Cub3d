@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling_01.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:39:56 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/16 10:21:54 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/22 20:20:48 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,16 @@ void	mlx_error(char *function_name)
 	exit(EXIT_FAILURE);
 }
 
+/*
+** Memory allocation error handling
+** Prints an error message to stderr indicating that memory allocation failed.
+** Exits the program with EXIT_FAILURE.
+*
+** This function is called when a memory allocation fails, typically during
+* the initialization of game structures or when loading resources.
+* It ensures that the program does not continue running in an invalid state
+* and provides a clear error message to the user.
+*/
 void	malloc_error(void)
 {
 	ft_putstr_fd("Error\n", 2);

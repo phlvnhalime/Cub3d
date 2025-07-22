@@ -3,15 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   handle_key.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 08:58:35 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/21 16:42:47 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/22 20:28:18 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
+/*
+** handle_key - Handles key events for player movement and rotation.
+** This function checks for key presses and updates the player's position or
+** rotation based on the key pressed. It also handles the escape key to close
+** the game window.
+**
+** @param keydata Key data structure containing information about the key event.
+** @param frame Pointer to the game structure containing player and map data.
+*/
 void	handle_key(mlx_key_data_t keydata, void *frame)
 {
 	t_game	*game;
