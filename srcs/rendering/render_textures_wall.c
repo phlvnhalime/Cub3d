@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 21:37:08 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/22 15:22:00 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/22 17:45:12 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@
 // }
 
 static void	init_texture_params(t_game *game, t_ray *ray, \
-		int *params, mlx_texture_t *tex)
+		double *params, mlx_texture_t *tex)
 {
 	double	wall_x;
 	int		tex_x;
@@ -81,9 +81,10 @@ static void	init_texture_params(t_game *game, t_ray *ray, \
 	if ((ray->side == 0 && ray->ray_dir_x > 0) \
 		|| (ray->side == 1 && ray->ray_dir_y > 0))
 		tex_x = tex->width - tex_x - 1;
-	params[0] = tex_x; // tex_x
-	params[1] = (int)((double)tex->height / (double)ray->line_height * 1000); // steps (scaled)
-	params[2] = (int)((ray->draw_start - HEIGHT / 2 + ray->line_height / 2) * params[1] / 1000); // tex_position (scaled)
+	params[0] = tex_x;
+	params[1] = ((double)tex->height / (double)ray->line_height);
+	params[2] = ((ray->draw_start - HEIGHT / 2 + ray->line_height \
+		/ 2) * params[1]);
 }
 
 static void	adjust_wall_color(t_ray *ray, uint32_t *color)
@@ -103,26 +104,26 @@ static void	adjust_wall_color(t_ray *ray, uint32_t *color)
 	}
 }
 
-static void	render_wall_pixels(t_game *game, t_ray *ray, int x, int *params)
+static void	render_wall_pixels(t_game *game, t_ray *ray, int x, double *params)
 {
 	int				y;
 	int				tex_y;
 	uint32_t		color;
 	mlx_texture_t	*tex;
 
-	tex = game->textures[params[3]].texture; // wall_direction
+	tex = game->textures[(int)params[3]].texture;
 	draw_floor_ceiling(game, x, ray->draw_start, ray->draw_end);
 	y = ray->draw_start;
 	while (y <= ray->draw_end && y < HEIGHT)
 	{
-		tex_y = params[2] / 1000; // tex_position (unscaled)
+		tex_y = params[2];
 		if (tex_y >= 0 && tex_y < (int)tex->height)
 		{
-			color = get_tex_color(tex, params[0], tex_y); // tex_x
+			color = get_tex_color(tex, params[0], tex_y);
 			adjust_wall_color(ray, &color);
 			mlx_put_pixel(game->img, x, y, color);
 		}
-		params[2] += params[1]; // tex_position += steps
+		params[2] += params[1];
 		y++;
 	}
 }
@@ -131,7 +132,7 @@ void	render_textures_wall(t_game *game, t_ray *ray, int x)
 {
 	int				wall_direction;
 	mlx_texture_t	*tex;
-	int				params[4]; // tex_x, steps, tex_position, wall_direction
+	double			params[4];
 
 	wall_direction = get_valid_wall_dir(ray);
 	if (wall_direction == -1)

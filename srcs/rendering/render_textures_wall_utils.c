@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:21:40 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/22 15:22:03 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/22 17:45:22 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	get_valid_wall_dir(t_ray *ray)
 {
 	int	wall_direction;
-
 
 	wall_direction = get_wall_direction(ray);
 	if (wall_direction < 0 || wall_direction >= 4)
