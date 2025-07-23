@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/23 00:22:26 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/23 13:11:48 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(int ac, char **av)
 	if (!validate_args(ac, av))
 	{
 		garbco_clean(&game.garbco);
-		return (EXIT_FAILURE);
+		error_exit("Invalid input");
 	}
 	init_game(&game);
 	if (!parse_file(&game, av[1]))
