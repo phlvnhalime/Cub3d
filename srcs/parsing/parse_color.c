@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 14:01:21 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/23 00:22:59 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/23 16:28:17 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,8 +144,14 @@ int	parse_color(t_game *game, char *line)
 {
 	char	**split_line;
 	char	**rgb;
+	int		result;
+
+	
+	split_line = NULL;
+	rgb = NULL;
 
 	if (!validate_color_input(line, &split_line, &rgb))
 		return (0);
-	return (process_color_values(game, split_line, rgb));
+	result = process_color_values(game, split_line, rgb);
+	return (result);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_02.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 14:11:29 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/22 22:25:46 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/23 15:46:24 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,24 +111,33 @@ int	check_inner_zeros(t_game *game)
 {
 	int	x;
 	int	y;
-	int	row_len;
+	// int	row_len;
 
-	y = 1;
-	while (y < game->map.height - 1)
+	y = 0;
+	while (y < game->map.height)
 	{
-		x = 1;
-		row_len = ft_strlen(game->map.grid[y]);
-		while (x < row_len - 1)
+		x = 0;
+		// row_len = ft_strlen(game->map.grid[y]);
+		while (x < game->map.width)
 		{
-			if (game->map.grid[y][x] == '0')
+			if(get_char_at(game->map.grid[y], x) == '0' || get_char_at(game->map.grid[y], x) == 'N' || get_char_at(game->map.grid[y], x) == 'S' || get_char_at(game->map.grid[y], x) == 'E' || get_char_at(game->map.grid[y], x) == 'W')
 			{
-				if ((x > 0 && game->map.grid[y][x - 1] == ' ')
-					|| ((x < game->map.width - 1) && game->map.grid[y][x
-						+ 1] == ' ') || (y > 0 && game->map.grid[y
-						- 1][x] == ' ') || (y < game->map.height - 1
-						&& game->map.grid[y + 1][x] == ' '))
+				if(get_char_at(game->map.grid[y], x - 1) == ' ' ||
+				get_char_at(game->map.grid[y], x + 1) == ' ' ||
+				(y > 0 && get_char_at(game->map.grid[y - 1], x) == ' ') ||
+				(y < game->map.height - 1 && get_char_at(game->map.grid[y + 1], x) == ' '))
 					return (0);
 			}
+			
+			// if (game->map.grid[y][x] == '0')
+			// {
+			// 	if ((x > 0 && game->map.grid[y][x - 1] == ' ')
+			// 		|| ((x < game->map.width - 1) && game->map.grid[y][x
+			// 			+ 1] == ' ') || (y > 0 && game->map.grid[y
+			// 			- 1][x] == ' ') || (y < game->map.height - 1
+			// 			&& game->map.grid[y + 1][x] == ' '))
+			// 		return (0);
+			// }
 			x++;
 		}
 		y++;
