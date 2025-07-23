@@ -28,7 +28,8 @@ INCLUDE     = -I$(MLX42_DIR)/include \
 # Linker flags
 LDINCLUDE = -L$(MLX42_DIR)/build -lmlx42\
 			-L$(LIBFT_DIR) -lft \
-			-lglfw -framework Cocoa -framework OpenGL -framework IOKit
+			-lglfw -framework Cocoa -framework OpenGL -framework IOKit \
+			-L/opt/homebrew/lib 
 
 CFLAGS      = -Wextra -Wall -Werror $(INCLUDE)
 

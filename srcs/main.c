@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:49:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/23 13:11:48 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/23 15:53:58 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ void	close_window(void *frame)
 	game = (t_game *)frame;
 	garbco_game(game);
 	mlx_close_window(game->mlx);
+}
+
+void	check_leaks(void)
+{
+	system("leaks cub3D");
 }
 
 /*
@@ -54,6 +59,7 @@ int	main(int ac, char **av)
 		garbco_clean(&game.garbco);
 		return (EXIT_FAILURE);
 	}
+	atexit(check_leaks);
 	game_loop(&game);
 	garbco_game(&game);
 	return (EXIT_SUCCESS);

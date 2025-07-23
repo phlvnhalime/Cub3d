@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 14:01:21 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/23 13:57:54 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/23 16:37:03 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,8 +150,14 @@ int	parse_color(t_game *game, char *line)
 {
 	char	**split_line;
 	char	**rgb;
+	int		result;
+
+	
+	split_line = NULL;
+	rgb = NULL;
 
 	if (!validate_color_input(line, &split_line, &rgb))
 		return (0);
-	return (process_color_values(game, split_line, rgb));
+	result = process_color_values(game, split_line, rgb);
+	return (result);
 }

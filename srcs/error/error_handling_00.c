@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling_00.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:20:43 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/23 00:52:27 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/23 16:01:06 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,12 @@ void	valid_error(char *content, char *specifier)
 {
 	ft_putstr_fd("Error\n", 2);
 	if (content)
-	{
 		ft_putstr_fd(content, 2);
-		ft_putstr_fd(": ", 2);
-	}
 	if (specifier)
+	{
+		ft_putstr_fd(": ", 2);
 		ft_putstr_fd(specifier, 2);
+	}
 	exit(EXIT_FAILURE);
 }
 
