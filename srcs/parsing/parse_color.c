@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 14:01:21 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/23 00:22:59 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/23 13:57:54 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@
 int	valid_rgb_format(int r, int g, int b)
 {
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
+	{
+		error_exit("RGB values must be between 0 and 255");
 		return (0);
+	}
 	return (1);
 }
 
@@ -41,6 +44,9 @@ int	valid_rgb_format(int r, int g, int b)
 ** @param game: Pointer to the game structure.
 ** @param identifier: 'F' for floor or 'C' for ceiling.
 ** @param rgb_arr: Array containing the RGB values.
+**  				- rgb_arr[0] for red,
+**  				- rgb_arr[1] for green,
+**  				- rgb_arr[2] for blue.
 */
 void	set_color_values(t_game *game, char identifier, int rgb_arr[3])
 {
