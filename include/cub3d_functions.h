@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 11:50:26 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/23 23:35:07 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/24 11:32:54 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,6 @@ void			set_color_values(t_game *game, char identifier, int rgb_arr[3]);
 int				texture_identifier(char *line);
 int				valid_rgb_format(int r, int g, int b);
 int				validate_texture_path(char *path, char *texture_name);
-int				is_digit(char *str);
-int				parse_and_validate_rgb_values(char **rgb, int rgb_arr[3]);
-int				finalize_color_processing(t_game *game, char **split_line,
-					char **rgb, int rgb_arr[3]);
 int				process_color_values(t_game *game, char **split_line,
 					char **rgb);
 
@@ -108,7 +104,7 @@ int				parse_map_line(t_game *game, char *line);
 int				parse_map_section(t_game *game, int fd);
 int				validate_map_block(t_game *game, char *line, int *map_started,
 					int *map_ended);
-int				check_rotation(t_game *game, int x, int y);
+int				check_rotation(t_game *game, int x, int y, char curr);
 int				compare_lengths(t_game *game, int curr_len, int prev_len,
 					int y);
 int				lenght_encountered(t_game *game);
@@ -147,6 +143,11 @@ void			render_textures_wall(t_game *game, t_ray *ray, int x);
 /* ===== UTILITY FUNCTIONS ===== */
 
 void			ft_free_split(char **split);
+int				description_side_x(t_game *game, int x, int y);
+int				is_digit(char *str);
+int				parse_and_validate_rgb_values(char **rgb, int rgb_arr[3]);
+int				finalize_color_processing(t_game *game, char **split_line,
+					char **rgb, int rgb_arr[3]);
 
 /* ===== VALIDATION FUNCTIONS ===== */
 

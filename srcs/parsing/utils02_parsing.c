@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 21:39:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/23 23:34:50 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/24 10:40:41 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ int	parse_and_validate_rgb_values(char **rgb, int rgb_arr[3])
 
 /*
 ** finalize_color_processing - Finalizes the color processing.
-** This function validates the RGB values and sets the color values in the game structure.
+** This function validates the RGB values and
+** sets the color values in the game structure.
 ** It frees the allocated memory for the split line and RGB values.
 **
 ** @param game: Pointer to the game structure.

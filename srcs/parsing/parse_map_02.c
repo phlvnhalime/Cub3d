@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 14:11:29 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/24 10:30:44 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/24 11:32:39 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,16 +114,16 @@ int	check_inner_zeros(t_game *game)
 	char	curr;
 
 	y = 0;
-	while (y < game->map.height)
+	while (y < game->map.height - 1)
 	{
 		x = 0;
-		while (x < game->map.width)
+		while (x < game->map.width - 1)
 		{
 			curr = get_char_at(game->map.grid[y], x);
 			if (curr == '0' || curr == 'N' || curr == 'S' || curr == 'E'
 				|| curr == 'W')
 			{
-				if (!check_rotation(game, x, y))
+				if (!check_rotation(game, x, y, curr))
 					return (0);
 			}
 			x++;

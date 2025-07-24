@@ -39,7 +39,7 @@ void	check_leaks(void)
 ** parses the map file, and starts the game loop.
 ** It also sets up a cleanup function to be called at exit to check for memory
 ** leaks.
-** 
+**
 ** @param ac - The number of command line arguments.
 ** @param av - The array of command line arguments.
 ** @return EXIT_SUCCESS if the game runs successfully, EXIT_FAILURE otherwise.

@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 14:01:21 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/24 10:30:00 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/24 10:56:02 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 ** @param b: Blue component of the color.
 ** @return 1 if all values are valid, 0 otherwise.
 */
+
 int	valid_rgb_format(int r, int g, int b)
 {
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
@@ -50,14 +51,16 @@ void	set_color_values(t_game *game, char identifier, int rgb_arr[3])
 		game->floor_color.r = rgb_arr[0];
 		game->floor_color.g = rgb_arr[1];
 		game->floor_color.b = rgb_arr[2];
-		game->floor_color.hex = (rgb_arr[0] << 16) | (rgb_arr[1] << 8) | rgb_arr[2];
+		game->floor_color.hex = get_rgba_color(rgb_arr[0], rgb_arr[1],
+				rgb_arr[2], 255);
 	}
 	else if (identifier == 'C')
 	{
 		game->ceiling_color.r = rgb_arr[0];
 		game->ceiling_color.g = rgb_arr[1];
 		game->ceiling_color.b = rgb_arr[2];
-		game->ceiling_color.hex = (rgb_arr[0] << 16) | (rgb_arr[1] << 8) | rgb_arr[2];
+		game->ceiling_color.hex = get_rgba_color(rgb_arr[0], rgb_arr[1],
+				rgb_arr[2], 255);
 	}
 	game->color_count++;
 }

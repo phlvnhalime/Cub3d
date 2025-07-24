@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 23:31:00 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/24 10:29:08 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/24 11:32:28 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	lenght_encountered(t_game *game)
 ** @param game: Pointer to the game structure.
 */
 
-int	check_rotation(t_game *game, int x, int y)
+int	check_rotation(t_game *game, int x, int y, char curr)
 {
 	char	left;
 	char	right;
@@ -63,6 +63,13 @@ int	check_rotation(t_game *game, int x, int y)
 	if ((left == ' ' || right == ' ' || (y > 0 && up == ' ')
 			|| (y < game->map.height - 1 && down == ' ')))
 		return (0);
+	while(curr == ' ')
+	{
+		if(down == '1' && right == '1' && left == '1')
+			return (0);
+		else
+			return (1);
+	}
 	return (1);
 }
 
@@ -90,17 +97,20 @@ int	compare_lengths(t_game *game, int curr_len, int prev_len, int y)
 			if (curr == '0' || curr == 'N' || curr == 'S' || curr == 'E'
 				|| curr == 'W')
 				return (0);
-			if (curr == '1')
+			if (curr == ' ' || curr == '1')
 			{
-				if (x > 0 && (game->map.grid[y][x - 1] == '0'
-						|| game->map.grid[y][x - 1] == 'N'
-						|| game->map.grid[y][x - 1] == 'S'
-						|| game->map.grid[y][x - 1] == 'E'
-						|| game->map.grid[y][x - 1] == 'W'))
+				if (x > 0 && description_side_x(game, x, y))
 					return (0);
 			}
 			x++;
 		}
 	}
 	return (1);
+}
+
+int	description_side_x(t_game *game, int x, int y)
+{
+	return (game->map.grid[y][x - 1] == '0' || game->map.grid[y][x - 1] == 'N'
+		|| game->map.grid[y][x - 1] == 'S' || game->map.grid[y][x - 1] == 'E'
+		|| game->map.grid[y][x - 1] == 'W');
 }
