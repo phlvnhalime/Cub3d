@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 14:01:08 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/23 16:17:19 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/24 10:27:56 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static int	handle_texture(t_game *game, char *line, int *nbr_element)
 		(*nbr_element)++;
 		return (1);
 	}
-	// free(line);
 	return (0);
 }
 
@@ -50,7 +49,6 @@ static int	handle_color(t_game *game, char *line, int *nbr_element)
 		(*nbr_element)++;
 		return (1);
 	}
-	// free(line);
 	return (0);
 }
 

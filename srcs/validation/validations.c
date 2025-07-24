@@ -72,7 +72,8 @@ void	valid_map(t_game *game)
 ** If the file cannot be opened, it calls file_error to handle the error.
 **
 ** @param file_path - The path to the map file to be opened.
-** @return - Returns the file descriptor if successful, or -1 if an error occurs.
+** @return - Returns the file descriptor if successful, or
+	-1 if an error occurs.
 */
 int	open_and_validate_file(char *file_path)
 {

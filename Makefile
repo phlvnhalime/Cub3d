@@ -66,6 +66,8 @@ PARSING_SRCS =	$(SRCS_DIR)/parsing/parsing.c \
 				$(SRCS_DIR)/parsing/parse_player_pos.c \
 				$(SRCS_DIR)/parsing/parse_player_direct.c \
 				$(SRCS_DIR)/parsing/parse_color_text.c \
+				$(SRCS_DIR)/parsing/utils02_parsing.c \
+				$(SRCS_DIR)/parsing/utils03_parsing.c
 
 RAYCASTING_SRCS =	$(SRCS_DIR)/raycasting/raycasting.c \
 					$(SRCS_DIR)/raycasting/raycasting_init_ray.c

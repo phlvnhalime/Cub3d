@@ -81,7 +81,7 @@ static void	set_west_direction(t_game *game)
 }
 
 /*
-** set_player_direction - Sets the player's direction based on the 
+** set_player_direction - Sets the player's direction based on the
 ** spawn character.
 ** It updates the player's direction vector and plane vector
 ** according to the specified spawn character ('N', 'S', 'E', 'W').

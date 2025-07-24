@@ -1,5 +1,5 @@
 /* ************************************************************************** */
-/*				                                                              */
+/*					                                                          */
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -67,11 +67,11 @@ void	perform_dda(t_game *game, t_ray *ray)
 			ray->hit = 1;
 	}
 	if (ray->side == 0)
-		ray->perp_wall_dist = (ray->map_x - game->player.x \
-		+ (1 - ray->step_x) / 2) / ray->ray_dir_x;
+		ray->perp_wall_dist = (ray->map_x - game->player.x + (1 - ray->step_x)
+				/ 2) / ray->ray_dir_x;
 	else
-		ray->perp_wall_dist = (ray->map_y - game->player.y
-				+ (1 - ray->step_y) / 2) / ray->ray_dir_y;
+		ray->perp_wall_dist = (ray->map_y - game->player.y + (1 - ray->step_y)
+				/ 2) / ray->ray_dir_y;
 }
 
 /*

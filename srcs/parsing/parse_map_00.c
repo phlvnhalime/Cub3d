@@ -89,7 +89,8 @@ static void	handle_invalid_line(t_game *game, char *line, int *map_started)
 ** validate_map_block - Validates a block of the map section.
 ** It checks if the line is a map line, an empty line, or an invalid line.
 ** If it is a map line, it calls handle_map_line to process it.
-** If it is an empty line, it calls handle_empty_line to mark the end of the map.
+** If it is an empty line,
+	it calls handle_empty_line to mark the end of the map.
 ** If it is an invalid line, it calls handle_invalid_line to handle the error.
 ** It returns 1 if the block is valid, or 0 if an error occurs.
 **
@@ -121,12 +122,12 @@ int	validate_map_block(t_game *game, char *line, int *map_started,
 /*
 ** parse_map_section - Parses the map section of the game.
 ** It reads lines from the file descriptor until the end of the file.
-** It initializes the map_started flag to 1, indicating that the map section 
+** It initializes the map_started flag to 1, indicating that the map section
 ** has started.
-** It processes each line using validate_map_block to check if it is a valid 
+** It processes each line using validate_map_block to check if it is a valid
 ** map line,
 ** an empty line, or an invalid line.
-** If the map height is 0 after processing all lines, it returns 0, indicating 
+** If the map height is 0 after processing all lines, it returns 0, indicating
 ** an error.
 ** If the map section is valid, it returns 1.
 **

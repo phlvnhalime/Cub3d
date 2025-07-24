@@ -30,31 +30,31 @@
 // 	uint8_t			b;
 // 	uint8_t			a;
 
-	// wall_direction = get_valid_wall_dir(ray);
-	// if (wall_direction == -1)
-	// 	return ;
-	// tex = get_texture(game, wall_direction);
-	// if (!tex)
-	// {
-	// 	handle_missing_texture(game, ray, x);
-	// 	return ;
-	// }
-	// wall_x = get_wall_x(game, ray);
-	// tex_x = (int)(wall_x * (double)tex->width);
-	// if ((ray->side == 0 && ray->ray_dir_x > 0) || (ray->side == 1
-			// && ray->ray_dir_y > 0))
-		// tex_x = tex->width - tex_x - 1;
-	// steps = (double)tex->height / (double)ray->line_height;
-	// tex_position = (ray->draw_start - HEIGHT / 2 + ray->line_height / 2)
-	// 	* steps;
-	// draw_floor_ceiling(game, x, ray->draw_start, ray->draw_end);
-	// y = ray->draw_start;
-	// while (y <= ray->draw_end && y < HEIGHT)
-	// {
-	// 	tex_y = (int)tex_position;
-	// 	if (tex_y >= 0 && tex_y < (int)tex->height)
-	// 	{
-	// 		color = get_tex_color(tex, tex_x, tex_y);
+// wall_direction = get_valid_wall_dir(ray);
+// if (wall_direction == -1)
+// 	return ;
+// tex = get_texture(game, wall_direction);
+// if (!tex)
+// {
+// 	handle_missing_texture(game, ray, x);
+// 	return ;
+// }
+// wall_x = get_wall_x(game, ray);
+// tex_x = (int)(wall_x * (double)tex->width);
+// if ((ray->side == 0 && ray->ray_dir_x > 0) || (ray->side == 1
+// && ray->ray_dir_y > 0))
+// tex_x = tex->width - tex_x - 1;
+// steps = (double)tex->height / (double)ray->line_height;
+// tex_position = (ray->draw_start - HEIGHT / 2 + ray->line_height / 2)
+// 	* steps;
+// draw_floor_ceiling(game, x, ray->draw_start, ray->draw_end);
+// y = ray->draw_start;
+// while (y <= ray->draw_end && y < HEIGHT)
+// {
+// 	tex_y = (int)tex_position;
+// 	if (tex_y >= 0 && tex_y < (int)tex->height)
+// 	{
+// 		color = get_tex_color(tex, tex_x, tex_y);
 // 			if (ray->side == 1)
 // 			{
 // 				r = ((color >> 24) & 0xFF) * 0.75;
@@ -85,21 +85,21 @@
 **                [3] - Wall direction (texture index).
 ** @param tex: Pointer to the texture to be used for rendering.
 */
-static void	init_texture_params(t_game *game, t_ray *ray, \
-		double *params, mlx_texture_t *tex)
+static void	init_texture_params(t_game *game, t_ray *ray, double *params,
+		mlx_texture_t *tex)
 {
 	double	wall_x;
 	int		tex_x;
 
 	wall_x = get_wall_x(game, ray);
 	tex_x = (int)(wall_x * (double)tex->width);
-	if ((ray->side == 0 && ray->ray_dir_x > 0) \
-		|| (ray->side == 1 && ray->ray_dir_y > 0))
+	if ((ray->side == 0 && ray->ray_dir_x > 0) || (ray->side == 1
+			&& ray->ray_dir_y > 0))
 		tex_x = tex->width - tex_x - 1;
 	params[0] = tex_x;
 	params[1] = ((double)tex->height / (double)ray->line_height);
-	params[2] = ((ray->draw_start - HEIGHT / 2 + ray->line_height \
-		/ 2) * params[1]);
+	params[2] = ((ray->draw_start - HEIGHT / 2 + ray->line_height / 2)
+			* params[1]);
 }
 
 /*

@@ -111,8 +111,8 @@ static void	draw_map_cell(t_game *game, t_square *sq, char cell)
 ** @param offset_y - The y offset for the minimap.
 ** @param cell_size - The size of each cell in the minimap grid.
 */
-static void	render_map_grid(t_game *game, int offset_x, int offset_y, \
-	int cell_size)
+static void	render_map_grid(t_game *game, int offset_x, int offset_y,
+		int cell_size)
 {
 	t_square	sq;
 	int			map_x;
@@ -149,8 +149,8 @@ static void	render_map_grid(t_game *game, int offset_x, int offset_y, \
 ** @param offset_y - The y offset for the minimap.
 ** @param cell_size - The size of each cell in the minimap grid.
 */
-static void	render_player_elements(t_game *game, int offset_x, int offset_y, \
-	int cell_size)
+static void	render_player_elements(t_game *game, int offset_x, int offset_y,
+		int cell_size)
 {
 	int	player_cx;
 	int	player_cy;
