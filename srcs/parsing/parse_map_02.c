@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 14:11:29 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/23 15:46:24 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/24 11:32:39 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ char	get_char_at(char *line, int position)
 {
 	int	len;
 
-	len = ft_strlen(line);
 	if (!line)
 		return (' ');
+	len = ft_strlen(line);
 	if (position >= len || position < 0)
 		return (' ');
 	return (line[position]);
@@ -109,35 +109,23 @@ int	check_left_right_walls(t_game *game)
 */
 int	check_inner_zeros(t_game *game)
 {
-	int	x;
-	int	y;
-	// int	row_len;
+	int		x;
+	int		y;
+	char	curr;
 
 	y = 0;
-	while (y < game->map.height)
+	while (y < game->map.height - 1)
 	{
 		x = 0;
-		// row_len = ft_strlen(game->map.grid[y]);
-		while (x < game->map.width)
+		while (x < game->map.width - 1)
 		{
-			if(get_char_at(game->map.grid[y], x) == '0' || get_char_at(game->map.grid[y], x) == 'N' || get_char_at(game->map.grid[y], x) == 'S' || get_char_at(game->map.grid[y], x) == 'E' || get_char_at(game->map.grid[y], x) == 'W')
+			curr = get_char_at(game->map.grid[y], x);
+			if (curr == '0' || curr == 'N' || curr == 'S' || curr == 'E'
+				|| curr == 'W')
 			{
-				if(get_char_at(game->map.grid[y], x - 1) == ' ' ||
-				get_char_at(game->map.grid[y], x + 1) == ' ' ||
-				(y > 0 && get_char_at(game->map.grid[y - 1], x) == ' ') ||
-				(y < game->map.height - 1 && get_char_at(game->map.grid[y + 1], x) == ' '))
+				if (!check_rotation(game, x, y, curr))
 					return (0);
 			}
-			
-			// if (game->map.grid[y][x] == '0')
-			// {
-			// 	if ((x > 0 && game->map.grid[y][x - 1] == ' ')
-			// 		|| ((x < game->map.width - 1) && game->map.grid[y][x
-			// 			+ 1] == ' ') || (y > 0 && game->map.grid[y
-			// 			- 1][x] == ' ') || (y < game->map.height - 1
-			// 			&& game->map.grid[y + 1][x] == ' '))
-			// 		return (0);
-			// }
 			x++;
 		}
 		y++;
@@ -162,6 +150,8 @@ int	check_map_walls(t_game *game)
 	if (!check_left_right_walls(game))
 		return (0);
 	if (!check_inner_zeros(game))
+		return (0);
+	if (!lenght_encountered(game))
 		return (0);
 	return (1);
 }

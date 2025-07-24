@@ -45,11 +45,11 @@ static void	init_player_data(t_game *data)
 }
 
 /*
-* Initializes the map and textures in the game structure.
-* Sets default values for the map grid, dimensions, textures, and colors.
-*
-* @param data Pointer to the game structure to be initialized.
-*/
+ * Initializes the map and textures in the game structure.
+ * Sets default values for the map grid, dimensions, textures, and colors.
+ *
+ * @param data Pointer to the game structure to be initialized.
+ */
 static void	init_map_and_textures(t_game *data)
 {
 	int	i;

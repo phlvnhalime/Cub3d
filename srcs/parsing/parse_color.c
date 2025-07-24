@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 14:01:21 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/23 16:37:03 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/24 15:47:56 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 ** @param b: Blue component of the color.
 ** @return 1 if all values are valid, 0 otherwise.
 */
+
 int	valid_rgb_format(int r, int g, int b)
 {
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
@@ -36,7 +37,8 @@ int	valid_rgb_format(int r, int g, int b)
 /*
 ** set_color_values - Sets the RGB values and hex representation
 ** for the floor or ceiling color in the game structure.
-** It takes the game structure, an identifier ('F' for floor or 'C' for ceiling),
+** It takes the game structure,
+	an identifier ('F' for floor or 'C' for ceiling),
 ** and an array of RGB values.
 ** It updates the corresponding color structure with the RGB values
 ** and calculates the hex value.
@@ -55,16 +57,16 @@ void	set_color_values(t_game *game, char identifier, int rgb_arr[3])
 		game->floor_color.r = rgb_arr[0];
 		game->floor_color.g = rgb_arr[1];
 		game->floor_color.b = rgb_arr[2];
-		game->floor_color.hex = (rgb_arr[0] << 16) \
-		| (rgb_arr[1] << 8) | rgb_arr[2];
+		game->floor_color.hex = get_rgba_color(rgb_arr[0], rgb_arr[1],
+				rgb_arr[2], 255);
 	}
 	else if (identifier == 'C')
 	{
 		game->ceiling_color.r = rgb_arr[0];
 		game->ceiling_color.g = rgb_arr[1];
 		game->ceiling_color.b = rgb_arr[2];
-		game->ceiling_color.hex = (rgb_arr[0] << 16) \
-		| (rgb_arr[1] << 8) | rgb_arr[2];
+		game->ceiling_color.hex = get_rgba_color(rgb_arr[0], rgb_arr[1],
+				rgb_arr[2], 255);
 	}
 	game->color_count++;
 }
@@ -102,37 +104,17 @@ static int	validate_color_input(char *line, char ***split_line, char ***rgb)
 	return (1);
 }
 
-/*
-** process_color_values - Processes the RGB values from the split line.
-** It converts the RGB string values to integers,
-** validates them, and sets the color values in the game structure.
-** If the RGB values are valid, it updates the game structure
-** and frees the allocated memory for the split line and RGB values.
-** If the RGB values are invalid, it frees the memory and returns 0.
-**
-** @param game: Pointer to the game structure.
-** @param split_line: The split line containing the color identifier and
-** RGB values.
-** @param rgb: The split RGB values from the line.
-** @return 1 if the color values are processed successfully, 0 otherwise.
-*/
-static int	process_color_values(t_game *game, char **split_line, char **rgb)
+int	process_color_values(t_game *game, char **split_line, char **rgb)
 {
 	int	rgb_arr[3];
 
-	rgb_arr[0] = ft_atoi(rgb[0]);
-	rgb_arr[1] = ft_atoi(rgb[1]);
-	rgb_arr[2] = ft_atoi(rgb[2]);
-	if (!valid_rgb_format(rgb_arr[0], rgb_arr[1], rgb_arr[2]))
+	if (!parse_and_validate_rgb_values(rgb, rgb_arr))
 	{
 		ft_free_split(rgb);
 		ft_free_split(split_line);
 		return (0);
 	}
-	set_color_values(game, split_line[0][0], rgb_arr);
-	ft_free_split(rgb);
-	ft_free_split(split_line);
-	return (1);
+	return (finalize_color_processing(game, split_line, rgb, rgb_arr));
 }
 
 /*
@@ -152,10 +134,8 @@ int	parse_color(t_game *game, char *line)
 	char	**rgb;
 	int		result;
 
-	
 	split_line = NULL;
 	rgb = NULL;
-
 	if (!validate_color_input(line, &split_line, &rgb))
 		return (0);
 	result = process_color_values(game, split_line, rgb);

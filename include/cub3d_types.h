@@ -158,7 +158,7 @@ typedef struct s_garbco
 ** - floor_color: Color of the floor
 ** - ceiling_color: Color of the ceiling
 ** - garbco: Garbage collection structure for managing dynamically
-**			 allocated memory
+**				allocated memory
 ** - texture_count: Number of textures loaded
 ** - color_count: Number of colors defined (floor and ceiling)
 ** - map_started: Flag indicating if the map has started (1) or not (0)

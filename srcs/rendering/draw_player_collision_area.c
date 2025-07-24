@@ -129,8 +129,8 @@ static void	draw_collision_grid(t_game *game, int *params)
 ** @param offset_y: Vertical offset for the drawing area.
 ** @param cell_size: Size of each cell in the grid.
 */
-void	draw_player_collision_area(t_game *game, int offset_x, \
-	int offset_y, int cell_size)
+void	draw_player_collision_area(t_game *game, int offset_x, int offset_y,
+		int cell_size)
 {
 	int	params[5];
 

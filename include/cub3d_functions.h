@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_functions.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 11:50:26 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/23 00:57:41 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/24 11:32:54 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,15 @@ int				is_color_identifier(char *line);
 int				parse_color(t_game *game, char *line);
 int				parse_texture(t_game *game, char *line);
 int				parse_textures_and_colors(t_game *game, int fd);
-void			print_texture_error(char *texture_name, char *message, \
-				char *path);
+void			print_texture_error(char *texture_name, char *message,
+					char *path);
 void			*load_texture(char *path, char *texture_name);
 void			set_color_values(t_game *game, char identifier, int rgb_arr[3]);
 int				texture_identifier(char *line);
 int				valid_rgb_format(int r, int g, int b);
 int				validate_texture_path(char *path, char *texture_name);
+int				process_color_values(t_game *game, char **split_line,
+					char **rgb);
 
 /* Player parsing */
 
@@ -102,6 +104,10 @@ int				parse_map_line(t_game *game, char *line);
 int				parse_map_section(t_game *game, int fd);
 int				validate_map_block(t_game *game, char *line, int *map_started,
 					int *map_ended);
+int				check_rotation(t_game *game, int x, int y, char curr);
+int				compare_lengths(t_game *game, int curr_len, int prev_len,
+					int y);
+int				lenght_encountered(t_game *game);
 
 /* ===== RAYCASTING FUNCTIONS ===== */
 
@@ -115,12 +121,12 @@ void			perform_dda(t_game *game, t_ray *ray);
 void			draw_filled_circle(t_game *game, int cx, int cy, int radius);
 void			draw_floor_ceiling(t_game *game, int x, int wall_start,
 					int wall_end);
-void			draw_fov_rays(t_game *game, int offset_x, \
-				int offset_y, int cell_size);
-void			draw_player_collision_area(t_game *game, int offset_x, \
-				int offset_y, int cell_size);
-void			draw_player_direction(t_game *game, int player_cx, \
-				int player_cy, int cell_size);
+void			draw_fov_rays(t_game *game, int offset_x, int offset_y,
+					int cell_size);
+void			draw_player_collision_area(t_game *game, int offset_x,
+					int offset_y, int cell_size);
+void			draw_player_direction(t_game *game, int player_cx,
+					int player_cy, int cell_size);
 void			draw_square(t_game *game, t_square *sq);
 void			draw_vertical_line(t_game *game, int start, int end,
 					uint32_t color);
@@ -137,6 +143,11 @@ void			render_textures_wall(t_game *game, t_ray *ray, int x);
 /* ===== UTILITY FUNCTIONS ===== */
 
 void			ft_free_split(char **split);
+int				description_side_x(t_game *game, int x, int y);
+int				is_digit(char *str);
+int				parse_and_validate_rgb_values(char **rgb, int rgb_arr[3]);
+int				finalize_color_processing(t_game *game, char **split_line,
+					char **rgb, int rgb_arr[3]);
 
 /* ===== VALIDATION FUNCTIONS ===== */
 

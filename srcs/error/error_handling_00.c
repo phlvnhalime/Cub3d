@@ -35,7 +35,8 @@ void	error_exit(char *msg)
 
 /*
 ** error_exit_cleanup - Error handling with cleanup
-** This function prints an error message to stderr, cleans up the game structure,
+** This function prints an error message to stderr,
+	cleans up the game structure,
 ** and exits the program.
 ** It is used for error handling where the game structure needs to be cleaned up
 ** before exiting.

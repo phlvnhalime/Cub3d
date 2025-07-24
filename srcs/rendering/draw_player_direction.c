@@ -77,8 +77,8 @@
 **                 params[3] - absolute difference in x,
 **                 params[4] - absolute difference in y.
 */
-static void	init_line_params(t_game *game, int player_cx, int player_cy, \
-	int *params)
+static void	init_line_params(t_game *game, int player_cx, int player_cy,
+		int *params)
 {
 	int	dir_length;
 
@@ -108,8 +108,8 @@ static void	init_line_params(t_game *game, int player_cx, int player_cy, \
 **                steps[2] - difference in x and y coordinates.
 **                steps[2] = params[3] - params[4].
 */
-static void	calculate_step_direction(int player_cx, int player_cy, \
-	int *params, int *steps)
+static void	calculate_step_direction(int player_cx, int player_cy, int *params,
+		int *steps)
 {
 	if (player_cx < params[1])
 		steps[0] = 1;
@@ -180,8 +180,8 @@ static void	draw_line_segment(t_game *game, int x, int y, int *line_data)
 ** @param cell_size: The length of the line to be drawn, representing
 **                   the player's direction.
 */
-void	draw_player_direction(t_game *game, int player_cx, int player_cy, \
-	int cell_size)
+void	draw_player_direction(t_game *game, int player_cx, int player_cy,
+		int cell_size)
 {
 	int	params[5];
 	int	steps[3];
