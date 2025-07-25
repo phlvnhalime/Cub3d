@@ -28,8 +28,8 @@ static void	move_front(t_game *game)
 
 	new_x = game->player.x + game->player.dir_x * MOVE_SPEED;
 	new_y = game->player.y + game->player.dir_y * MOVE_SPEED;
-	if ((game->map.grid[(int)new_y][(int)new_x] != '1') && \
-		(game->map.grid[(int)new_y][(int)new_x] != ' '))
+	if ((game->map.grid[(int)new_y][(int)new_x] != '1')
+		&& (game->map.grid[(int)new_y][(int)new_x] != ' '))
 	{
 		game->player.x = new_x;
 		game->player.y = new_y;
@@ -52,8 +52,8 @@ static void	move_back(t_game *game)
 
 	new_x = game->player.x - game->player.dir_x * MOVE_SPEED;
 	new_y = game->player.y - game->player.dir_y * MOVE_SPEED;
-	if ((game->map.grid[(int)new_y][(int)new_x] != '1') && \
-		(game->map.grid[(int)new_y][(int)new_x] != ' '))
+	if ((game->map.grid[(int)new_y][(int)new_x] != '1')
+		&& (game->map.grid[(int)new_y][(int)new_x] != ' '))
 	{
 		game->player.x = new_x;
 		game->player.y = new_y;
@@ -76,8 +76,8 @@ static void	move_left(t_game *game)
 
 	new_x = game->player.x - game->player.plane_x * MOVE_SPEED;
 	new_y = game->player.y - game->player.plane_y * MOVE_SPEED;
-	if ((game->map.grid[(int)new_y][(int)new_x] != '1') && \
-		(game->map.grid[(int)new_y][(int)new_x] != ' '))
+	if ((game->map.grid[(int)new_y][(int)new_x] != '1')
+		&& (game->map.grid[(int)new_y][(int)new_x] != ' '))
 	{
 		game->player.x = new_x;
 		game->player.y = new_y;
@@ -100,8 +100,8 @@ static void	move_right(t_game *game)
 
 	new_x = game->player.x + game->player.plane_x * MOVE_SPEED;
 	new_y = game->player.y + game->player.plane_y * MOVE_SPEED;
-	if ((game->map.grid[(int)new_y][(int)new_x] != '1') && \
-		(game->map.grid[(int)new_y][(int)new_x] != ' '))
+	if ((game->map.grid[(int)new_y][(int)new_x] != '1')
+		&& (game->map.grid[(int)new_y][(int)new_x] != ' '))
 	{
 		game->player.x = new_x;
 		game->player.y = new_y;
