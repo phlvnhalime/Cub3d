@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 21:39:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/24 10:40:41 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/25 19:32:08 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,19 @@
 int	is_digit(char *str)
 {
 	int	i;
+	int	len;
 
 	i = 0;
-	if (!str || !str[0])
+	if (!str)
 		return (0);
-	while (str[i] == ' ' || str[i] == '\t')
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == ',')
 		i++;
 	if (!str[i])
 		return (0);
-	while (str[i])
+	len = ft_strlen(str);
+	while (len > i && (str[len - 1] == ' ' || str[len - 1] == '\t'))
+		len--;
+	while (i < len)
 	{
 		if (str[i] < '0' || str[i] > '9')
 			return (0);
@@ -46,11 +50,16 @@ int	parse_and_validate_rgb_values(char **rgb, int rgb_arr[3])
 	int	i;
 	int	len;
 
+	if (!rgb)
+		return (0);
 	i = 0;
-	len = ft_arraylen(rgb);
 	while (i < 3)
 	{
-		if (len > 0 && rgb[i][len - 1] == '\n')
+		if (!rgb[i])
+			return (0);
+		len = ft_strlen(rgb[i]);
+		if ((len > 0 && rgb[i][len - 1] == '\n') || (rgb[i][len - 1] == ' '
+				|| rgb[i][len - 1] == '\t' || rgb[i][len - 1] == ','))
 			rgb[i][len - 1] = '\0';
 		i++;
 	}

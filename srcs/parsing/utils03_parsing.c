@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 23:31:00 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/24 11:33:43 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/25 19:29:47 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ int	check_rotation(t_game *game, int x, int y, char curr)
 	if ((left == ' ' || right == ' ' || (y > 0 && up == ' ')
 			|| (y < game->map.height - 1 && down == ' ')))
 		return (0);
-	while(curr == ' ')
+	while (curr == ' ')
 	{
-		if(down == '1' && right == '1' && left == '1')
-			return (0); // todo
-			return (1);
+		if (down == '1' && right == '1' && left == '1')
+			return (0);
+		return (1);
 	}
 	return (1);
 }

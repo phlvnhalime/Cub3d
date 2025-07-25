@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_arraylen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 22:47:56 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/22 12:22:24 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/25 18:15:25 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

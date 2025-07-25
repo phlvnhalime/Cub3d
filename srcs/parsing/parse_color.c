@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 14:01:21 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/24 15:47:56 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/25 19:27:40 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ static int	validate_color_input(char *line, char ***split_line, char ***rgb)
 	if (!is_color_identifier(line))
 		return (0);
 	*split_line = ft_split(line, ' ');
-	if (!*split_line || !(*split_line)[0] || !(*split_line)[1])
+	if (!*split_line || !(*split_line)[0] || !(*split_line)[1]
+		|| (*split_line)[2])
 	{
 		ft_free_split(*split_line);
 		return (0);
