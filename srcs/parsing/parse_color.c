@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 14:01:21 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/25 19:27:40 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/26 11:20:01 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,11 @@ static int	validate_color_input(char *line, char ***split_line, char ***rgb)
 		return (0);
 	}
 	*rgb = ft_split((*split_line)[1], ',');
-	if (!*rgb || ft_arraylen(*rgb) != 3)
+	if (!*rgb || ft_arraylen(*rgb) != 3 || (*split_line)[1][0] == ','
+		|| (*split_line)[1][ft_strlen((*split_line)[1]) - 1] == ',')
 	{
-		ft_free_split(*rgb);
 		ft_free_split(*split_line);
+		ft_free_split(*rgb);
 		return (0);
 	}
 	return (1);
