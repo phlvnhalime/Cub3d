@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils02_parsing.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 21:39:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/25 19:32:08 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/26 11:30:54 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	parse_and_validate_rgb_values(char **rgb, int rgb_arr[3])
 	}
 	if (!is_digit(rgb[0]) || !is_digit(rgb[1]) || !is_digit(rgb[2]))
 	{
-		valid_error("Invalid RGB values", "rgb values are not digits\n");
+		valid_error("Invalid RGB values", "rgb values missing or not digits\n");
 		return (0);
 	}
 	rgb_arr[0] = ft_atoi(rgb[0]);
