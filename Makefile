@@ -1,5 +1,15 @@
 .SILENT:
 
+# Color and Formatting Variables
+RED = \033[31m
+GREEN = \033[32m
+YELLOW = \033[33m
+BLUE = \033[34m
+MAGENTA = \033[35m
+CYAN = \033[36m
+NC = \033[0m
+CLEAR_LINE = \033[2K\r
+
 # Project Configuration
 NAME        = cub3D
 CC          = cc
@@ -114,39 +124,59 @@ HEADERS = $(INCLUDE_DIR)/cub3d.h \
 			$(INCLUDE_DIR)/cub3d_types.h \
 			$(INCLUDE_DIR)/mlx.h
 
+# Track compilation progress
+TOTAL_SRCS = $(words $(SRCS) $(GNL_SRCS))
+CURRENT = 0
+
 # Default target
 all:    $(NAME)
 
 # Create object directories
 $(OBJS_DIR):
-	mkdir -p $(OBJS_DIR)
-	mkdir -p $(OBJS_DIR)/init
-	mkdir -p $(OBJS_DIR)/input
-	mkdir -p $(OBJS_DIR)/parsing
-	mkdir -p $(OBJS_DIR)/raycasting
-	mkdir -p $(OBJS_DIR)/rendering
-	mkdir -p $(OBJS_DIR)/memory
-	mkdir -p $(OBJS_DIR)/error
-	mkdir -p $(OBJS_DIR)/validation
-	mkdir -p $(OBJS_DIR)/gnl
+	@mkdir -p $(OBJS_DIR)
+	@mkdir -p $(OBJS_DIR)/init
+	@mkdir -p $(OBJS_DIR)/input
+	@mkdir -p $(OBJS_DIR)/parsing
+	@mkdir -p $(OBJS_DIR)/raycasting
+	@mkdir -p $(OBJS_DIR)/rendering
+	@mkdir -p $(OBJS_DIR)/memory
+	@mkdir -p $(OBJS_DIR)/error
+	@mkdir -p $(OBJS_DIR)/validation
+	@mkdir -p $(OBJS_DIR)/gnl
 
 # Compile libft
 $(LIBFT):
-	echo "\033[1;32mCompiling libft...\033[0m"
-	make -C $(LIBFT_DIR) CFLAGS="-Wall -Wextra -Werror"
-	make clean -C $(LIBFT_DIR)
+	@echo "$(YELLOW)🚧 Building LIBFT 🚧$(NC)"
+	@make -C $(LIBFT_DIR) CFLAGS="-Wall -Wextra -Werror"
+	@make clean -C $(LIBFT_DIR)
+	@echo "$(GREEN)✅ LIBFT Compiled ✅$(NC)"
 
 # Always build MLX42 when running make
 MLX42:
-	echo "\033[1;33mConfiguring and building MLX42 with CMake...\033[0m"
-	cd $(MLX42_DIR) && cmake -B build
-	cd $(MLX42_DIR) && cmake --build build -j4
+	@echo "$(YELLOW)🚧 Building MLX42 🚧$(NC)"
+	@cd $(MLX42_DIR) && cmake -B build > /dev/null 2>&1
+	@cd $(MLX42_DIR) && cmake --build build -j4 > /dev/null 2>&1 || (echo "$(RED)Failed to build MLX42$(NC)" && exit 1)
+	@echo "$(GREEN)✅ MLX42 Compiled ✅$(NC)"
+
+# Compile source files to objects (preserve directory structure)
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(HEADERS)
+	@$(eval CURRENT := $(shell echo $$(($(CURRENT) + 1))))
+	@$(eval PERCENT := $(shell echo $$(($(CURRENT) * 100 / $(TOTAL_SRCS)))))
+	@printf "$(CLEAR_LINE)$(YELLOW)🚧 Building Cub3D $(PERCENT)%% [$(CURRENT)/$(TOTAL_SRCS)] $(CYAN)$<$(NC) 🚧"
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+# Compile GNL source files to objects
+$(GNL_DIR)/%.o: $(GNL_DIR)/%.c $(HEADERS)
+	@$(eval CURRENT := $(shell echo $$(($(CURRENT) + 1))))
+	@$(eval PERCENT := $(shell echo $$(($(CURRENT) * 100 / $(TOTAL_SRCS)))))
+	@printf "$(CLEAR_LINE)$(YELLOW)🚧 Building GNL $(PERCENT)%% [$(CURRENT)/$(TOTAL_SRCS)] $(CYAN)$<$(NC) 🚧"
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 # Final target to build the executable
 $(NAME): $(OBJS_DIR) MLX42 $(LIBFT) $(OBJS)
-	echo "\033[1;34mLinking $(NAME)...\033[0m"
-	$(CC) $(CFLAGS) $(OBJS) $(LDINCLUDE) $(PERFORMANCE_FLAGS) -o $(NAME)
-	echo "\033[1;32m$(NAME) compiled successfully!\033[0m"
+	@echo "$(CLEAR_LINE)$(YELLOW)🚧 Building $(NAME) 🚧$(NC)"
+	@$(CC) $(CFLAGS) $(OBJS) $(LDINCLUDE) $(PERFORMANCE_FLAGS) -o $(NAME)
+	@echo "$(CLEAR_LINE)$(GREEN)✅ Done Compiling ✅$(NC)\n"
 	@echo
 	@echo "\033[38;2;0;102;255m		██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗    ████████╗ ██████╗         \033[0m";
 	@echo "\033[38;2;0;102;255m		██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝    ╚══██╔══╝██╔═══██╗        \033[0m";
@@ -162,7 +192,6 @@ $(NAME): $(OBJS_DIR) MLX42 $(LIBFT) $(OBJS)
 	@echo "\033[38;2;0;102;255m          	               ╚██████╗╚██████╔╝██████╔╝        ██████╔╝██████╔╝                           \033[0m";
 	@echo "\033[38;2;0;102;255m          	                ╚═════╝ ╚═════╝ ╚═════╝         ╚═════╝ ╚═════╝                            \033[0m";
 	@echo "\033[38;2;0;102;255m                                                                                                        \033[0m";
-	@echo
 	@echo "\033[38;2;94;13;148m▖  ▖  ▜            ▗     ▄▖  ▌ ▄▖▄         ▄▖▄                    ▜       ▗ ▘                               ▌  ▌                 ▗ ▘    ▌\033[0m";
 	@echo "\033[38;2;94;13;148m▌▞▖▌█▌▐ ▛▘▛▌▛▛▌█▌  ▜▘▛▌  ▌ ▌▌▛▌▄▌▌▌    ▀▌  ▄▌▌▌  ▛▛▌▀▌▀▌█▌  █▌▚▘▛▌▐ ▛▌▛▘▀▌▜▘▌▛▌▛▌  ▛▌▀▌▛▛▌█▌  ▛▌▛▌▌▌▌█▌▛▘█▌▛▌  ▛▌▌▌  ▛▘▀▌▌▌▛▘▀▌▛▘▜▘▌▛▌▛▌▌\033[0m";
 	@echo "\033[38;2;94;13;148m▛ ▝▌▙▖▐▖▙▖▙▌▌▌▌▙▖  ▐▖▙▌  ▙▖▙▌▙▌▄▌▙▘▗   █▌  ▄▌▙▘  ▌▌▌█▌▙▖▙▖  ▙▖▞▖▙▌▐▖▙▌▌ █▌▐▖▌▙▌▌▌  ▙▌█▌▌▌▌▙▖  ▙▌▙▌▚▚▘▙▖▌ ▙▖▙▌  ▙▌▙▌  ▌ █▌▙▌▙▖█▌▄▌▐▖▌▌▌▙▌▖\033[0m";
@@ -173,7 +202,7 @@ $(NAME): $(OBJS_DIR) MLX42 $(LIBFT) $(OBJS)
 	@echo "\033[38;2;94;13;148m        ▄▌                            ▄▌                                                                 ▄▌                              \033[0m";
 	@echo "\033[38;2;94;13;148m▄▖    ▜                             ▌      ▗   ▗     ▘         ▌         ▘    ▐▘▘    ▗                       ▘             ▗ ▌           \033[0m";
 	@echo "\033[38;2;94;13;148m▙▖▚▘▛▌▐ ▛▌▛▘█▌    ▛▛▌▛▌▌▌█▌    ▀▌▛▌▛▌  ▛▘▛▌▜▘▀▌▜▘█▌  ▌▛▌  ▀▌  ▛▌▌▌▛▌▀▌▛▛▌▌▛▘  ▜▘▌▛▘▛▘▜▘▄▖▛▌█▌▛▘▛▘▛▌▛▌  █▌▛▌▌▌▌▛▘▛▌▛▌▛▛▌█▌▛▌▜▘▌           \033[0m";
-	@echo "\033[38;2;94;13;148m▙▖▞▖▙▌▐▖▙▌▌ ▙▖▗   ▌▌▌▙▌▚▘▙▖▗   █▌▌▌▙▌  ▌ ▙▌▐▖█▌▐▖▙▖  ▌▌▌  █▌  ▙▌▙▌▌▌█▌▌▌▌▌▙▖  ▐ ▌▌ ▄▌▐▖  ▙▌▙▖▌ ▄▌▙▌▌▌  ▙▖▌▌▚▘▌▌ ▙▌▌▌▌▌▌▙▖▌▌▐▖▖           \033[0m";
+	@echo "\033[38;2;94;13;148m▙▖▞▖▙▌▐▖▙▌▌ ▙▖▗   ▌▌▌▙▌▚▘▙▖▗   █▌▌▌▙▌  ▌ ▙▌▐▖█▌▐▖▙▖  ▌▌▌  █▌  ▙▌▙▌▌▌█▌▌▌▌▌▙▖  ▐ ▌▌ ▄▌▐▖  ▙▌▙▖▌ ▄▌▙▌▌▌  ▙▌▌▌▚▘▌▌ ▙▌▌▌▌▌▌▙▖▌▌▐▖▖           \033[0m";
 	@echo "\033[38;2;94;13;148m    ▌         ▘            ▘                                    ▄▌                       ▌                                               \033[0m";
 	@echo
 	@echo "\033[38;2;0;153;255m\nPlayer Controls:\033[0m"
@@ -185,56 +214,65 @@ $(NAME): $(OBJS_DIR) MLX42 $(LIBFT) $(OBJS)
 	@echo "\033[38;2;0;153;255m- Right Arrow: Rotate camera right\033[0m"
 	@echo "\033[38;2;0;153;255m\n\nTo start type:\n./cub3D <map_name.cub>\033[0m"
 
-# Compile source files to objects (preserve directory structure)
-$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(HEADERS)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-# Compile include directory C files to objects
-$(OBJS_DIR)/%.o: $(INCLUDE_DIR)/%.c $(HEADERS)
-	$(CC) $(CFLAGS) -c $< -o $@
-
 # Clean object files
 clean:
-	echo "\033[1;31mCleaning object files...\033[0m"
-	$(RM_DIR) $(OBJS_DIR)
-	echo "\033[1;32mObject files cleaned successfully!\033[0m"
+	@echo "$(YELLOW)🚧 Cleaning 🚧$(NC)"
+	@sleep 0.15
+	@printf "$(RED)🧹 Cleaning in Progress 🧹$(NC)\n"
+	@sleep 0.15
+	@printf "$(YELLOW)🛁 Scrubbing Code 🛁$(NC)\n"
+	@sleep 0.15
+	@printf "$(CYAN)🧽 Polishing Project 🧽$(NC)\n"
+	@sleep 0.15
+	@printf "$(MAGENTA)🧴 Tidying Up 🧴$(NC)\n"
+	@sleep 0.15
+	@printf "$(GREEN)✅ Done Cleaning ✅$(NC)\n"
+	@$(RM_DIR) $(OBJS_DIR)
 
 # Clean all
 fclean: clean
-	echo "\033[1;31mCleaning $(NAME)...\033[0m"
-	$(RM) $(NAME)
-	$(RM_DIR) $(MLX42_DIR)/build
-	make fclean -C $(LIBFT_DIR)
-	echo "\033[1;32m$(NAME) cleaned successfully!\033[0m"
-	echo "\033[1;32mMLX42 cleaned successfully!\033[0m"
+	@echo "$(YELLOW)🚧 Cleaning $(NAME) 🚧$(NC)"
+	@sleep 0.15
+	@printf "$(RED)🧹 Cleaning in Progress 🧹$(NC)\n"
+	@sleep 0.15
+	@printf "$(YELLOW)🛁 Scrubbing Code 🛁$(NC)\n"
+	@sleep 0.15
+	@printf "$(CYAN)🧽 Polishing Project 🧽$(NC)\n"
+	@sleep 0.15
+	@printf "$(MAGENTA)🧴 Tidying Up 🧴$(NC)\n"
+	@sleep 0.15
+	@printf "$(GREEN)✅ Done Cleaning ✅$(NC)\n\n"
+	@$(RM) $(NAME)
+	@$(RM_DIR) $(MLX42_DIR)/build
+	@make fclean -C $(LIBFT_DIR)
 
 # Rebuild everything
 re: fclean all
 
 # Display project structure
 tree:
-	echo "\033[1;34mProject structure:\033[0m"
-	tree -I 'obj|*.o|*.a|build' || ls -la
+	@echo "\033[1;34mProject structure:\033[0m"
+	@tree -I 'obj|*.o|*.a|build' || ls -la
 
 # Display compilation info
 info:
-	echo "\033[1;34mCompilation info:\033[0m"
-	echo "CC: $(CC)"
-	echo "CFLAGS: $(CFLAGS)"
-	echo "INCLUDE: $(INCLUDE)"
-	echo "SRCS: $(words $(SRCS)) source files"
-	echo "HEADERS: $(words $(HEADERS)) header files"
+	@echo "\033[1;34mCompilation info:\033[0m"
+	@echo "CC: $(CC)"
+	@echo "CFLAGS: $(CFLAGS)"
+	@echo "INCLUDE: $(INCLUDE)"
+	@echo "SRCS: $(words $(SRCS)) source files"
+	@echo "HEADERS: $(words $(HEADERS)) header files"
 
 # Help target
 help:
-	echo "\033[1;34mAvailable targets:\033[0m"
-	echo "  all         - Build the project (default)"
-	echo "  clean       - Remove object files"
-	echo "  fclean      - Remove all generated files"
-	echo "  re          - Rebuild everything"
-	echo "  performance - Build with optimization flags"
-	echo "  tree        - Show project structure"
-	echo "  info        - Show compilation information"
-	echo "  help        - Show this help"
+	@echo "\033[1;34mAvailable targets:\033[0m"
+	@echo "  all         - Build the project (default)"
+	@echo "  clean       - Remove object files"
+	@echo "  fclean      - Remove all generated files"
+	@echo "  re          - Rebuild everything"
+	@echo "  performance - Build with optimization flags"
+	@echo "  tree        - Show project structure"
+	@echo "  info        - Show compilation information"
+	@echo "  help        - Show this help"
 
 .PHONY: all clean fclean re debug performance leaks valgrind tree info help MLX42
