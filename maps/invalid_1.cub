@@ -1,12 +1,9 @@
 NO ./textures/poison_slime_wall(1).png
-SO ./textures/trash_wall(1).png
-
+SO ./textures/trash_wall(1).pn
 WE ./textures/grassstone_wall.png
 EA ./textures/cobbluestone_wall.png
 
 F 10,10,1
-
-
 C 10,10,10
 
         11111111111 1111111111111
