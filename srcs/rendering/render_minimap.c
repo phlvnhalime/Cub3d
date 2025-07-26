@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:28:59 by julcalde          #+#    #+#             */
-/*   Updated: 2025/07/23 00:09:36 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/07/26 13:26:33 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static void	init_minimap_vars(int *offset_x, int *offset_y, int *cell_size)
 {
 	*offset_x = 10;
 	*offset_y = 10;
-	*cell_size = 10;
+	*cell_size = 7;
 }
 
 /*
