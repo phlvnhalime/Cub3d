@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 21:39:13 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/07/25 19:32:08 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/07/26 11:38:58 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,8 @@ int	parse_and_validate_rgb_values(char **rgb, int rgb_arr[3])
 		i++;
 	}
 	if (!is_digit(rgb[0]) || !is_digit(rgb[1]) || !is_digit(rgb[2]))
-	{
-		valid_error("Invalid RGB values", "rgb values are not digits\n");
-		return (0);
-	}
+		return (valid_error("Invalid RGB values",
+				"rgb values are missing or non digit\n"), 0);
 	rgb_arr[0] = ft_atoi(rgb[0]);
 	rgb_arr[1] = ft_atoi(rgb[1]);
 	rgb_arr[2] = ft_atoi(rgb[2]);
