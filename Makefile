@@ -211,21 +211,6 @@ fclean: clean
 # Rebuild everything
 re: fclean all
 
-# Debug mode
-debug: CFLAGS += $(DEBUG_FLAGS)
-debug: fclean all
-	@echo "Compiled with debug flags: $(DEBUG_FLAGS)"
-
-# Memory leak check
-leaks: all
-	echo "\033[1;33mRunning leak check...\033[0m"
-	leaks --atExit -- ./$(NAME) maps/test.cub
-
-# Valgrind check (if available)
-valgrind: all
-	echo "\033[1;33mRunning valgrind...\033[0m"
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) assets/maps/test.cub
-
 # Display project structure
 tree:
 	echo "\033[1;34mProject structure:\033[0m"
@@ -247,10 +232,7 @@ help:
 	echo "  clean       - Remove object files"
 	echo "  fclean      - Remove all generated files"
 	echo "  re          - Rebuild everything"
-	echo "  debug       - Build with debug flags"
 	echo "  performance - Build with optimization flags"
-	echo "  leaks       - Run with leak detection"
-	echo "  valgrind    - Run with valgrind (if available)"
 	echo "  tree        - Show project structure"
 	echo "  info        - Show compilation information"
 	echo "  help        - Show this help"
